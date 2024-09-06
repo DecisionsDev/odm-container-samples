@@ -1,13 +1,15 @@
 
 # Webhook Notification Setup Sample
+### Introduction
+This sample demonstrates how to use webhooks within the IBM Operational Decision Manager (ODM) to send notifications or data to external systems whenever certain rules are executed. Webhooks allow for real-time data sharing and integration, making it easier to trigger actions or workflows in other applications based on decision outcomes.
 
-This project demonstrates how to configure webhook notifications for IBM Operational Decision Manager (ODM), allowing you to send events to either Slack or log files using a Node.js server.
+In this sample, you'll learn how to configure and use the Webhook Notifier to send notifications to an external URL, providing seamless integration between IBM ODM and Slack or log files using a Node.js server.
 
 ## Prerequisites
 
-- docker installed
-- docker-compose 
-- (Optional) For Slack notifications, you need a Slack channel with an incoming webhook URL and a token.
+Before you begin, ensure you have the following:
+
+- **Container Platform**: Docker 19.03 or Kubernetes 1.19+.
 
 ## Setup Instructions
 
