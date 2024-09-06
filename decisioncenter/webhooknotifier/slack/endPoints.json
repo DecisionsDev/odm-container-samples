@@ -1,0 +1,7 @@
+[
+  {
+    "endpoint": "https://hooks.slack.com/services/APPID",
+    "token": "xoxb-YOURTOKEN",
+    "notify": true
+  }
+]
