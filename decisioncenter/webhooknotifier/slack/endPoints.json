@@ -1,7 +1,7 @@
 [
   {
-    "endpoint": "https://hooks.slack.com/services/APPID",
-    "token": "xoxb-YOURTOKEN",
-    "notify": true
+  "endpoint": "<Enter the Slack incoming webhook URL.>",
+  "token": "<Enter the Slack token.>",
+  "notify": "<Use true if you want to send events to Slack. Otherwise, use false for testing purposes.>"
   }
-]
+ ]

@@ -16,7 +16,7 @@ WORKDIR /usr/src/app
 
 COPY package.json  ./
 
-RUN npm install
+RUN apk add curl &&  npm install
 
 # Run the application as a non-root user.
 USER node
