@@ -1,3 +1,9 @@
+# This is an example configuration to enable detect-secrets in the pre-commit hook.
+# Add this file to the root folder of your repository.
+#
+# Read pre-commit hook framework https://pre-commit.com/ for more details about the structure of config yaml file and how git pre-commit would invoke each hook.
+#
+# This line indicates we will use the hook from ibm/detect-secrets to run scan during committing phase.
 repos:
   - repo: https://github.com/ibm/detect-secrets
     # If you desire to use a specific version of detect-secrets, you can replace `master` with other git revisions such as branch, tag or commit sha.
@@ -13,8 +19,3 @@ repos:
         # when "--baseline" with "--use-all-plugins", pre-commit scan with all available plugins
         # add "--fail-on-unaudited" to fail pre-commit for unaudited potential secrets
         args: [--baseline, .secrets.baseline, --use-all-plugins]
-  - repo: git@github.ibm.com:Whitewater/whitewater-detect-secrets
-    rev: 0.13.1+ibm.62.dss
-    hooks:
-      - id: detect-secrets # pragma: whitelist secret
-        args: [--baseline, .secrets.baseline, --no-keyword-scan ]
