@@ -3,7 +3,7 @@
 
 This readme explains how to run the webhook sample in Docker.
 
-Doing so, you do not need to have ODM installed. Instead we are relying on the 'ODM for developper' container image.
+Doing so, you do not need to have ODM installed. Instead we are relying on the 'ODM for developer' container image.
 
 Before following the steps below, make sure you have built the images as explained in [README.md](README.md).
 
@@ -16,7 +16,7 @@ Before following the steps below, make sure you have built the images as explain
 
 2. Register the webhook in Decision Center using the REST API tool, providing the token and URL (`http://localhost:3000/slack` and `http://localhost:3000/print`).
 
-   1. For File Notifier:
+   1. For the File Notifier:
    ```shell
     curl -X 'PUT' \
     'http://localhost:9060/decisioncenter-api/v1/webhook/notify?url=http%3A%2F%2Flogifle%3A3000%2Fprint' \
