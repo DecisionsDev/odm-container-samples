@@ -1,11 +1,13 @@
 
 ### Introduction
-This readme explain the step to step to run this sample in Docker.
 
-We will use the ODM for developper image. No needs to have an ODM installed.
-We needs to have build the image as explain in the [README.md](README.md) file.
+This readme explains how to run the webhook sample in Docker.
 
-### Run the sample 
+Doing so, you do not need to have ODM installed. Instead we are relying on the 'ODM for developper' container image.
+
+Before following the steps below, make sure you have built the images as explained in [README.md](README.md).
+
+### Running the sample 
 
 1.  Run ODM and Notifiers  docker images
     ```bash
@@ -21,38 +23,27 @@ We needs to have build the image as explain in the [README.md](README.md) file.
     -H 'accept: */*' \
     -H 'Content-Type: application/json' \
     -d 'null' \
-        -u odmAdmin:odmAdmin
+    -u odmAdmin:odmAdmin
     ```
 
    2. For the Slack Notifier:
     
-    * Generate the Token : 
     ```shell
-    kubectl exec -ti webhooknotifier-slack -- curl -X 'GET' \
-    'http://localhost:3000/token.generate' \
-    -H 'accept: */*' \
-    -H 'Content-Type: application/json' 
-    ```
-     xxxxxx.xxxxxx.xxxxxxxx -> Token
-    
-     This command return a token that should be injected in the next command line.
+    export SLACK_TOKEN=`curl 'http://localhost:3000/token.generate' -H 'accept: */*' -H 'Content-Type: application/json'`
 
-    * Register the webhook with the generated token
-    ```shell
     curl -X 'PUT' \
     'http://localhost:9060/decisioncenter-api/v1/webhook/notify?url=http%3A%2F%2Fslack%3A3000%2Fslack' \
     -H 'accept: */*' \
     -H 'Content-Type: application/json' \
-    -d '<GENERATED_TOKEN>' \
+    -d "$SLACK_TOKEN" \
     -u odmAdmin:odmAdmin
     ```
+
 ###  Using the Sample
 
-Once the webhook is set up, events from the Decision Center will trigger the notifications and either post messages to Slack or generate log files in the `results` directory. 
+Once webhooks are set up, various events in Decision Center trigger notifications. 
 
-You can trigger an event by deploying a rule app for example.
-
-You can see the notification in the docker-compose windows.
+For instance, deploying a rule app triggers a notification with a content as follows in the docker-compose windows:
 
 ```bash
 slack-1    | {
@@ -83,7 +74,7 @@ slack-1    |     }
 slack-1    |   ],
 ```
 
-Log file structure:
+The Slack webhook notifier forwards the notifications to Slack and the log files notifier saves them in the `results` directory in the log files below:
 - `deployments.txt`: Deployment details.
 - `rules.txt`: Rule changes.
 - `releases.txt`: Release details.
