@@ -6,7 +6,7 @@ Doing so requires to have Decision Center set up in Kubernetes beforehand.
 
 Also, before following the steps below, make sure you have built the images as explained in [README.md](README.md).
 
-###  Running this sample on Kubenetes
+###  Running this sample on Kubernetes
 
 1. Push the webhook notifier images to your Docker registry
 
@@ -30,20 +30,22 @@ Also, before following the steps below, make sure you have built the images as e
 
      ```bash
      kubectl run webhooknotifier-logfile \
-     --image=image-registry.openshift-image-registry.svc:5000/samples/webhooknotifier-logfile:latest \
+     --image=$REGISTRY_HOST/samples/webhooknotifier-logfile:latest \
      --expose --port 3000
      
      kubectl run webhooknotifier-slack \
-     --image=image-registry.openshift-image-registry.svc:5000/samples/webhooknotifier-slack:latest \
+     --image=$REGISTRY_HOST/samples/webhooknotifier-slack:latest \
      --expose --port 3000
      ```
 
+     >NOTE 1: for an Openshift registry, `$REGISTRY_HOST` should be `image-registry.openshift-image-registry.svc:5000`
+
      <!-- markdown-link-check-disable -->
-     >NOTE: These commands also create one service (of type ClusterIP) for each pod, allowing to send requests to the pods using the following URLs:
+     >NOTE 2: These commands also create one service (of type ClusterIP) for each pod, allowing to send requests to the pods using the following URLs:
      > - http://webhooknotifier-logfile.NAMESPACE.svc.cluster.local:3000
      > - http://webhooknotifier-slack.NAMESPACE.svc.cluster.local:3000
      >
-     > where `NAMESPACE` is the namespace in which the pods and the servives have been created.
+     > where `NAMESPACE` is the namespace in which the pods and the services have been created.
      <!-- markdown-link-check-enable -->
 
      Additionally, you may need to specify the secret containing the Docker registry credentials in the pods definition (in the parameter `spec.imagePullSecrets`) if this is not done automatically.
