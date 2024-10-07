@@ -54,9 +54,11 @@ Or if it's using the command line : **--set decisionCenter.downloadUrl={"http://
 To activate the Business value editor, after login in Decision Center as an administrator, go in the menu "Administration>Settings>Custom Settings"
 Register a new setting named **decisioncenter.web.core.intelliruleEditor.sample.myeditor.editor** with the value **businessvalueeditor.OfferValueEditorProvider**
 
+![Custom Settings](images/custom_settings.png)
+
 ## Test the sample
 
 Load the [ValueEditorService.zip](./ValueEditorService.zip) Decision Service.
 Follow [Running this sample](https://www.ibm.com/docs/en/odm/9.0.0?topic=editor-custom-value-sample-details#businessconsolecustomvalueeditorsampledetails__rssamples.uss_rs_smp_tsauthoring.1025134__title__1) details to understand how to use the custom value editor.
 
-
+![Custom Value Editor](images/custom_value_editor.png)

@@ -48,9 +48,11 @@ Or if it's using the command line : **--set decisionCenter.downloadUrl={"http://
 To activate the Business value editor, after login in Decision Center as an administrator, go in the menu "Administration>Settings>Custom Settings"
 Register a new setting named **decisioncenter.web.core.extensions.entrypoints** with the value **extensions/AddTabEntryPoint,extensions/AddButtonEntryPoint,extensions/AddEditorButtonEntryPoint**
 
+![Custom Settings](images/custom_settings.png)
+
 ## Test the sample
 
 Load the [LoanValidationService.zip](./LoanValidationService.zip) Decision Service.
 Follow [Running this sample](https://www.ibm.com/docs/en/odm/9.0.0?topic=customization-gui-sample-details#descriptiveTopic1297785707571__rssamples.uss_rs_smp_tsauthoring.1028561__title__1) details to understand how to use some custom widgets by drilling in the LoanValidationService Decision Service.
 
-
+![Business Console Custom GUI](images/custom_gui.png)
