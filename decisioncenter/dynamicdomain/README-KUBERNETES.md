@@ -54,7 +54,7 @@ decisionCenter:
     - <FILESERVER_URL>/jdbc-driver.jar
 ```
 
->Note: if you deployed a httpd fileserver following the instructions [here](../README.md#setup-an-httpd-file-server), then the internal URL of the fileserver is http://fileserver-apache.NAMESPACE.svc.cluster.local:80 (where NAMESPACE is the project in which the fileserver was deployed).
+>Note: if you deployed a httpd fileserver following the instructions [here](../README.md#setup-an-httpd-file-server), then the internal URL of the fileserver is <!-- markdown-link-check-disable -->http://fileserver-apache.NAMESPACE.svc.cluster.local:80<!-- markdown-link-check-enable --> (where NAMESPACE is the project in which the fileserver was deployed).
 
 Add the lines below in `values.yaml` if you want to deploy ODM only for the purpose of testing the sample (in taht case it is straightforward to use the PostgreSQL internal database and persist the data in ephemeral storage): 
 ```yaml

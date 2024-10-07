@@ -35,11 +35,13 @@ Follow the explanation on how to deploy the ODM Helm Chart according to your [pl
 
 Add to your values.yaml the parameter allowing to download guicustomization.jar
 
+<!-- markdown-link-check-disable -->
 ```
 decisionCenter:
   downloadUrl:
   - http://fileserver-apache.sample.svc.cluster.local:80/guicustomization.jar
 ```
+<!-- markdown-link-check-enable -->
 
 Or if it's using the command line : **--set decisionCenter.downloadUrl={"http://fileserver-apache.sample.svc.cluster.local:80/guicustomization.jar"}**
 

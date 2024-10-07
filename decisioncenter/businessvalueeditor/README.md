@@ -41,11 +41,13 @@ Follow the explanation on how to deploy the ODM Helm Chart according to your [pl
 
 Add to your values.yaml the parameter allowing to download businessvalueeditor.zip
 
+<!-- markdown-link-check-disable -->
 ```
 decisionCenter:
   downloadUrl:
   - http://fileserver-apache.sample.svc.cluster.local:80/businessvalueeditor.zip
 ```
+<!-- markdown-link-check-enable -->
 
 Or if it's using the command line : **--set decisionCenter.downloadUrl={"http://fileserver-apache.sample.svc.cluster.local:80/businessvalueeditor.zip"}**
 
