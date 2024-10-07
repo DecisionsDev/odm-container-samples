@@ -41,9 +41,9 @@ decisionCenter:
   downloadUrl:
   - http://fileserver-apache.sample.svc.cluster.local:80/guicustomization.jar
 ```
-<!-- markdown-link-check-enable -->
 
 Or if it's using the command line : **--set decisionCenter.downloadUrl={"http://fileserver-apache.sample.svc.cluster.local:80/guicustomization.jar"}**
+<!-- markdown-link-check-enable -->
 
 ## Add the custom setting property in Decision Center
 
