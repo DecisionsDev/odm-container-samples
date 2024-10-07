@@ -1,0 +1,19 @@
+<servlet>
+   <servlet-name>SampleValueEditorServletName</servlet-name>
+   <servlet-class>businessvalueeditor.SampleValueEditorServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+   <servlet-name>SampleValueEditorServletName</servlet-name>
+   <url-pattern>/servlet/SampleValueEditorServletName</url-pattern>
+</servlet-mapping>
+<security-constraint>
+   <web-resource-collection>
+      <web-resource-name>Entry points</web-resource-name>
+      <url-pattern>/servlet/SampleValueEditorServletName</url-pattern>
+   </web-resource-collection>
+   <auth-constraint>
+      <role-name>rtsAdministrator</role-name>
+      <role-name>rtsConfigManager</role-name>
+      <role-name>rtsUser</role-name>
+   </auth-constraint>
+</security-constraint>
