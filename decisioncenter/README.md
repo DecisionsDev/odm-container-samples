@@ -1,9 +1,9 @@
 # Decision Center Samples
 
-The aim of these tutorials is to provide explanation on how to manage the [Decision Center samples](https://www.ibm.com/docs/en/odm/9.0.0?topic=center-samples) in a kubernetes environment which is different of the ODM on Premise context.
-For several samples, some ODM material (jar, javascript, html, css, configuration files, ...) need to be downloaded on Decision Center :
-* We will explain how build the java sample file without the installation of ODM on Premise.    
-* We will explain how to set up an HTTPD file server to download the material on Decision Center.
+The aim of these tutorials is to explain on how to manage the [Decision Center samples](https://www.ibm.com/docs/en/odm/9.0.0?topic=center-samples) in a kubernetes environment which is quite different of the ODM on Premise context.
+For several samples, some ODM materials (jar, javascript, html, css, configuration files, ...) need to be downloaded on Decision Center :
+* We will explain how to build the java sample files without the installation of ODM on Premise.    
+* We will explain how to set up an Httpd file server to download the materials on Decision Center.
 
 We prefer to provide a solution using a file server instead of the former deprecated solution using a PVC because :
 * no need to manage copy on the PV with a cluster access
@@ -13,14 +13,14 @@ We prefer to provide a solution using a file server instead of the former deprec
 Obviously the following solution is a proposition and can be modified according to the Business Use-Case.
 
 The sample use-cases will be managed in 3 steps.
-1 build the java samples using the ODM java libraries
-2 setup an Httpd file server to upload all the sample material
-3 launch the ODM Helm instance by downloading the sample material from the Httpd file server 
+* 1- build the java samples using the ODM java libraries 
+* 2- setup an Httpd file server to upload all the sample material
+* 3- launch the ODM Helm instance by downloading the sample material from the Httpd file server 
 
 ## Build the java samples
 
 To build the java samples, you need the [ODM jar libraries stored in the decision-center-client-api.zip file](https://www.ibm.com/docs/en/odm/9.0.0?topic=reference-decision-center-assets#concept_tyl_mkx_qpb__dc__title__1).
-A first dummy helm install is needed to provide an access to Decision Center.
+A first dummy helm install is needed to provide an access to the Decision Center asset.
 You can follow the steps according to your [platform](https://github.com/DecisionsDev/odm-docker-kubernetes/tree/master/platform) 
 You can follow [these steps](https://github.com/DecisionsDev/odm-docker-kubernetes/tree/master/platform/roks#2-prepare-your-environment-for-the-odm-installation-5-min) if you are on OpenShift.  
 
@@ -41,7 +41,26 @@ helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo update 
 ```
 
-Create a configmap to provide the httpd.conf configuration file that activate the Dav module 
+Create a configmap to provide the httpd.conf configuration file that activate the Dav module.
+It's the default **httpd.conf** file withe the following modifications :
+
+-1- Activation of the Dav module with :
+
+LoadModule dav_module modules/mod_dav.so 
+LoadModule dav_fs_module modules/mod_dav_fs.so
+
+-2- Creation of a Dav lock DB directory :
+
+DavLockDB /tmp/lock
+
+-3- Enabling Dav in the default root directory :
+
+DocumentRoot "/opt/bitnami/apache/htdocs"
+<Directory "/opt/bitnami/apache/htdocs"> 
+Dav On
+...
+</Directory>
+  
 
 ```bash
 kubectl create configmap httpd-cm --from-file=httpd.conf
