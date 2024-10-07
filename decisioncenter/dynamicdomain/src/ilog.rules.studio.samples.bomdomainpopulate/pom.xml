@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+    <name>dynamicdomain-dc-extension</name>
+    <groupId>com.ibm.odm.odm-container-samples</groupId>
+    <artifactId>bomdomainpopulate</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.ilog.rules.teamserver</groupId>
+            <artifactId>jrules-language</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/jrules-language.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.ilog.rules.teamserver</groupId>
+            <artifactId>jrules-engine</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/jrules-engine.jar</systemPath>
+        </dependency>
+    </dependencies>
+
+</project>
