@@ -79,7 +79,8 @@ Instanciate the Apache Http file server
 helm install fileserver bitnami/apache -f httpd-values.yaml
 ```
 
-Expose the service
+[Optional] Expose the service
+The service exposition is optional. It's only needed if you want to manage an upload on the file server instead of a kubernetes file copy.
 
 ```bash
 kubectl expose svc fileserver-apache
@@ -95,10 +96,12 @@ curl -T <decisioncenter-sample-file> http://<fileserver-url>
 <title>201 Created</title>
 </head><body>
 <h1>Created</h1>
-<p>Resource /distrib-liberty.zip has been created.</p>
+<p>Resource /<decisioncenter-sample-file> has been created.</p>
 </body></html>
 ```
 
+If, for security reason, it's not allowed to expose the service, you can directly copy the <decisioncenter-sample-file> on the file server pod after a cluster login :
 
-
-
+```bash
+kubectl cp <decisioncenter-sample-file> <namespace>/<file-server-pod-name>:/opt/bitnami/apache/htdocs/<decisioncenter-sample-file> -n <namespace>
+```
