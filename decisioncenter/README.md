@@ -12,6 +12,8 @@ We prefer to provide a solution using a file server instead of the former deprec
 
 Obviously the following solution is a proposition and can be modified according to the Business Use-Case.
 
+![File Server](images/FileServerUpload.png)
+
 The sample use-cases will be managed in 3 steps.
 * 1- build the java samples using the ODM java libraries 
 * 2- setup an Httpd file server to upload all the sample material
