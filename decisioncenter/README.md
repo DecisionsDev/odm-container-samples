@@ -44,28 +44,34 @@ helm repo update
 ```
 
 Create a configmap to provide the httpd.conf configuration file that activate the Dav module.
+
+```bash
+kubectl create configmap httpd-cm --from-file=httpd.conf
+```
+
 It's the default **httpd.conf** file withe the following modifications :
 
 -1- Activation of the Dav module with :
 
+```
 LoadModule dav_module modules/mod_dav.so 
 LoadModule dav_fs_module modules/mod_dav_fs.so
+```
 
 -2- Creation of a Dav lock DB directory :
 
+```
 DavLockDB /tmp/lock
+```
 
 -3- Enabling Dav in the default root directory :
 
+```
 DocumentRoot "/opt/bitnami/apache/htdocs"
 <Directory "/opt/bitnami/apache/htdocs"> 
 Dav On
 ...
 </Directory>
-  
-
-```bash
-kubectl create configmap httpd-cm --from-file=httpd.conf
 ```
 
 Create a PVC to persist all the downloads, by adapting the storage.
