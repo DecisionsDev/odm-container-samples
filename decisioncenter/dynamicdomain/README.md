@@ -58,17 +58,17 @@ Edit that file otherwise.
 
 To use the sample in Decision Center, you need to build a JAR. 
 
-   1. Navigate to source directory of the BOM dynamic domain sample:
-
-      ```bash
-      cd decisioncenter/dynamicdomain/src/ilog.rules.studio.samples.bomdomainpopulate
-      ```
-
    1. Retrieve ODM libraries:
 
       ODM libraries are required to compile the JAR. You can find them either from a running instance of Decision Center or from Rule Designer.
 
        * **Option 1:** Download ODM libraries from Decision Center
+
+          - Navigate to the source directory of the BOM dynamic domain sample:
+
+            ```bash
+            cd decisioncenter/dynamicdomain/src/ilog.rules.studio.samples.bomdomainpopulate
+            ```
 
           - Download the following compressed file: `https://DC_HOST:DC_PORT/decisioncenter/assets/decision-center-client-api.zip`
 
@@ -77,7 +77,7 @@ To use the sample in Decision Center, you need to build a JAR.
             unzip decision-center-client-api.zip -d "lib"
             ```
 
-       * **Option 2:** use the ODM libraries set up in Eclipse as plugins for Rule Designer
+       * **Option 2:** use ODM libraries from Rule Designer (available in Eclipse plugins directory)
 
           Set the `ECLIPSE_PLUGINS` environment variable:
          ```bash
