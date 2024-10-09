@@ -36,7 +36,7 @@ public class DataBaseConnector {
 
 	
 	// database connection parameters are stored in a plugin file
-	private static final String DATABASE_PARAMETERS = "/database.properties";
+	private static final String DATABASE_PARAMETERS = "/data/database.properties";
 	// store DB connection values
 	private static String driver;
 	private static String database;

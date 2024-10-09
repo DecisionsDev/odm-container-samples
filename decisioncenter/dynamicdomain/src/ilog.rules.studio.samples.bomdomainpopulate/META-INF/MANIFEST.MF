@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Created-By: Maven Archiver 3.5.2
+Build-Jdk-Spec: 11
+Bundle-Name: bomdomainpopulate Sample Plugin
+Bundle-ClassPath: bomdomainpopulate.jar,lib/derbyclient.jar
+Bundle-Activator: ilog.rules.studio.samples.bomdomainpopulate.Bomdomainp
+ opulatePlugin
+Bundle-Vendor: IBM
+Bundle-ManifestVersion: 2
+Bundle-Localization: plugin
+Bundle-SymbolicName: ilog.rules.studio.samples.bomdomainpopulate; single
+ ton:=true
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,ilog.rules.studi
+ o.model,ilog.rules.vocabulary.bom,ilog.rules.brl.brldf
+Export-Package: ilog.rules.studio.samples.bomdomainpopulate,ilog.rules.s
+ tudio.samples.bomdomainpopulate.actions,ilog.rules.studio.samples.bomdo
+ mainpopulate.stock,org.apache.derby.iapi.services.info,org.apache.derby
+ .info,org.apache.derby.jdbc
+Bundle-Version: 9.0.0.0
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Automatic-Module-Name: ilog.rules.studio.samples.bomdomainpopulate
+

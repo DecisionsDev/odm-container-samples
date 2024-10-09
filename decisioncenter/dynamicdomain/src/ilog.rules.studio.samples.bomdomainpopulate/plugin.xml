@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+     <!-- 
+   This extension shows how to contribute to the Rule Explorer view.
+   Pay attention to the filter element, where the focus is put only to IlrBom 
+   instances of the model.
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            objectClass="org.eclipse.core.resources.IFile"
+            id="ilog.rules.studio.samples.bomdomainpopulate.contribution1">
+         <action
+               enablesFor="1"
+               label="%contribution.label"
+               class="ilog.rules.studio.samples.bomdomainpopulate.actions.UpdateBomDomainAction"
+               menubarPath="ilog.rules.studio.bom.wizards.menu1"
+               id="ilog.rules.studio.samples.bomdomainpopulate.action"/>
+         <filter
+               name="extension"
+               value="bom"/>
+      </objectContribution>
+   </extension>
+      -->
+
+   <!--
+   valueInfo extension for the Stock Model. In the value info paradigm,
+   the information is not stored in the Business Object Model, but is used
+   dynamically when completing the rule on the BOM element attached to this value info.
+   -->
+   <extension
+         point="ilog.rules.studio.model.brl.valueInfos">
+      <valueInfo
+            key="ilog.rules.studio.samples.bomdomainpopulate.Stock"
+            class="ilog.rules.studio.samples.bomdomainpopulate.stock.StockValueInfo"
+            id="ilog.rules.studio.samples.bomdomainpopulate.Stock"/>
+	</extension>
+	
+  <!--
+	Definition of a BOM domain value provider, dedicated by default to the Derby Database.    
+   -->
+    <extension
+         point="ilog.rules.studio.model.bomDomainValueProviders">
+      <bomDomainValueProvider
+            class="ilog.rules.studio.samples.bomdomainpopulate.DataBaseDomainValueProvider"
+            name="derbyDataBaseDomainProvider"
+            id="ilog.rules.studio.samples.bomdomainpopulate.DataBaseDomainValueProvider"/>
+   </extension>
+
+</plugin>

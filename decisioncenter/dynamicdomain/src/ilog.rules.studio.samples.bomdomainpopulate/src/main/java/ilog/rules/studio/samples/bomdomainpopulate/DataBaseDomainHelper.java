@@ -32,7 +32,7 @@ import java.util.Properties;
  */
 public class DataBaseDomainHelper {
 	
-	private static final String SCHEMA_PARAMETERS = "/mapping.properties";	
+	private static final String SCHEMA_PARAMETERS = "/data/mapping.properties";	
 	// various suffixes that are used in the schema mapping
 	private static final String TABLE_SUFFIX = ".table";
 	private static final String ITEMNAME_SUFFIX= ".itemname";
