@@ -43,10 +43,7 @@ Refer to the [instructions from the documentation](https://www.ibm.com/docs/en/o
 
 ### 1) Prerequisites
 
-Before you begin, ensure you have one of the following **Container Platform**: 
-
-- Docker 19.03+
-- or Kubernetes 1.19+.
+Before you begin, ensure you have one of the following **Container Platform**: Docker 24.0.x or Kubernetes 1.27+.
 
 ### 2) Configuring how to connect to the database
 
@@ -76,25 +73,23 @@ To use the sample in Decision Center, you need to build a JAR.
 
        * Option1: Download ODM libraries from Decision Center
 
-          Download the following compressed file: `https://DC_HOST:DC_PORT/decisioncenter/assets/decision-center-client-api.zip`
+          - Download the following compressed file: `https://DC_HOST:DC_PORT/decisioncenter/assets/decision-center-client-api.zip`
 
-          Then, run:
-          ```bash
-          unzip -j decision-center-client-api.zip "teamserver/lib/*" -d "lib"
-          ```
+          - Then, run:
+            ```bash
+            unzip decision-center-client-api.zip -d "lib"
+            ```
 
-       * Option2: Copy ODM libraries from Rule Designer
+       * Option2: use the ODM libraries set up in Eclipse as plugins for Rule Designer
 
+          Set the `ECLIPSE_PLUGINS` environment variable:
          ```bash
-         cp $ECLIPSE_HOME/plugins/ilog.rules.vocabulary.model_*.jar lib/ilog.rules.vocabulary.model.jar
-         cp $ECLIPSE_HOME/plugins/ilog.rules.brl.brldf_*.jar lib/ilog.rules.brl.brldf.jar
-         cp $ECLIPSE_HOME/plugins/ilog.rules.shared_*.jar lib/ilog.rules.shared.jar
-         cp $ECLIPSE_HOME/plugins/com.ibm.rules.engine_*/lib/jrules-engine.jar lib/
+         ECLIPSE_PLUGINS=<ECLIPSE PLUGINS DIRECTORY>
          ```
 
    1. Build the JAR
 
-      The instructions below enable to build the JAR using a Docker container featuring Maven and a JDK version 17. For ODM 8.12, you must use `maven:3.8.1-openjdk-11` instead and `maven:3.8-adoptopenjdk-8` for earlier releases. You also need to change the version of the `maven.compiler.source` and `maven.compiler.target` parameters in the [pom.xml](src/ilog.rules.studio.samples.bomdomainpopulate/pom.xml) file (or [pom-eclipse.xml](src/ilog.rules.studio.samples.bomdomainpopulate/pom-eclipse.xml) file) to either `11` or `1.8`.      
+      The instructions below enable to build the JAR using a Docker container featuring Maven and a JDK version 17. For ODM 8.12, you must use `maven:3.8.1-openjdk-11` instead and `maven:3.8-adoptopenjdk-8` for earlier releases.
 
        * Option1: using ODM libraries from Decision Center
 
@@ -112,8 +107,10 @@ To use the sample in Decision Center, you need to build a JAR.
          docker run --rm --name my-maven-container \
                -v "$(pwd)":/usr/src/sample \
                -w /usr/src/sample \
+               -v "${ECLIPSE_PLUGINS}":/usr/src/eclipse/plugins \
+               -e ECLIPSE_PLUGINS='/usr/src/eclipse/plugins' \
                maven:3.8.5-openjdk-17 \
-               mvn clean install -f pom-eclipse.xml
+               mvn clean install
          ```
 
 ### 4) Instructions to use the sample in Decision Center
