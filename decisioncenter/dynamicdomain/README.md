@@ -25,7 +25,7 @@ In this sample, you will :
 
 To use the sample in Rule Designer, you need to build an Eclipse plugin.
 - In Eclipse, make sure that,
-    - you have **Rule Designer** installed (see [instructions](https://github.com/DecisionsDev/ruledesigner) if needed)
+    - you have **Rule Designer** installed (if not read these [instructions](https://github.com/DecisionsDev/ruledesigner))
     - you have **PDE** (Plugin Development Environment) installed
 - Run **Import > General > Existing Projects into Workspace**
 - Select the folder `decisioncenter/dynamicdomain/src/ilog.rules.studio.samples.bomdomainpopulate` and click **Next**
