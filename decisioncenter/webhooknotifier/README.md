@@ -16,7 +16,7 @@ In this sample, you will learn how to configure and use the Webhook Notifier to 
 
 Before you begin, ensure you have the following:
 
-- **Container Platform**: Docker 19.03 or Kubernetes 1.19+.
+- **Container Platform**: Docker 24.0x or Kubernetes 1.27+.
 
 ## Setup Instructions
 
