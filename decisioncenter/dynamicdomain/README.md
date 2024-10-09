@@ -37,7 +37,7 @@ To use the sample in Rule Designer, you need to build an Eclipse plugin.
 
 ### 2) Instructions to use the sample in Rule Designer
 
->TODO
+Refer to the [instructions from the documentation](https://www.ibm.com/docs/en/odm/9.0.0?topic=domains-data-sources-bom-sample-details).
 
 ## Running this sample in Decision Center
 
