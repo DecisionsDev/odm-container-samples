@@ -105,7 +105,7 @@ To use the sample in Decision Center, you need to build a JAR.
                -v "$(pwd)":/usr/src/sample \
                -w /usr/src/sample \
                -v "${ECLIPSE_PLUGINS}":/usr/src/eclipse/plugins \
-               -e ECLIPSE_PLUGINS='/usr/src/eclipse/plugins' \
+               -e ECLIPSE_PLUGINS=/usr/src/eclipse/plugins \
                maven:3.8.5-openjdk-17 \
                mvn clean install
          ```
