@@ -88,7 +88,9 @@ To use the sample in Decision Center, you need to build a JAR.
 
       The instructions below enable to build the JAR using a Docker container featuring Maven and a JDK version 17. For ODM 8.12, you must use `maven:3.8.1-openjdk-11` instead and `maven:3.8-adoptopenjdk-8` for earlier releases.
 
-       * **Option 1:** using ODM libraries from Decision Center
+      Run one of the command below in the `decisioncenter/dynamicdomain/src/ilog.rules.studio.samples.bomdomainpopulate` directory:
+
+       * **Option 1:** when using ODM libraries from Decision Center
 
          ```bash
          docker run --rm --name my-maven-container \
@@ -98,7 +100,7 @@ To use the sample in Decision Center, you need to build a JAR.
                mvn clean install
          ```
 
-       * **Option 2** using ODM libraries from Rule Designer
+       * **Option 2** when using ODM libraries from Rule Designer
 
          ```bash
          docker run --rm --name my-maven-container \
