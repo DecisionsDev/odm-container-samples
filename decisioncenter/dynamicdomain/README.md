@@ -71,7 +71,7 @@ To use the sample in Decision Center, you need to build a JAR.
 
       ODM libraries are required to compile the JAR. You can find them either from a running instance of Decision Center or from Rule Designer.
 
-       * Option1: Download ODM libraries from Decision Center
+       * **Option 1:** Download ODM libraries from Decision Center
 
           - Download the following compressed file: `https://DC_HOST:DC_PORT/decisioncenter/assets/decision-center-client-api.zip`
 
@@ -80,7 +80,7 @@ To use the sample in Decision Center, you need to build a JAR.
             unzip decision-center-client-api.zip -d "lib"
             ```
 
-       * Option2: use the ODM libraries set up in Eclipse as plugins for Rule Designer
+       * **Option 2:** use the ODM libraries set up in Eclipse as plugins for Rule Designer
 
           Set the `ECLIPSE_PLUGINS` environment variable:
          ```bash
@@ -91,7 +91,7 @@ To use the sample in Decision Center, you need to build a JAR.
 
       The instructions below enable to build the JAR using a Docker container featuring Maven and a JDK version 17. For ODM 8.12, you must use `maven:3.8.1-openjdk-11` instead and `maven:3.8-adoptopenjdk-8` for earlier releases.
 
-       * Option1: using ODM libraries from Decision Center
+       * **Option 1:** using ODM libraries from Decision Center
 
          ```bash
          docker run --rm --name my-maven-container \
@@ -101,7 +101,7 @@ To use the sample in Decision Center, you need to build a JAR.
                mvn clean install
          ```
 
-       * Option2: using ODM libraries from Rule Designer
+       * **Option 2** using ODM libraries from Rule Designer
 
          ```bash
          docker run --rm --name my-maven-container \
