@@ -21,7 +21,7 @@ In this sample, you will :
 
 ## Running this sample in Rule Designer
 
-### Building the Eclipse plugin
+### 1) Building the Eclipse plugin
 
 To use the sample in Rule Designer, you need to build an Eclipse plugin.
 - In Eclipse, make sure that,
@@ -116,7 +116,7 @@ To use the sample in Decision Center, you need to build a JAR.
                mvn clean install -f pom-eclipse.xml
          ```
 
-### 2) Instructions to use the sample in Decision Center
+### 4) Instructions to use the sample in Decision Center
 
 Click one of the links below:
    * In [Kubernetes](README-KUBERNETES.md). (You need ODM installed in Kubernetes)
