@@ -8,7 +8,7 @@ This README explains how to run the BOM dynamic domain sample in Kubernetes.
 
 The customization JARs can be made available to Decision Center in two ways:
 1. the legacy way: by copying the JARs to a PVC and referencing this PVC using the parameter `decisionCenter.customlibPvc`
-1. the new way (since 9.0 only): by copying the JARs on a fileserver and referencing the files to download from this fileserver using the parameter `decisionCenter.downloadUrl`
+1. the new way (since 9.0 only): by copying the JARs on a file server and referencing the files to download from this file server using the parameter `decisionCenter.downloadUrl`
 
 This document explains how to use the new way. If you intend to deploy an older version of ODM, you must use the legacy way instead. Here is an [page in the documentation](https://www.ibm.com/docs/en/odm/9.0.0?topic=kubernetes-customizing-decision-center-business-console) that can help.
 
@@ -56,7 +56,7 @@ decisionCenter:
 
 >Note: if you deployed a httpd fileserver following the instructions [here](../README.md#setup-an-httpd-file-server), then the internal URL of the fileserver is <!-- markdown-link-check-disable -->http://fileserver-apache.NAMESPACE.svc.cluster.local:80<!-- markdown-link-check-enable --> (where NAMESPACE is the project in which the fileserver was deployed).
 
-Add the lines below in `values.yaml` if you want to deploy ODM only for the purpose of testing the sample (in taht case it is straightforward to use the PostgreSQL internal database and persist the data in ephemeral storage): 
+Add the lines below in `values.yaml` if you want to deploy ODM only for the purpose of testing the sample (in that case it is straightforward to use the PostgreSQL internal database and persist the data in ephemeral storage): 
 ```yaml
 internalDatabase:
   persistence:
