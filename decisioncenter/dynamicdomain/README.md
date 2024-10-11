@@ -54,7 +54,7 @@ Before you begin, ensure you have one of the following **Container Platform**: D
 
 If you deploy ODM only to test the sample, it is best to use the [PostgreSQL internal database](https://www.ibm.com/docs/en/SSQP76_9.0.0/com.ibm.odm.kube/topics/con_internal_db.html) to store the dynamic domain data (along with Decision Center data).
 
-In that case, and provided ODM is deployed in a Helm Release named `myodmsample`, you do not need to modify [database.properties](src/ilog.rules.studio.samples.bomdomainpopulate/src/main/resources/database.properties).
+In that case, and provided ODM is deployed in a Helm Release named `myodmsample`, you do not need to modify [database.properties](src/ilog.rules.studio.samples.bomdomainpopulate/src/main/resources/data/database.properties).
 Edit that file otherwise.
 
 > Note: The data of the dynamic domains are stored in a separate schema named `BOMDOMAINSAMPLE`

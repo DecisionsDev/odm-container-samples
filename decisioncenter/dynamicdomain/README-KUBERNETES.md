@@ -68,7 +68,7 @@ internalDatabase:
 
 Add all the other parameters suitable to your platform in `values.yaml`. Check this [link](https://github.com/DecisionsDev/odm-docker-kubernetes/tree/master/platform) for help.
 
-Install an ODM release named `myodmsample` (if you choose a different release name, you need to edit the file [database.properties](src/ilog.rules.studio.samples.bomdomainpopulate/src/main/resources/database.properties)):
+Install an ODM release named `myodmsample` (if you choose a different release name, you need to edit the file [database.properties](src/ilog.rules.studio.samples.bomdomainpopulate/src/main/resources/data/database.properties)):
 ```bash
 helm install myodmsample ibmcharts/ibm-odm-prod -f values.yaml
 ```
