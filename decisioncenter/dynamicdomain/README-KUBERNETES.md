@@ -82,40 +82,45 @@ helm install myodmsample ibmcharts/ibm-odm-prod -f values.yaml
     - description = `derbyDataBaseDomainProvider`
     - type = `String`
     - leave `default value` empty
-1. Set the value of the newly created custom setting to `ilog.rules.studio.samples.bomdomainpopulate.DataBaseDomainValueProvider`
+1. Set the value to `ilog.rules.studio.samples.bomdomainpopulate.DataBaseDomainValueProvider`
 
 ## 4. Initializing the database
 
-If the data of the dynamic domains are stored in the internal PostgreSQL database, you can find the name of that pod by running:
-```bash
-DBSERVER=$(kubectl get pods -o name --no-headers | grep dbserver)
-echo $DBSERVER
-```
+1. If the data of the dynamic domains are stored in the internal PostgreSQL database, you can find the name of that pod by running:
+    ```bash
+    DBSERVER=$(kubectl get pods -o name --no-headers | grep dbserver)
+    echo $DBSERVER
+    ```
 
-Navigate to the BOM dynamic domain sample directory:
-```bash
-cd decisioncenter/dynamicdomain
-```
+1. Navigate to the BOM dynamic domain sample directory:
+    ```bash
+    cd decisioncenter/dynamicdomain
+    ```
 
-Copy the initialization SQL script into the pod and execute it:
-```bash
-kubectl cp ${pwd}/sql_scripts/createAndPopulate.sql $DBSERVER:/tmp
-kubectl cp ${pwd}/sql_scripts/modifyTables.sql $DBSERVER:/tmp
-kubectl exec $DBSERVER -- psql -U odmusr -d odmdb -f /tmp/createAndPopulate.sql
-kubectl exec $DBSERVER -- psql -U odmusr -d odmdb -f /tmp/modifyTables.sql
-```
+1. Copy the initialization SQL script into the pod and execute it:
+    ```bash
+    kubectl cp ${pwd}/sql_scripts/createAndPopulate.sql $DBSERVER:/tmp
+    kubectl exec $DBSERVER -- psql -U odmusr -d odmdb -f /tmp/createAndPopulate.sql
+    ```
 
 ## 5. Using the Sample
 
 1. Log in into the Business Console.
 1. Navigate to the **Library** tab.
-1. Import the rule project archive `rule_project/bomdomainpopulate-rules.zip`.
+1. Import the rule project archive `projects/bomdomainpopulate-rules.zip`.
     > Note: this rule project `bomdomainpopulate-rules` is only aimed at editing rules to demonstrate loading domains from a database. It is missing a deployment configuration and cannot be executed.
-1. Display the rule `CheckCurrency > CurrencyRestriction`. No error is displayed.
-1. Click the **Model** tab, and then the **Dynamic Domains** sub-tab. Expand the 3 domains. You should see this:
+1. Display the rule `CheckOrder > OrderType`. Notice the error **Value (string) 'CompanyX' is incorrect**. Edit the rule and either remove **"CompanyX"** and press SPACE or double-click **"CompanyX"**. A list of suitable companies gets displayed in a drop-down. Close down the rule without saving.
+1. Display the rule `CheckCurrency > CurrencyRestriction`. No warning is displayed.
+1. Let's now make some changes in the dynamic domains in the database. Run:
+    ```bash
+    kubectl cp ${pwd}/sql_scripts/modifyTables.sql $DBSERVER:/tmp
+    kubectl exec $DBSERVER -- psql -U odmusr -d odmdb -f /tmp/modifyTables.sql
+    ```
 
-![Dynamic Domains update](images/dynamicDomainsUpdate.png)
+1. Display the rule `CheckOrder > OrderType` back again. Notice that there is no error anymore. The effects of the changes done in the database are taken into account automatically because the values that the field `stock` can take are dynamically fetched from the database (and not stored in the BOM).
+1. Conversely if you display the rule `CheckCurrency > CurrencyRestriction`, there is still no warning. So let's now import the changes done in the database into the BOM. Click the **Model** tab, and then the **Dynamic Domains** sub-tab. Expand all the three domains. You should see this: (Notice that the **Australian Dollar** was removed)
 
-1. Select all three domains, and click the **Apply changes** button and confirm the change.
-1. Display the rule `CheckCurrency > CurrencyRestriction` back again. Now a warning `'Australian Dollar' is deprecated` is displayed as result of the Dynamic Domains update.
-1. Edit the rule, remove `Australian Dollar` and press SPACE. You will see all the entries of the `CurrencyType` dynamic domain in a drop-down, including the new ones. 
+    ![Dynamic Domains update](images/dynamicDomainsUpdate.png)
+
+1. Tick **Domain** to select all the domains, and click the **Apply changes** button. Confirm the change.
+1. Display the rule `CheckCurrency > CurrencyRestriction` back again. Now a warning `'Australian Dollar' is deprecated` is displayed as the result of the update of the Dynamic Domains in the BOM.

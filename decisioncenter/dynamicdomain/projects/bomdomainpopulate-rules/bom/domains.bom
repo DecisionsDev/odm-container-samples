@@ -1,0 +1,33 @@
+
+property uuid "5e582f16-042e-4968-b549-8bd0f5d585f1"
+package trade;
+
+
+public class CurrencyType
+        property domainValueProviderName "derbyDataBaseDomainProvider"
+{
+    domain {static USDOLLAR, static EURO, static AUSDOLLAR}
+    public static final readonly trade.CurrencyType AUSDOLLAR;
+    public static final readonly trade.CurrencyType EURO;
+    public static final readonly trade.CurrencyType USDOLLAR;
+}
+
+public class MessageType
+        property domainValueProviderName "derbyDataBaseDomainProvider"
+{
+    domain {static BlackListedStocks, static INAPPROPRIATE_CUSTOMER}
+    public static final readonly trade.MessageType BlackListedStocks;
+    public static final readonly trade.MessageType INAPPROPRIATE_CUSTOMER;
+}
+
+public class StatusType
+        property domainValueProviderName "derbyDataBaseDomainProvider"
+{
+    domain {static ACCEPTED, static REJECTED, static PENDING}
+    public static final readonly trade.StatusType ACCEPTED;
+    public static final readonly trade.StatusType BLOCKED
+                property deprecated "true";
+    public static final readonly trade.StatusType PENDING;
+    public static final readonly trade.StatusType REJECTED domain {static REJECTED};
+}
+

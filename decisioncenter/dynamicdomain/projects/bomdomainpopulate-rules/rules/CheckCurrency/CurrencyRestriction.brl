@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:model.brl="http://ilog.rules.studio/model/brl.ecore" xmlns:model.brl_1="http://ilog.rules.studio/model/brl.ecore">
+  <name>CurrencyRestriction</name>
+  <uuid>8cd4810e-d36e-4201-805e-04316ee72855</uuid>
+  <locale>en_US</locale>
+  <definition><![CDATA[if the currency of 'the order' is Australian Dollar     
+then
+ set the status of 'the response' to Pending   ;
+]]></definition>
+</model.brl:ActionRule>

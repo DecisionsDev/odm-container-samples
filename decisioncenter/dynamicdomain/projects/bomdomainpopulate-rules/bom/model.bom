@@ -1,0 +1,30 @@
+
+property uuid "65ed5d50-8e28-41c0-b009-316c65c2d4f6"
+package trade;
+
+
+public class Customer
+{
+    public readonly trade.CurrencyType currency;
+    public readonly java.lang.String name;
+    public Customer(java.lang.String arg1, java.lang.String arg2);
+}
+
+public class Order
+{
+    public readonly java.lang.String action;
+    public readonly int amount;
+    public readonly trade.CurrencyType currency;
+    public readonly java.lang.String id;
+    public readonly java.lang.String stock
+                property valueInfo "ilog.rules.studio.samples.bomdomainpopulate.Stock";
+    public Order(java.lang.String arg1, java.lang.String arg2, int arg3, java.lang.String arg4, java.lang.String arg5);
+}
+
+public class Response
+{
+    public writeonly trade.MessageType message;
+    public writeonly trade.StatusType status;
+    public Response();
+}
+

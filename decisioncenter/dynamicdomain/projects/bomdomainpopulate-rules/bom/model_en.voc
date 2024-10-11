@@ -1,0 +1,20 @@
+# Vocabulary Properties
+uuid = 50e7532c-8b4b-436c-ad85-639c40c6fd39
+
+# trade.Customer
+trade.Customer#concept.label = customer
+trade.Customer.currency#phrase.navigation = {currency} of {this}
+trade.Customer.name#phrase.navigation = {name} of {this}
+
+# trade.Order
+trade.Order#concept.label = order
+trade.Order.action#phrase.navigation = {action} of {this}
+trade.Order.amount#phrase.navigation = {amount} of {this}
+trade.Order.currency#phrase.navigation = {currency} of {this}
+trade.Order.id#phrase.navigation = {id} of {this}
+trade.Order.stock#phrase.navigation = {stock} of {this}
+
+# trade.Response
+trade.Response#concept.label = response
+trade.Response.message#phrase.action = set the message of {this} to {message}
+trade.Response.status#phrase.action = set the status of {this} to {status}

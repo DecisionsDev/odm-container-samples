@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model.base:RulePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>CheckAmount</name>
+  <uuid>ee4cc06b-cf8f-4e7a-aa5a-4739022cbe40</uuid>
+</model.base:RulePackage>

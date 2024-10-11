@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model.base:RuleProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.rules.studio.model.decisionservice="http://com.ibm.rules.studio/model/decisionservice.ecore" xmlns:model.base="http://ilog.rules.studio/model/base.ecore" xmlns:model.bom="http://ilog.rules.studio/model/bom.ecore" xmlns:model.xom="http://ilog.rules.studio/model/xom.ecore" buildMode="DecisionEngine" isADecisionService="true" migrationFlag="3" MigratedToOperationId="4f0ce4a9-94ce-4cce-b1cc-cc6266992c1c">
+  <name>bomdomainpopulate-rules</name>
+  <uuid>0edc70d4-3969-4827-a989-e1ddecc18a80</uuid>
+  <outputLocation>output</outputLocation>
+  <categories>any</categories>
+  <paths xsi:type="model.xom:XOMPath" pathID="XOM">
+    <entries xsi:type="model.xom:SystemXOMPathEntry" name="bomdomainpopulate-xom" url="platform:/bomdomainpopulate-xom" kind="JAVA_PROJECT"/>
+    <entries xsi:type="model.xom:LibraryXOMPathEntry" name="org.eclipse.jdt.launching.JRE_CONTAINER" url="file:org.eclipse.jdt.launching.JRE_CONTAINER" kind="LIBRARY"/>
+  </paths>
+  <paths xsi:type="model.bom:BOMPath" pathID="BOM">
+    <entries xsi:type="model.bom:BOMEntry" name="model" url="platform:/bomdomainpopulate-rules/bom/model.bom" origin="xom:/bomdomainpopulate-rules/bomdomainpopulate-xom"/>
+    <entries xsi:type="model.bom:BOMEntry" name="domains" url="platform:/bomdomainpopulate-rules/bom/domains.bom"/>
+  </paths>
+  <modelFolders xsi:type="model.base:SourceFolder">
+    <name>rules</name>
+  </modelFolders>
+  <modelFolders xsi:type="model.bom:BOMFolder">
+    <name>bom</name>
+  </modelFolders>
+  <modelFolders xsi:type="com.ibm.rules.studio.model.decisionservice:OperationFolder">
+    <name>deployment</name>
+  </modelFolders>
+  <modelFolders xsi:type="model.base:ResourceFolder">
+    <name>resources</name>
+  </modelFolders>
+</model.base:RuleProject>

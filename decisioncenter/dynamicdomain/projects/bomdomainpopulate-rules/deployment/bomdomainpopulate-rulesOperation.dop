@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.rules.studio.model.decisionservice:Operation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.rules.studio.model.decisionservice="http://com.ibm.rules.studio/model/decisionservice.ecore" rulesetName="bomdomainpopulate_rulesRuleset" targetRuleProjectName="bomdomainpopulate-rules">
+  <name>bomdomainpopulate-rulesOperation</name>
+  <uuid>4f0ce4a9-94ce-4cce-b1cc-cc6266992c1c</uuid>
+  <referencedVariables variableName="customerparam" variableSetName="bomdomainpopulate-rulesParameters">
+    <variableSet href="../rules/bomdomainpopulate-rulesParameters.var#a4851675-d973-42f7-804b-47026f73b6d0"/>
+  </referencedVariables>
+  <referencedVariables variableName="orderparam" variableSetName="bomdomainpopulate-rulesParameters">
+    <variableSet href="../rules/bomdomainpopulate-rulesParameters.var#a4851675-d973-42f7-804b-47026f73b6d0"/>
+  </referencedVariables>
+  <referencedVariables variableName="reponseparam" variableSetName="bomdomainpopulate-rulesParameters" direction="OUT">
+    <variableSet href="../rules/bomdomainpopulate-rulesParameters.var#a4851675-d973-42f7-804b-47026f73b6d0"/>
+  </referencedVariables>
+  <targetRuleProject href="../../bomdomainpopulate-rules#0edc70d4-3969-4827-a989-e1ddecc18a80"/>
+</com.ibm.rules.studio.model.decisionservice:Operation>

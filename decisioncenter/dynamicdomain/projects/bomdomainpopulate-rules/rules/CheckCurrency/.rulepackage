@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model.base:RulePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>CheckCurrency</name>
+  <uuid>abbd9d87-a8a2-4625-ac1f-7c882fe88323</uuid>
+</model.base:RulePackage>

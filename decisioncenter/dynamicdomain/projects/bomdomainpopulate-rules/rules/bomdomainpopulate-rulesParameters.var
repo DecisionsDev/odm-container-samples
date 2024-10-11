@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:VariableSet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>bomdomainpopulate-rulesParameters</name>
+  <uuid>a4851675-d973-42f7-804b-47026f73b6d0</uuid>
+  <variables name="customerparam" type="trade.Customer" initialValue="" verbalization="the customer"/>
+  <variables name="orderparam" type="trade.Order" initialValue="" verbalization="the order"/>
+  <variables name="reponseparam" type="trade.Response" initialValue="new trade.Response()" verbalization="the response"/>
+</ilog.rules.studio.model.base:VariableSet>

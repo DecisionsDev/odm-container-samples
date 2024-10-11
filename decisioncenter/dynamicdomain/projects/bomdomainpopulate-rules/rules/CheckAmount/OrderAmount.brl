@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model.brl="http://ilog.rules.studio/model/brl.ecore" xmlns:model.brl_1="http://ilog.rules.studio/model/brl.ecore">
+  <name>OrderAmount</name>
+  <uuid>b0908561-34f4-4e4d-b2cb-5e95301deca3</uuid>
+  <status>new</status>
+  <locale>en_US</locale>
+  <definition><![CDATA[ if the amount of 'the order' is less than 100000
+then
+  set the status of 'the response' to Rejected  ;
+  set the message of 'the response' to Inappropriate Customer; ]]></definition>
+</model.brl:ActionRule>

@@ -1,0 +1,20 @@
+# Vocabulary Properties
+uuid = 4c2fcb35-f531-44b0-a112-aa4d1bd2b61d
+
+# trade.CurrencyType
+trade.CurrencyType#concept.label = currency type
+trade.CurrencyType.AUSDOLLAR#instance.label = Australian Dollar
+trade.CurrencyType.EURO#instance.label = Euro
+trade.CurrencyType.USDOLLAR#instance.label = US Dollar
+
+# trade.MessageType
+trade.MessageType#concept.label = message type
+trade.MessageType.BlackListedStocks#instance.label = Black Listed Stocks
+trade.MessageType.INAPPROPRIATE_CUSTOMER#instance.label = Inappropriate Customer
+
+# trade.StatusType
+trade.StatusType#concept.label = status type
+trade.StatusType.ACCEPTED#instance.label = Accepted
+trade.StatusType.BLOCKED#instance.label = Blocked
+trade.StatusType.PENDING#instance.label = Pending
+trade.StatusType.REJECTED#instance.label = Rejected

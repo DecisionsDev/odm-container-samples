@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>OrderType</name>
+  <uuid>3b882e0b-ef33-42e8-b1ed-e9677c3eeb3d</uuid>
+  <locale>en_US</locale>
+  <definition><![CDATA[if the stock of 'the order' is "CompanyX" 
+then
+set the status of 'the response' to Rejected ;
+set the message of 'the response' to Black Listed Stocks; 
+ ]]></definition>
+</model.brl:ActionRule>

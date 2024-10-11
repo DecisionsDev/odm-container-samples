@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model.base:RulePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>CheckOrder</name>
+  <uuid>25c6f70a-8e46-478f-ab83-a069a42fbe86</uuid>
+</model.base:RulePackage>

@@ -1,0 +1,70 @@
+
+<b2x:translation xmlns:b2x="http://schemas.ilog.com/JRules/1.1/Translation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.ilog.com/JRules/1.1/Translation ilog/rules/schemas/1_1/b2x.xsd">
+    <id>9f5debcf-5943-4401-87b2-271d36c14c82</id>
+    <class>
+        <businessName>trade.CurrencyType</businessName>
+        <executionName>java.lang.String</executionName>
+        <attribute>
+            <name>AUSDOLLAR</name>
+            <getter language="irl"><![CDATA[
+            return "AUS Dollar";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>EURO</name>
+            <getter language="irl"><![CDATA[
+            return "EUR";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>USDOLLAR</name>
+            <getter language="irl"><![CDATA[
+            return "USD";
+            ]]></getter>
+        </attribute>
+    </class>
+    <class>
+        <businessName>trade.MessageType</businessName>
+        <executionName>java.lang.String</executionName>
+        <attribute>
+            <name>BlackListedStocks</name>
+            <getter language="irl"><![CDATA[
+            return "Stock order is Black Listed";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>INAPPROPRIATE_CUSTOMER</name>
+            <getter language="irl"><![CDATA[
+            return "Client situation is inappropriate, sorry";
+            ]]></getter>
+        </attribute>
+    </class>
+    <class>
+        <businessName>trade.StatusType</businessName>
+        <executionName>java.lang.String</executionName>
+        <attribute>
+            <name>ACCEPTED</name>
+            <getter language="irl"><![CDATA[
+            return "Accepted";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>BLOCKED</name>
+            <getter language="irl"><![CDATA[
+            return "Blocked";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>PENDING</name>
+            <getter language="irl"><![CDATA[
+            return "Pending";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>REJECTED</name>
+            <getter language="irl"><![CDATA[
+            return "Rejected";
+            ]]></getter>
+        </attribute>
+    </class>
+</b2x:translation>
