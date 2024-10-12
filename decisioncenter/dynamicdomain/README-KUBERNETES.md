@@ -40,6 +40,8 @@ helm repo update
 Check that you can access the ODM charts:
 ```bash
 helm search repo ibm-odm-prod
+```
+```bash
 NAME                        	CHART VERSION	APP VERSION	DESCRIPTION
 ibmcharts/ibm-odm-prod      	<version>     <version>  	IBM Operational Decision Manager  License By in...
 ```
