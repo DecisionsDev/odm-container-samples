@@ -128,7 +128,8 @@ public class DataBaseDomainHelper {
 					domainItems.add(new Item(name,verbalization,translation));
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();;
+				BomdomainpopulatePlugin.log(e);
+				e.printStackTrace();
 			}
 		}		
 		// finally close global connection
@@ -188,12 +189,13 @@ public class DataBaseDomainHelper {
 		InputStream input = null;
 		domainTableProperties = new Properties();
 	    try {
-	    	input = DataBaseDomainHelper
-	    			.class.getResourceAsStream(SCHEMA_PARAMETERS);
+	    	input = DataBaseDomainHelper.class.getResourceAsStream(SCHEMA_PARAMETERS);
 	    	domainTableProperties.load(input);
 		} catch (FileNotFoundException e) {
+			BomdomainpopulatePlugin.log(e);
 			e.printStackTrace();
 		} catch (IOException e) {
+			BomdomainpopulatePlugin.log(e);
 			e.printStackTrace();
 		} finally {
 			try {

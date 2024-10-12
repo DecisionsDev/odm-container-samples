@@ -100,6 +100,8 @@ public class BomdomainpopulatePlugin extends AbstractUIPlugin {
 	   * Logs a message from the specified <code>status</code>.
 	   */
 	  public static void log(IStatus status) {
-	    plugin.getLog().log(status);
+	    if (plugin != null) {
+			plugin.getLog().log(status);
+		}
 	  }
 }

@@ -68,8 +68,10 @@ public class DataBaseConnector {
 			user = properties.getProperty("database.user");
 			password = properties.getProperty("database.password");			
 		} catch (FileNotFoundException e) {
+			BomdomainpopulatePlugin.log(e);
 			e.printStackTrace();
 		} catch (IOException e) {
+			BomdomainpopulatePlugin.log(e);
 			e.printStackTrace();
 		} finally {
 			try {
@@ -91,8 +93,10 @@ public class DataBaseConnector {
 			connection = DriverManager.getConnection(database, user, password);
 			return connection;
 		} catch (ClassNotFoundException e) {
+			BomdomainpopulatePlugin.log(e);
 			e.printStackTrace();
 		} catch (SQLException e) {
+			BomdomainpopulatePlugin.log(e);
 			System.out.println("A SQL Exception has occured: please check that the database is available");
 			e.printStackTrace();
 		}

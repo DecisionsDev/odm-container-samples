@@ -1,29 +1,13 @@
 	<project default="jar" basedir=".">
 
 	<property name="src.dir" location="${basedir}/src/main/java" />
+	<property name="res.dir" location="${basedir}/resources" />
 	<property name="bin.dir" location="${basedir}/bin" />
 	<property name="ECLIPSE_PLUGINS" location="${ant.library.dir}/../.." />
 
 	<path id="compile.classpath">
 		<fileset dir="${ECLIPSE_PLUGINS}">
-			<include name="**/com.ibm.rules.decisionservice.bundle_*/lib/com.ibm.rules.decisionservice.model.jar" />
-			<include name="**/ilog.rules.brl.brldf_*.jar" />
-			<include name="**/ilog.rules.commonbrm.model_*.jar" />
-			<include name="**/ilog.rules.shared_*.jar" />
-			<include name="**/ilog.rules.studio.model_*.jar" />
-			<include name="**/ilog.rules.studio.shared_*.jar" />
-			<include name="**/ilog.rules.vocabulary.model_*.jar" />
-			<include name="**/jrules-engine.jar" />
-			<include name="**/org.eclipse.core.resources_*.jar" />
-			<include name="**/org.eclipse.core.runtime_*.jar" />
-			<include name="**/org.eclipse.emf.ecore*.jar" />
-			<include name="**/org.eclipse.emf.common*.jar" />
-			<include name="**/org.eclipse.equinox.common_*.jar" />
-			<include name="**/org.eclipse.jface_*.jar" />
-			<include name="**/org.eclipse.osgi_*.jar" />
-			<include name="**/org.eclipse.pde.core_*.jar" />
-			<include name="**/org.eclipse.swt*.jar" />
-			<include name="**/org.eclipse.ui.workbench_*.jar" />
+			<include name="**/*.jar" />
 		</fileset>
 	</path>
 
@@ -45,6 +29,7 @@
 	<target name="jar" depends="compile">
 		<jar destfile="${basedir}/bomdomainpopulate.jar">
              <fileset dir="${bin.dir}"/>
+             <fileset dir="${res.dir}"/>
         </jar>
 	</target>
 
