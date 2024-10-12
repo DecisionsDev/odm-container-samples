@@ -128,7 +128,7 @@ public class DataBaseDomainHelper {
 					domainItems.add(new Item(name,verbalization,translation));
 				}
 			} catch (SQLException e) {
-				BomdomainpopulatePlugin.log(e);
+				log(e);
 				e.printStackTrace();
 			}
 		}		
@@ -192,10 +192,10 @@ public class DataBaseDomainHelper {
 	    	input = DataBaseDomainHelper.class.getResourceAsStream(SCHEMA_PARAMETERS);
 	    	domainTableProperties.load(input);
 		} catch (FileNotFoundException e) {
-			BomdomainpopulatePlugin.log(e);
+			log(e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			BomdomainpopulatePlugin.log(e);
+			log(e);
 			e.printStackTrace();
 		} finally {
 			try {
@@ -222,5 +222,17 @@ public class DataBaseDomainHelper {
 			classdomains.put(className, helper);
 		}
 		return (DataBaseDomainHelper) helper;
+	}
+	
+	/*
+	 * log an exception in Eclipse log
+	 */
+	protected static void log(Throwable e) {
+		// BomdomainpopulatePlugin can only be used in Eclipse
+		// ignore the exception otherwise
+		try {
+			BomdomainpopulatePlugin.log(e);
+		} catch (Exception e1) {
+		}
 	}
 }
