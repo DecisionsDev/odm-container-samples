@@ -7,23 +7,23 @@ This README explains how to run the BOM dynamic domain sample in Kubernetes.
 ## 1. Uploading JARs on a file server
 
 The customization JARs can be made available to Decision Center in two ways:
-1. the legacy way: by copying the JARs to a PVC and referencing this PVC using the parameter `decisionCenter.customlibPvc`
-1. the new way (since 9.0 only): by copying the JARs on a file server and referencing the files to download from this file server using the parameter `decisionCenter.downloadUrl`
+1. the **legacy way**: by copying the JARs to a PVC and referencing this PVC using the parameter `decisionCenter.customlibPvc`
+1. or the **new way** (since 9.0 only): by copying the JARs on a file server and referencing the files to download from this file server using the parameter `decisionCenter.downloadUrl`
 
-This document explains how to use the new way. If you intend to deploy an older version of ODM, you must use the legacy way instead. Here is an [page in the documentation](https://www.ibm.com/docs/en/odm/9.0.0?topic=kubernetes-customizing-decision-center-business-console) that can help.
+This document explains how to follow the **new way**. Any file server reachable by Decision Center is suitable. You can either use an existing one or follow the instructions [here](../README.md#setup-an-httpd-file-server) to deploy a httpd file server in a new pod.
+
+However you must use the **legacy way** if you deploy a version of ODM older than 9.0. Here are some [instructions](https://www.ibm.com/docs/en/odm/9.0.0?topic=kubernetes-customizing-decision-center-business-console) in the documentation.
 
 Two JARs must be made available:
-- the Decision Center extension JAR [built as explained previously](README.md#building-the-decision-center-extension-jar),
-- the JDBC driver of the database storing the data of the dynamic domains.
+  1. the Decision Center extension JAR built [previously](README.md#building-the-decision-center-extension-jar),
+  1. the JDBC driver of the database storing the data of the dynamic domains.
 
-Any file server reachable by Decision Center is suitable. You can either use an existing one or follow the instructions [here](../README.md#setup-an-httpd-file-server) to deploy a httpd file server in a new pod.
-
-The JDBC driver can be downloaded as explained below if the internal PostgreSQL database is used:
+Download the JDBC driver (if the internal PostgreSQL database is used):
 ```
 curl -kLo jdbc-driver.jar https://jdbc.postgresql.org/download/postgresql-42.5.6.jar
 ```
 
-The two JARs can be uploaded as follows (the files must be named `bomdomainpopulate-1.0.jar` and `jdbc-driver.jar` because Decision Center will be configured to download files named that way):
+Uplodad the two JARs on the file server (the files must be named `bomdomainpopulate-1.0.jar` and `jdbc-driver.jar` because Decision Center will be configured to download files named that way):
 ```
 curl -T target/bomdomainpopulate-1.0.jar $FILESERVER_URL
 curl -T jdbc-driver.jar $FILESERVER_URL
@@ -53,8 +53,6 @@ decisionCenter:
     - <FILESERVER_URL>/bomdomainpopulate-1.0.jar
     - <FILESERVER_URL>/jdbc-driver.jar
 ```
-
->Note: if you deployed a httpd fileserver following the instructions [here](../README.md#setup-an-httpd-file-server), then the internal URL of the fileserver is <!-- markdown-link-check-disable -->http://fileserver-apache.NAMESPACE.svc.cluster.local:80<!-- markdown-link-check-enable --> (where NAMESPACE is the project in which the fileserver was deployed).
 
 Add the lines below in `values.yaml` if you want to deploy ODM only for the purpose of testing the sample (in that case it is straightforward to use the PostgreSQL internal database and persist the data in ephemeral storage): 
 ```yaml
@@ -88,7 +86,7 @@ helm install myodmsample ibmcharts/ibm-odm-prod -f values.yaml
 
 1. If the data of the dynamic domains are stored in the internal PostgreSQL database, you can find the name of that pod by running:
     ```bash
-    DBSERVER=$(kubectl get pods -o name --no-headers | grep dbserver)
+    DBSERVER=$(kubectl get pods --no-headers -o custom-columns=":metadata.name" |grep dbserver)
     echo $DBSERVER
     ```
 
@@ -99,7 +97,7 @@ helm install myodmsample ibmcharts/ibm-odm-prod -f values.yaml
 
 1. Copy the initialization SQL script into the pod and execute it:
     ```bash
-    kubectl cp ${pwd}/sql_scripts/createAndPopulate.sql $DBSERVER:/tmp
+    kubectl cp ./sql_scripts/createAndPopulate.sql $DBSERVER:/tmp
     kubectl exec $DBSERVER -- psql -U odmusr -d odmdb -f /tmp/createAndPopulate.sql
     ```
 
@@ -113,7 +111,7 @@ helm install myodmsample ibmcharts/ibm-odm-prod -f values.yaml
 1. Display the rule `CheckCurrency > CurrencyRestriction`. No warning is displayed.
 1. Let's now make some changes in the dynamic domains in the database. Run:
     ```bash
-    kubectl cp ${pwd}/sql_scripts/modifyTables.sql $DBSERVER:/tmp
+    kubectl cp ./sql_scripts/modifyTables.sql $DBSERVER:/tmp
     kubectl exec $DBSERVER -- psql -U odmusr -d odmdb -f /tmp/modifyTables.sql
     ```
 

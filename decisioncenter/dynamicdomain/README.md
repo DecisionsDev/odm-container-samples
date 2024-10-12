@@ -31,7 +31,7 @@ To use the sample in Rule Designer, you need to build an Eclipse plugin.
 - Select the folder `decisioncenter/dynamicdomain/src/ilog.rules.studio.samples.bomdomainpopulate` and click **Next**
 - Tick the project `ilog.rules.studio.samples.bomdomainpopulate` and click **Finish**
 - Right-click the `build-bomdomainepopulate.xml` file and click **Run as > Ant Build**. A file named `bomdomainpopulate.jar` gets generated at the root of the project.
-- Run **Export > Plug-in Development > Deployable Plug-ins and fragments** to build the plugin. Click **Next**, choose the output directory, and click **Finish**. A file named `ilog.rules.studio.samples.bomdomainpopulate_VERSION.jar` gets generated in the chosen directory (in the plugins sub-directory).
+- Run **Export > Plug-in Development > Deployable Plug-ins and fragments** to build the plugin. Click **Next**, choose the destination directory, and click **Finish**. A file named `ilog.rules.studio.samples.bomdomainpopulate_VERSION.jar` gets generated in the chosen directory (in the `plugins` sub-directory).
 - Copy the plugin into `<ECLIPSE_HOME>/dropins` to deploy it.
 - Restart Eclipse.
 
@@ -124,5 +124,5 @@ To use the sample in Decision Center, you need to build a JAR.
 ### 4) Instructions to use the sample in Decision Center
 
 Click one of the links below:
-   * In [Kubernetes](README-KUBERNETES.md). (You need ODM installed in Kubernetes)
+   * In [Kubernetes](README-KUBERNETES.md).
    * In [Docker](README-DOCKER.md). 
