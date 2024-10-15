@@ -23,7 +23,7 @@ Download the JDBC driver (if the internal PostgreSQL database is used):
 curl -kLo jdbc-driver.jar https://jdbc.postgresql.org/download/postgresql-42.5.6.jar
 ```
 
-Uplodad the two JARs on the file server (the files must be named `bomdomainpopulate-1.0.jar` and `jdbc-driver.jar` because Decision Center will be configured to download files named that way):
+Upload the two JARs on the file server (the files must be named `bomdomainpopulate-1.0.jar` and `jdbc-driver.jar` because Decision Center will be configured to download files named that way):
 ```
 curl -T target/bomdomainpopulate-1.0.jar $FILESERVER_URL
 curl -T jdbc-driver.jar $FILESERVER_URL
@@ -75,6 +75,11 @@ helm install myodmsample ibmcharts/ibm-odm-prod -f values.yaml
 
 ## 3. Configuring Decision Center
 
+The class that implements the customization must be declared:
+- either using a custom setting
+- or using a JVM parameter 
+
+### 3.1 Using a custom setting
 1. Log in into the Business Console as an admin
 1. Navigate to Administration > Settings > Custom Settings
 1. Click the "Add custom setting" icon and set:
@@ -83,6 +88,13 @@ helm install myodmsample ibmcharts/ibm-odm-prod -f values.yaml
     - type = `String`
     - leave `default value` empty
 1. Set the value to `ilog.rules.studio.samples.bomdomainpopulate.DataBaseDomainValueProvider`
+
+### 3.2 Using a JVM parameter
+
+Follow instructions similar to [here](https://www.ibm.com/docs/en/odm/9.0.0?topic=kubernetes-persisting-decision-center-ruleset-cache) to add the JVM parameter below: (using in a Config Map referenced by the Helm parameter **decisionCenter.jvmOptionsRef**)
+```
+-Dilog.rules.teamserver.derbyDataBaseDomainProvider=ilog.rules.studio.samples.bomdomainpopulate.DataBaseDomainValueProvider
+```
 
 ## 4. Initializing the database
 
