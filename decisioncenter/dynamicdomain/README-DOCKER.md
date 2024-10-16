@@ -25,9 +25,11 @@ Before following the steps below, make sure you have built the customization JAR
         -e LICENSE=accept \
         -e SAMPLE=true \
         icr.io/cpopen/odm-k8s/odm:9.0
+    ```
 
+1. Run
+    ```
     docker exec odmdev sh -c "cp /config/resources/h2*.jar /config/apps/decisioncenter.war/WEB-INF/lib/h2.jar"
-    
     docker restart odmdev
     ```
 
