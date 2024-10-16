@@ -13,6 +13,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.1.0</version>
                 <executions>
                     <execution>
                         <id>compile</id>
@@ -21,8 +22,8 @@
                             <goal>run</goal>
                         </goals>
                         <configuration>
-                            <tasks>
-                                <javac  srcdir="${project.build.sourceDirectory}" 
+                            <target>
+                              <javac  srcdir="${project.build.sourceDirectory}" 
                                        destdir="${project.build.outputDirectory}"
                                        includeantruntime="false"
                                        compiler="modern">
@@ -30,8 +31,22 @@
                                         <fileset dir="${env.ECLIPSE_PLUGINS}" includes="**/*.jar"/>
                                         <fileset dir="${project.basedir}/lib" includes="**/*.jar"/>    
                                     </classpath>
-                                </javac>                 
-                            </tasks>
+                                </javac>
+                            </target>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-h2-database-properties</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target name="configuring-for-h2" if="target.docker">
+                                <copy file="target/classes/data/database-h2.properties" 
+                                    tofile="target/classes/data/database.properties" 
+                                    overwrite="true"/>
+                            </target>        
                         </configuration>
                     </execution>
                 </executions>
