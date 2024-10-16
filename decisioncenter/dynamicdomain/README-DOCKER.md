@@ -52,7 +52,7 @@ Before following the steps below, make sure you have built the customization JAR
     - description = `derbyDataBaseDomainProvider`
     - type = `String`
     - leave `default value` empty
-1. Set the value to `ilog.rules.studio.samples.bomdomainpopulate.DataBaseDomainValueProvider`
+1. Set the value of the new custom setting to `ilog.rules.studio.samples.bomdomainpopulate.DataBaseDomainValueProvider`
 1. Navigate to the **Library** tab.
 1. Import the rule project archive `projects/bomdomainpopulate-rules.zip`.
     > Note: this rule project `bomdomainpopulate-rules` is only aimed at editing rules to demonstrate loading domains from a database. It is missing a deployment configuration and cannot be executed.

@@ -97,7 +97,7 @@ To use the sample in Decision Center, you need to build a JAR.
 
       Run one of the command below in the `decisioncenter/dynamicdomain/src/ilog.rules.studio.samples.bomdomainpopulate` directory:
           
-      > [!IMPORTANT]
+      > **IMPORTANT:**
       > add `-Dtarget.docker` after `mvn clean install` to use the sample in Docker 
 
        * **Option 1:** when using ODM libraries from Decision Center
