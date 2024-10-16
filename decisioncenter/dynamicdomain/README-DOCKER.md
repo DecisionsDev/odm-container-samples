@@ -49,6 +49,8 @@ Before following the steps below, make sure you have built the customization JAR
 # Using the sample
 
 1. Log in into the Business Console.
+    - user = `rtsAdmin`
+    - password = `rtsAdmin`
 1. Navigate to the **Administration** tab. In the **Settings** sub-tab, click **Custom Setting** and click the *Add custom setting* **icon** and set:
     - name = `teamserver.derbyDataBaseDomainProvider`
     - description = `derbyDataBaseDomainProvider`
