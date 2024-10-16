@@ -1,0 +1,16 @@
+#MyButton {
+	background: url('../images/mybutton.png') no-repeat transparent left center;
+}
+
+#MyEditorButton, #CustomDeploy {
+	background: url('../images/myeditorbutton.png') no-repeat transparent left center;
+}
+
+#MetricDialog, #AboutElement, #DeploymentStatusDialog {
+	width: 400px;
+}
+
+#deployButton {
+	/* Hide default deployment button */
+	display: none !important;
+}

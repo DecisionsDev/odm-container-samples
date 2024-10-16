@@ -1,0 +1,19 @@
+.myWidget {
+	margin:20px;
+} 
+
+.myWidget ul {
+	margin-top:10px;
+	margin-bottom:10px;
+} 
+
+.myWidget li {
+	list-style-type: disc;
+	margin-left:20px;
+
+} 
+
+.myWidget li .key {
+	margin-right:10px;
+	font-weight: bold;
+} 

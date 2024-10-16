@@ -1,60 +1,57 @@
-# GUI customization
+# GUI Customization Sample
 
-The aim of this tutorial is to ecplain how to deploy the [GUI customization sample](https://www.ibm.com/docs/en/odm/9.0.0?topic=center-gui-customization) in a kubernetes context
+## Introduction
 
-## Prerequisites
+This sample shows you how to customize the Business console.
+It is the ODM on k8s adaptation of the ODM on premises [GUI customization sample](https://www.ibm.com/docs/en/odm/9.0.0?topic=center-gui-customization).
 
-Get the  [decision-center-client-api.zip](../README.md#build-the-java-samples) file and setup the [Http file server](../README.md#setup-an-httpd-file-server)
+## Running this sample in Decision Center
 
-## Build the guicustomization.jar file
+### 1) Prerequisites
 
-To build the guicustomization.jar file, you will first have to retrieve the [decision-center-client-api.zip](../README.md#build-the-java-samples) file.
-Create a project in your favorite java development environment and import the java source file from [guicustomization.zip](./guicustomization.zip).
-Build and export the guicustomization.jar file.
-Using Eclipse, it's the right-click menu Export>Java>JAR file
+Before you begin, ensure you have one of the following **Container Platform**: Docker 24.0.x or Kubernetes 1.27+.
 
-## Upload the guicustomization.jar file
+### 2) Building the Decision Center extension JAR
 
-Upload guicustomization.jar on the httpd file server
+To use the sample in Decision Center, you need to build a JAR. 
 
-```bash
-curl -T guicustomization.jar http://<fileserver-url>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<head>
-<title>201 Created</title>
-</head><body>
-<h1>Created</h1>
-<p>Resource /guicustomization.jar has been created.</p>
-</body></html>
-```
+   1. Retrieve ODM libraries:
 
-## Instanciate the ODM Helm Chart
+      ODM libraries are required to compile the JAR. 
 
-Follow the explanation on how to deploy the ODM Helm Chart according to your [platform](https://github.com/DecisionsDev/odm-docker-kubernetes/tree/master/platform)
+      Download ODM libraries from Decision Center
 
-Add to your values.yaml the parameter allowing to download guicustomization.jar
+          - Navigate to the source directory of the GUI Customization sample:
 
-<!-- markdown-link-check-disable -->
-```
-decisionCenter:
-  downloadUrl:
-  - http://fileserver-apache.sample.svc.cluster.local:80/guicustomization.jar
-```
+            ```bash
+            cd decisioncenter/guicustomization/guicustomization-source
+            ```
 
-Or if it's using the command line : **--set decisionCenter.downloadUrl={"http://fileserver-apache.sample.svc.cluster.local:80/guicustomization.jar"}**
-<!-- markdown-link-check-enable -->
+          - Download the following compressed file: `https://DC_HOST:DC_PORT/decisioncenter/assets/decision-center-client-api.zip`
 
-## Add the custom setting property in Decision Center
+          - Then, run:
+            ```bash
+            unzip decision-center-client-api.zip -d "lib"
+            ```
 
-To activate the Business value editor, after login in Decision Center as an administrator, go in the menu "Administration>Settings>Custom Settings"
-Register a new setting named **decisioncenter.web.core.extensions.entrypoints** with the value **extensions/AddTabEntryPoint,extensions/AddButtonEntryPoint,extensions/AddEditorButtonEntryPoint**
+   1. Build the JAR
 
-![Custom Settings](images/custom_settings.png)
+      The instructions below enable to build the JAR using a Docker container featuring Maven and a JDK version 17. For ODM 8.12, you must use `maven:3.8.1-openjdk-11` instead and `maven:3.8-adoptopenjdk-8` for earlier releases.
 
-## Test the sample
+      Run the command below in the `decisioncenter/dynamicdomain/guicustomization-source` directory:
 
-Load the [LoanValidationService.zip](./LoanValidationService.zip) Decision Service.
-Follow [Running this sample](https://www.ibm.com/docs/en/odm/9.0.0?topic=customization-gui-sample-details#descriptiveTopic1297785707571__rssamples.uss_rs_smp_tsauthoring.1028561__title__1) details to understand how to use some custom widgets by drilling in the LoanValidationService Decision Service.
+         ```bash
+         docker run --rm --name my-maven-container \
+               -v "$(pwd)":/usr/src/sample \
+               -w /usr/src/sample \
+               maven:3.8.5-openjdk-17 \
+               mvn clean install
+         ```
 
-![Business Console Custom GUI](images/custom_gui.png)
+      The JAR is generated in the `target` directory and is named `guicustomization-1.0.jar`.
+
+### 4) Instructions to use the sample in Decision Center
+
+Click one of the links below:
+   * In [Kubernetes](README-KUBERNETES.md).
+   * In [Docker](README-DOCKER.md). 
