@@ -97,13 +97,10 @@ To use the sample in Decision Center, you need to build a JAR.
 
       Run one of the command below in the `decisioncenter/dynamicdomain/src/ilog.rules.studio.samples.bomdomainpopulate` directory:
           
-      > **IMPORTANT:**
-      > add `-Dtarget.docker` after `mvn clean install` to use the sample in Docker 
-
        * **Option 1:** when using ODM libraries from Decision Center
 
          ```bash
-         docker run --rm --name my-maven-container \
+         docker run --rm \
                -v "$(pwd)":/usr/src/sample \
                -w /usr/src/sample \
                maven:3.8.5-openjdk-17 \
@@ -113,7 +110,7 @@ To use the sample in Decision Center, you need to build a JAR.
        * **Option 2** when using ODM libraries from Rule Designer
 
          ```bash
-         docker run --rm --name my-maven-container \
+         docker run --rm \
                -v "$(pwd)":/usr/src/sample \
                -w /usr/src/sample \
                -v "${ECLIPSE_PLUGINS}":/usr/src/eclipse/plugins \
@@ -122,7 +119,15 @@ To use the sample in Decision Center, you need to build a JAR.
                mvn clean install
          ```
 
-      The JAR is generated in the `target` directory and is named `bomdomainpopulate-1.0.jar`.
+> [!IMPORTANT]
+> add **`-Dtarget.docker`** after `mvn clean install` to use the sample in **Docker**, i.e:
+> ```bash
+> docker run --rm
+>     ...
+>     mvn clean install -Dtarget.docker
+> ```
+
+The JAR is generated in the `target` directory and is named `bomdomainpopulate-1.0.jar`.
 
 ### 4) Instructions to use the sample in Decision Center
 

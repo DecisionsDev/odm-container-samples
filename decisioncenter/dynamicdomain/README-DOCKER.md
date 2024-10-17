@@ -11,11 +11,7 @@ Before following the steps below, make sure you have built the customization JAR
 
 ## 1. Start the ODM container
 
-1. Navigate to the BOM dynamic domain sample directory:
-    ```bash
-    cd decisioncenter/dynamicdomain
-    ```
-1. Run
+1. In the BOM dynamic domain sample root directory (`odm-container-samples/decisioncenter/dynamicdomain`), run
     ```bash
     docker run --name odmdev \
         -v $(pwd)/src/ilog.rules.studio.samples.bomdomainpopulate/target/bomdomainpopulate-1.0.jar:/config/apps/decisioncenter.war/WEB-INF/lib/bomdomainpopulate-1.0.jar \
@@ -27,7 +23,7 @@ Before following the steps below, make sure you have built the customization JAR
         icr.io/cpopen/odm-k8s/odm:9.0
     ```
 
-1. Run
+1. then, run
     ```
     docker exec odmdev sh -c "cp /config/resources/h2*.jar /config/apps/decisioncenter.war/WEB-INF/lib/h2.jar"
     docker restart odmdev
