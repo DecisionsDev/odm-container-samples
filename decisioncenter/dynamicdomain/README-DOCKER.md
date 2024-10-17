@@ -13,7 +13,7 @@ Before following the steps below, make sure you have built the customization JAR
 
 1. In the BOM dynamic domain sample root directory (`odm-container-samples/decisioncenter/dynamicdomain`), run
     ```bash
-    docker run --name odmdev \
+    docker run -d --name odmdev \
         -v $(pwd)/src/ilog.rules.studio.samples.bomdomainpopulate/target/bomdomainpopulate-1.0.jar:/config/apps/decisioncenter.war/WEB-INF/lib/bomdomainpopulate-1.0.jar \
         -v $(pwd)/sql_scripts:/script/sql \
         -p 9060:9060 -p 9443:9443 \
