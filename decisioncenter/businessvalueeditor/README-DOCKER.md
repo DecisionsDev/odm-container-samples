@@ -10,9 +10,9 @@ Before following the steps below, make sure you have built the images as explain
 ### Running the sample 
 
    Run ODM and Notifiers  docker images
-    ```bash
-    docker-compose -f compose-odm-dev.yml up
-    ```
+   ```bash
+   docker-compose -f compose-odm-dev.yml up
+   ```
 
 ###  Using the Sample
 
