@@ -1,7 +1,7 @@
 
 ### Introduction
 
-This readme explains how to run the webhook sample in Docker.
+This readme explains how to run the GUI Customization sample in Docker.
 
 Doing so, you do not need to have ODM installed. Instead we are relying on the 'ODM for developer' container image.
 
@@ -10,9 +10,9 @@ Before following the steps below, make sure you have built the images as explain
 ### Running the sample 
 
    Run ODM and Notifiers  docker images
-    ```bash
-    docker-compose -f compose-odm-dev.yml up
-    ```
+   ```bash
+   docker-compose -f compose-odm-dev.yml up
+   ```
 
 ###  Using the Sample
 
