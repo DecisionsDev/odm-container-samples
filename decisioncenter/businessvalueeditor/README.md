@@ -1,66 +1,58 @@
-# Custom Value Editor
+# Custom Value Editor Sample
 
-The aim of this tutorial is to ecplain how to deploy the [Custom value editor sample](https://www.ibm.com/docs/en/odm/9.0.0?topic=center-custom-value-editor) in a kubernetes context
+## Introduction
 
-## Prerequisites
+This sample demonstrates how to plug a custom value editor into the Business console Intellirule editor.
 
-Get the  [decision-center-client-api.zip](../README.md#build-the-java-samples) file and setup the [Http file server](../README.md#setup-an-httpd-file-server)
+It is the ODM on k8s adaptation of the ODM on premises [Custom Value Editor sample](https://www.ibm.com/docs/en/odm/9.0.0?topic=center-custom-value-editor).
 
-## Build the customvalueeditor.jar file
+## Running this sample in Decision Center
 
-To build the customvalueeditor.jar file, you will first have to retrieve the [decision-center-client-api.zip](../README.md#build-the-java-samples) file.
-Create a project in your favorite java development environment and import the java source file from [customvalueditor.zip](./customvalueditor.zip).
-Build and export the customvalueeditor.jar file.
-Using Eclipse, it's the right-click menu Export>Java>JAR file
+### 1) Prerequisites
 
-## Upload the customvalueditor.zip file
+Before you begin, ensure you have one of the following **Container Platform**: Docker 24.0.x or Kubernetes 1.27+.
 
-Create the businessvalueeditor.zip :
+### 2) Building the Decision Center extension JAR
 
-```bash
-zip -r businessvalueeditor.zip customvalueeditor.jar js/ web.xml
-```
+To use the sample in Decision Center, you need to build a JAR. 
 
-Upload customvalueditor.zip on the httpd file server
+   1. Retrieve ODM libraries:
 
-```bash
-curl -T businessvalueeditor.zip http://<fileserver-url>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<head>
-<title>201 Created</title>
-</head><body>
-<h1>Created</h1>
-<p>Resource /distrib-liberty.zip has been created.</p>
-</body></html>
-```
+      ODM libraries are required to compile the JAR. 
 
-## Instanciate the ODM Helm Chart
+      Download ODM libraries from Decision Center
 
-Follow the explanation on how to deploy the ODM Helm Chart according to your [platform](https://github.com/DecisionsDev/odm-docker-kubernetes/tree/master/platform)
+      - Navigate to the source directory of the GUI Customization sample:
 
-Add to your values.yaml the parameter allowing to download businessvalueeditor.zip
+      ```bash
+      cd decisioncenter/businessvalueeditor/businessvalueeditor-source
+      ```
 
-<!-- markdown-link-check-disable -->
-```
-decisionCenter:
-  downloadUrl:
-  - http://fileserver-apache.sample.svc.cluster.local:80/businessvalueeditor.zip
-```
+      - Download the following compressed file: `https://DC_HOST:DC_PORT/decisioncenter/assets/decision-center-client-api.zip`
 
-Or if it's using the command line : **--set decisionCenter.downloadUrl={"http://fileserver-apache.sample.svc.cluster.local:80/businessvalueeditor.zip"}**
-<!-- markdown-link-check-enable -->
+      - Then, run:
+      ```bash
+      unzip decision-center-client-api.zip -d "lib"
+      ```
 
-## Add the custom setting property in Decision Center
+   2. Build the JAR
 
-To activate the Business value editor, after login in Decision Center as an administrator, go in the menu "Administration>Settings>Custom Settings"
-Register a new setting named **decisioncenter.web.core.intelliruleEditor.sample.myeditor.editor** with the value **businessvalueeditor.OfferValueEditorProvider**
+      The instructions below enable to build the JAR using a Docker container featuring Maven and a JDK version 17. For ODM 8.12, you must use `maven:3.8.1-openjdk-11` instead and `maven:3.8-adoptopenjdk-8` for earlier releases.
 
-![Custom Settings](images/custom_settings.png)
+      Run the command below in the **decisioncenter/businessvalueeditor/businessvalueeditor-source** directory:
 
-## Test the sample
+         ```bash
+         docker run --rm --name my-maven-container \
+               -v "$(pwd)":/usr/src/sample \
+               -w /usr/src/sample \
+               maven:3.8.5-openjdk-17 \
+               mvn clean install
+         ```
 
-Load the [ValueEditorService.zip](./ValueEditorService.zip) Decision Service.
-Follow [Running this sample](https://www.ibm.com/docs/en/odm/9.0.0?topic=editor-custom-value-sample-details#businessconsolecustomvalueeditorsampledetails__rssamples.uss_rs_smp_tsauthoring.1025134__title__1) details to understand how to use the custom value editor.
+      The JAR is generated in the `target` directory and is named `businessvalueeditor-1.0.jar`.
 
-![Custom Value Editor](images/custom_value_editor.png)
+### 3) Instructions to use the sample in Decision Center
+
+Click one of the links below:
+   * In [Kubernetes](README-KUBERNETES.md).
+   * In [Docker](README-DOCKER.md). 

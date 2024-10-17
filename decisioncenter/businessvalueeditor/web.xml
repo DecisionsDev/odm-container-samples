@@ -1,3 +1,343 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+   Licensed Materials - Property of IBM
+   5655-Y31 5725-W47 5737-A28 5725-B69 5737-H06 5737-I23
+   Copyright IBM Corp. 2009, 2024 All Rights Reserved
+   US Government Users Restricted Rights - Use, duplication or
+   disclosure restricted by GSA ADP Schedule Contract with
+   IBM Corp.
+-->
+
+
+
+
+
+
+
+
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+		 version="3.0"
+		 metadata-complete="true">
+	<display-name>decisioncenter</display-name>
+	<description>Managing business rules with Decision Center Business Console</description>
+	
+	<!--  ================================================================= -->
+	<!--  C O N T E X T - P A R A M                                         -->
+	<!--  ================================================================= -->
+	<context-param>
+		<description>Modify the timeout value that is associated with transactions (in seconds)</description>
+		<param-name>ilog.rules.teamserver.transaction.timeout</param-name>
+		<param-value>600</param-value>
+	</context-param>
+	<context-param>
+		<description>
+			Define the path to the custom user configuration file to use to set up a ready-to-use Decision Center repository.
+			If not specify, the default decision center configuration file is provided for automatic setup.
+		</description>
+		<param-name>com.ibm.rules.decisioncenter.setup.overridden-configuration-file</param-name>
+		<param-value>./config/overridden-decisioncenter-configuration.properties</param-value>
+	</context-param>
+	<!-- The following context parameters are used to automatically set up the database	-->
+	<!-- at server launch time	-->
+	<context-param>
+		<description>
+			Define the path to the configuration file to use to set up a ready-to-use Decision Center repository.
+			If not specify, no automatic setup is provided
+		</description>
+		<param-name>com.ibm.rules.decisioncenter.setup.configuration-file</param-name>
+		<param-value>/config/decisioncenter-configuration.properties</param-value>
+	</context-param>
+	<context-param>
+		<description>
+			Host HTTP header protection configuration.
+			When enabled, please provide a list of trusted hosts (separated by semicolons).
+			Each host must be a valid regular expression.
+			Example: enableHostsWhitelist=true,hosts=host1.com;*.company.com;localhost:*
+			This parameter is also used for the logout redirect parameter
+			Although it is not recommended, you can add the scheme here like https://ibm.com or a wildcard *ibm.com 
+		</description>
+		<param-name>com.ibm.rules.decisioncenter.TRUSTED_HOSTS_CONFIGURATION</param-name>
+		<param-value>enableHostsWhitelist=false,hosts=ibm.com</param-value>
+	</context-param>
+	<!-- Uncomment to enable HSTS headers -->
+	<!--
+	<context-param>
+		<description>
+		</description>
+		<param-name>com.ibm.rules.decisioncenter.security.addStrictTransportSecurityHeader</param-name>
+		<param-value>max-age=31536000; includeSubDomains</param-value>
+	</context-param>
+	-->
+
+	<!--  ================================================================= -->
+	<!--  L I S T E N E R                                                   -->
+	<!--  ================================================================= -->
+	<listener>
+    	<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+  	</listener>
+
+	<!--  ================================================================= -->
+	<!--  S E R V L E T                                                     -->
+	<!--  ================================================================= -->
+
+	<!--
+	  Uncomment on JBoss
+	  On JBoss 6.4EAP, it seems required to declare dispatcher servlet in web.xml, even if the Application
+	  is started by Spring Boot via SpringBootServletInitializer...
+	-->
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value></param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>BRLEditorServlet</servlet-name>
+		<servlet-class>com.ibm.rules.decisioncenter.web.core.servlets.BRLEditorServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>RuleflowEditorServlet</servlet-name>
+		<servlet-class>com.ibm.rules.decisioncenter.web.core.servlets.RuleflowEditorServlet</servlet-class>
+	</servlet>
+    <servlet>
+        <servlet-name>QueryEditorServlet</servlet-name>
+        <servlet-class>com.ibm.rules.decisioncenter.web.core.servlets.QueryEditorServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MetricsEditorServlet</servlet-name>
+        <servlet-class>com.ibm.rules.decisioncenter.web.core.servlets.MetricsEditorServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>KpiEditorServlet</servlet-name>
+        <servlet-class>com.ibm.rules.decisioncenter.web.core.servlets.KpiEditorServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DtxEditorServlet</servlet-name>
+        <servlet-class>com.ibm.rules.decisioncenter.web.core.servlets.DtxEditorServlet</servlet-class>
+    </servlet>
+    <servlet>
+		<description>IlrSessionServlet</description>
+		<display-name>SessionServlet</display-name>
+		<servlet-name>SessionServlet</servlet-name>
+		<servlet-class>ilog.rules.teamserver.web.servlets.IlrSessionServlet</servlet-class>
+	</servlet>
+    <servlet>
+		<servlet-name>RtsSyncServlet</servlet-name>
+		<servlet-class>ilog.rules.teamserver.web.servlets.RtsSyncServlet</servlet-class>
+		<init-param>
+			<param-name>dataSource</param-name>
+			<param-value>jdbc/ilogDataSource</param-value>
+		</init-param>
+		<init-param>
+			<param-name>ruleProject</param-name>
+			<param-value>RuleProject</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<servlet-name>sessionExporter</servlet-name>
+		<servlet-class>ilog.rules.teamserver.web.servlets.IlrSessionRequestHandlerServlet</servlet-class>
+	</servlet>
+    <servlet>
+		<servlet-name>SQLReportServlet</servlet-name>
+		<servlet-class>com.ibm.rules.decisioncenter.web.core.servlets.SQLReportServlet</servlet-class>
+	</servlet>
+
+	
+	<!--  ================================================================= -->
+	<!--  S E R V L E T - M A P P I N G                                     -->
+	<!--  ================================================================= -->
+	<!--
+	  Uncomment on JBoss
+	  On JBoss 6.4EAP, it seems required to declare dispatcher servlet in web.xml, even if the Application
+	  is started by Spring Boot via SpringBootServletInitializer...
+	-->
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>BRLEditorServlet</servlet-name>
+		<url-pattern>/s/BRLEditor</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>BRLEditorServlet</servlet-name>
+		<url-pattern>/s/BRLEditor/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RuleflowEditorServlet</servlet-name>
+		<url-pattern>/s/RuleflowEditor</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RuleflowEditorServlet</servlet-name>
+		<url-pattern>/s/RuleflowEditor/*</url-pattern>
+	</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QueryEditorServlet</servlet-name>
+        <url-pattern>/s/QueryEditor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QueryEditorServlet</servlet-name>
+        <url-pattern>/s/QueryEditor/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MetricsEditorServlet</servlet-name>
+        <url-pattern>/s/MetricsEditor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MetricsEditorServlet</servlet-name>
+        <url-pattern>/s/MetricsEditor/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>KpiEditorServlet</servlet-name>
+        <url-pattern>/s/KpiEditor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>KpiEditorServlet</servlet-name>
+        <url-pattern>/s/KpiEditor/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DtxEditorServlet</servlet-name>
+        <url-pattern>/s/DtxEditor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DtxEditorServlet</servlet-name>
+        <url-pattern>/s/DtxEditor/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+		<servlet-name>SessionServlet</servlet-name>
+		<url-pattern>/servlet/SessionServlet</url-pattern>
+	</servlet-mapping>
+    <servlet-mapping>
+		<servlet-name>RtsSyncServlet</servlet-name>
+		<url-pattern>/rts-sync/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>sessionExporter</servlet-name>
+		<url-pattern>/remoting/session</url-pattern>
+	</servlet-mapping>
+    <servlet-mapping>
+		<servlet-name>SQLReportServlet</servlet-name>
+		<url-pattern>/s/SQLReport/*</url-pattern>
+	</servlet-mapping>
+
+    <!--  ================================================================= -->
+	<!--  E R R O R - P A G E                                               -->
+	<!--  ================================================================= -->
+
+	<error-page>
+		<error-code>400</error-code>
+		<location>/error400</location>
+	</error-page>
+	<error-page>
+		<error-code>403</error-code>
+		<location>/error403</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error404</location>
+	</error-page>
+	<error-page>
+		<error-code>408</error-code>
+		<location>/error408</location>
+	</error-page>
+
+	
+	<!--  ================================================================= -->
+	<!--  R E S O U R C E - R E F                                           -->
+	<!--  ================================================================= -->
+
+	<!-- Add your custom resource-ref here if needed -->
+
+	<!--  ================================================================= -->
+	<!--  S E C U R I T Y - C O N S T R A I N T                             -->
+	<!--  ================================================================= -->
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Entry points</web-resource-name>
+			<url-pattern>/t/*</url-pattern>
+			<url-pattern>/p/*</url-pattern>
+			<url-pattern>/s/*</url-pattern>
+			<url-pattern>/remoting/*</url-pattern>
+			<url-pattern>/rts-sync/*</url-pattern>
+			<url-pattern>/servlet/SessionServlet</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>rtsAdministrator</role-name>
+			<role-name>rtsConfigManager</role-name>
+			<role-name>rtsUser</role-name>
+			<role-name>*</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Diagnostic for ICP</web-resource-name>
+			<url-pattern>/healthCheck</url-pattern>
+		</web-resource-collection>
+	</security-constraint>
+
+	<!--  ================================================================= -->
+	<!--  L O G I N - C O N F I G                                           -->
+	<!--  ================================================================= -->
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/login</form-login-page>
+			<form-error-page>/login?error=1</form-error-page>
+		</form-login-config>
+	</login-config>
+	
+	<!--  ================================================================= -->
+	<!--  J S P - C O N F I G                                           -->
+	<!--  ================================================================= -->
+	<jsp-config>
+		<jsp-property-group>
+			<url-pattern>*.jsp</url-pattern>
+			<page-encoding>ISO-8859-1</page-encoding>
+		</jsp-property-group>
+	</jsp-config>
+
+	<!--  ================================================================= -->
+	<!--  S E C U R I T Y - R O L E                                         -->
+	<!--  ================================================================= -->
+	<security-role>
+		<role-name>rtsInstaller</role-name>
+	</security-role>
+	<security-role>
+		<role-name>rtsAdministrator</role-name>
+	</security-role>
+	<security-role>
+		<role-name>rtsUser</role-name>
+	</security-role>
+	<security-role>
+		<role-name>rtsConfigManager</role-name>
+	</security-role>
+	<!-- Add your custom security roles here if needed -->
+
+	<mime-mapping>
+		<extension>ico</extension>
+		<mime-type>image/x-icon</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>png</extension>
+		<mime-type>image/png</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>htc</extension>
+		<mime-type>text/x-component</mime-type>
+	</mime-mapping>
+	
+	<!--  ================================================================= -->
+	<!--  USER DEFINED EXTENSIONS                                           -->
+	<!--  ================================================================= -->
+	
+	<!-- Add your custom servlets here if needed -->
 <servlet>
    <servlet-name>SampleValueEditorServletName</servlet-name>
    <servlet-class>businessvalueeditor.SampleValueEditorServlet</servlet-class>
@@ -16,4 +356,5 @@
       <role-name>rtsConfigManager</role-name>
       <role-name>rtsUser</role-name>
    </auth-constraint>
-</security-constraint>
+</security-constraint>	
+</web-app>
