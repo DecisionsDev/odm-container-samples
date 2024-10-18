@@ -82,7 +82,7 @@ The class that implements the customization must be declared:
 ### 3.1 Using a custom setting
 1. Log in into the Business Console as an admin
 1. Navigate to Administration > Settings > Custom Settings
-1. Click the "Add custom setting" icon and set:
+1. Click the *Add custom setting* **icon** and set:
     - name = `teamserver.derbyDataBaseDomainProvider`
     - description = `derbyDataBaseDomainProvider`
     - type = `String`
