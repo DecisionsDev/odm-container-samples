@@ -18,10 +18,10 @@ To use the sample in Decision Center, you need to build a JAR for [Docker](READM
 
    1. Retrieve ODM libraries:
 
-      Navigate to the source directory of the GUI Customization sample:
+      Navigate to the source directory of the Custom Value Editor sample:
 
       ```
-      cd decisioncenter/guicustomization/guicustomization-source
+      cd decisioncenter/businessvalueeditor/businessvalueeditor-source
       ```
       
       ODM libraries are required to compile the JAR.
