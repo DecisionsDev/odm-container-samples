@@ -23,24 +23,27 @@ curl -T businessvalueeditor/businessvalueeditor-source/target/businessvalueedito
 ## 2. Deploying ODM
 
 Add the public IBM Helm charts repository:
-```bash
+
+```
 helm repo add ibmcharts https://raw.githubusercontent.com/IBM/charts/master/repo/ibm-helm
 helm repo update
 ````
 
 Check that you can access the ODM charts:
-```bash
+
+```
 helm search repo ibm-odm-prod
 ```
-```bash
+
+```
 NAME                        	CHART VERSION	APP VERSION	DESCRIPTION
 ibmcharts/ibm-odm-prod      	<version>     <version>  	IBM Operational Decision Manager  License By in...
 ```
 
-Create a file named `values.yaml`. This file will be used by the `helm install` command to specify the configuration parameters. 
+Create a file named **values.yaml**. This file will be used by the **helm install** command to specify the configuration parameters. 
 
-Add the lines below in `values.yaml` to let Decision Center download the customization zip file (replace `<FILESERVER_URL>` by the actual URL of the file server hosting the zip):
-```yaml
+Add the lines below in **values.yaml** to let Decision Center download the customization zip file (replace **<FILESERVER_URL>** by the actual URL of the file server hosting the zip):
+```
 decisionCenter:
   downloadUrl:
     - <FILESERVER_URL>/businessvalueeditor-1.0.zip
@@ -54,19 +57,20 @@ helm install guicustomization-sample ibmcharts/ibm-odm-prod -f values.yaml
 
 #  Using the Sample
 
-To activate the Custom Value Editor, after login in Decision Center as an administrator, go in the menu "Administration>Settings>Custom Settings"
-Register a new setting named **decisioncenter.web.core.intelliruleEditor.sample.myeditor.editor** keeping blank the **default value of the setting** field.
+To activate the Custom Value Editor, after login in Decision Center as an administrator :
+- Go in the menu **Administration>Settings>Custom Settings**
+- Register a new setting named **decisioncenter.web.core.intelliruleEditor.sample.myeditor.editor** keeping blank the **default value of the setting** field.
 
 ![Custom Settings](images/custom_settings_1.png)
 
-
-Set the value of **decisioncenter.web.core.intelliruleEditor.sample.myeditor.editor** to **businessvalueeditor.OfferValueEditorProvider**
-
+- Set the value of **decisioncenter.web.core.intelliruleEditor.sample.myeditor.editor** to **businessvalueeditor.OfferValueEditorProvider**
 
 ![Custom Settings](images/custom_settings_2.png)
 
 Load the [ValueEditorService.zip](./projects/ValueEditorService.zip) Decision Service.
 
 Follow [Running this sample](https://www.ibm.com/docs/en/odm/9.0.0?topic=editor-custom-value-sample-details#businessconsolecustomvalueeditorsampledetails__rssamples.uss_rs_smp_tsauthoring.1025134__title__1) details to understand how to use the custom value editor.
+
+Below is the Custom Value Editor display inside the Business Console :
 
 ![Custom Value Editor](images/custom_value_editor.png)
