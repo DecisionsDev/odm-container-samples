@@ -54,7 +54,9 @@ Before you begin, ensure you have one of the following **Container Platform**: D
 
 ### 2) Configuring how to connect to the database (kubernetes only)
 
-If you deploy ODM on kubernetes only to test the sample, it is best to use the [PostgreSQL internal database](https://www.ibm.com/docs/en/SSQP76_9.0.0/com.ibm.odm.kube/topics/con_internal_db.html) to store the dynamic domain data (along with Decision Center data).
+If you deploy ODM on Docker, there is nothing to configure.
+
+If you deploy ODM on kubernetes, and for the sole purpose of testing the sample, it is best to use the [PostgreSQL internal database](https://www.ibm.com/docs/en/SSQP76_9.0.0/com.ibm.odm.kube/topics/con_internal_db.html) to store the dynamic domain data (along with Decision Center data).
 
 In that case, and provided ODM is deployed in a Helm Release named `myodmsample`, you do not need to modify [database.properties](src/ilog.rules.studio.samples.bomdomainpopulate/src/main/resources/data/database.properties).
 Edit that file otherwise.
@@ -132,5 +134,5 @@ The JAR is generated in the `target` directory and is named `bomdomainpopulate-1
 ### 4) Instructions to use the sample in Decision Center
 
 Click one of the links below:
-   * In [Kubernetes](README-KUBERNETES.md).
-   * In [Docker](README-DOCKER.md). 
+   * On [Kubernetes](README-KUBERNETES.md).
+   * On [Docker](README-DOCKER.md). 
