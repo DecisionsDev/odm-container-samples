@@ -29,10 +29,25 @@
                                     <classpath>
                                         <fileset dir="${project.basedir}/lib" includes="**/*.jar"/>    
                                     </classpath>
-                                </javac>                 
+                                </javac>
                             </tasks>
 			 </configuration>
                     </execution>
+		    <execution>
+			<id>post-package</id>
+			<phase>pre-integration-test</phase>
+               	        <goals>
+                            <goal>run</goal>
+    			</goals>
+			<configuration>
+			    <tasks>
+				<zip destfile="${project.basedir}/target/businessvalueeditor-1.0.zip">
+                                	<fileset dir="${project.basedir}/target" includes="businessvalueeditor-1.0.jar" />
+                                	<fileset dir="${project.basedir}" includes="web.xml" />
+                               	</zip>
+        		    </tasks>
+    			 </configuration>
+		     </execution>
                 </executions>
             </plugin>
 
