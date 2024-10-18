@@ -52,9 +52,9 @@ To use the sample in Rule Designer, you need to build an Eclipse plugin.
 
 Before you begin, ensure you have one of the following **Container Platform**: Docker 24.0.x or Kubernetes 1.27+.
 
-### 2) Configuring how to connect to the database
+### 2) Configuring how to connect to the database (kubernetes only)
 
-If you deploy ODM only to test the sample, it is best to use the [PostgreSQL internal database](https://www.ibm.com/docs/en/SSQP76_9.0.0/com.ibm.odm.kube/topics/con_internal_db.html) to store the dynamic domain data (along with Decision Center data).
+If you deploy ODM on kubernetes only to test the sample, it is best to use the [PostgreSQL internal database](https://www.ibm.com/docs/en/SSQP76_9.0.0/com.ibm.odm.kube/topics/con_internal_db.html) to store the dynamic domain data (along with Decision Center data).
 
 In that case, and provided ODM is deployed in a Helm Release named `myodmsample`, you do not need to modify [database.properties](src/ilog.rules.studio.samples.bomdomainpopulate/src/main/resources/data/database.properties).
 Edit that file otherwise.
