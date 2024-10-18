@@ -47,7 +47,7 @@ Before following the steps below, make sure you have built the customization JAR
 1. Log in into the [Business Console](http://localhost:9060/decisioncenter).
     - user = `rtsAdmin`
     - password = `rtsAdmin`
-1. Navigate to the **Administration** tab. In the **Settings** sub-tab, click **Custom Setting** and click the *Add custom setting* **icon** and set:
+1. Navigate to the **Administration** tab. In the **Settings** sub-tab, click **Custom Settings** and click the *Add custom setting* **icon** and set:
     - name = `teamserver.derbyDataBaseDomainProvider`
     - description = `derbyDataBaseDomainProvider`
     - type = `String`
