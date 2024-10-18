@@ -20,38 +20,38 @@ To use the sample in Decision Center, you need to build a JAR.
 
       Navigate to the source directory of the GUI Customization sample:
 
-      ```bash
+      ```
       cd decisioncenter/guicustomization/guicustomization-source
       ```
-
+      
       ODM libraries are required to compile the JAR.
-      To get the ODM libraries, you need an access to a Decision Center instance.
-      Then, download the file **https://DC_HOST:DC_PORT/decisioncenter/assets/decision-center-client-api.zip**
-
-      > [!NOTE]
-      > If you don't have a running Decision Center, install it using the ODM Developer public docker image, by running :
-      > ```bash
-      > docker-compose -f compose-odm-dev.yml up odm
-      > ```
-
+      To get the ODM libraries, you need an access to a running Decision Center instance.      
       Download the **decision-center-client-api.zip** file :
 
-      ```bash
-      wget http://localhost:9060/decisioncenter/assets/decision-center-client-api.zip
+      ```
+      wget https://DC_HOST:DC_PORT/decisioncenter/assets/decision-center-client-api.zip --no-check-certificate
       ```
 
       Then, unzip decision-center-client-api.zip on the **lib** directory :
-      ```bash
+      ```
       unzip decision-center-client-api.zip -d "lib"
       ```
 
-      > [!NOTE]
-      > Uninstall the ODM for Developer instance to avoid a port usage conflict if you continue this tutorial on [Docker](README-DOCKER.md) :
-      > ```bash
-      > docker-compose -f compose-odm-dev.yml up down
-      > ```
+> [!NOTE]
+> If you don't have a running Decision Center, install it using the ODM for Developer public docker image, by running :
+> ```
+> docker-compose -f compose-odm-dev.yml up odm
+> ```
+> Then download the **decision-center-client-api.zip** file :
+> ```
+> wget http://localhost:9060/decisioncenter/assets/decision-center-client-api.zip
+> ```
+> Uninstall the ODM for Developer instance to avoid a port usage conflict if you continue this tutorial on [Docker](README-DOCKER.md) :
+> ```
+> docker-compose -f compose-odm-dev.yml up down
+> ```
 
-   2. Build the JAR
+   3. Build the JAR
 
       The instructions below enable to build the JAR using a Docker container featuring Maven and a JDK version 17. For ODM 8.12, you must use `maven:3.8.1-openjdk-11` instead and `maven:3.8-adoptopenjdk-8` for earlier releases.
 
