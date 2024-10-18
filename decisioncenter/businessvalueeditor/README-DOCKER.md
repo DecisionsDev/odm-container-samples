@@ -11,7 +11,7 @@ Before following the steps below, make sure you have built the images as explain
 
    Run ODM and Notifiers  docker images
    ```bash
-   docker-compose -f compose-odm-dev.yml up
+   docker-compose -f compose-odm-dev.yml up odm-with-custom-value-editor
    ```
 
 ###  Using the Sample
