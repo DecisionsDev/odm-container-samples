@@ -57,6 +57,8 @@ helm install guicustomization-sample ibmcharts/ibm-odm-prod -f values.yaml
 
 #  Using the Sample
 
+Log in the Decision Center Business Console
+
 To activate the Custom Value Editor, after login in Decision Center as an administrator :
 - Go in the menu **Administration>Settings>Custom Settings**
 - Register a new setting named **decisioncenter.web.core.intelliruleEditor.sample.myeditor.editor** keeping blank the **default value of the setting** field.
