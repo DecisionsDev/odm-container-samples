@@ -29,6 +29,10 @@ Each sample is housed in a dedicated subfolder, containing all the required sour
 
 ### Decision Center Samples
 
+#### Authoring extensions for Decision Center
+
+These samples demonstrate how to customize Decision Center editing features.
+
 - **[Custom Value Editor](decisioncenter/businessvalueeditor/README.md)**  
   Demonstrates how to integrate a custom value editor within the IntelliRule editor of the Business Console. Key features include:
   - Implementing a custom value editor.
@@ -46,6 +50,10 @@ Each sample is housed in a dedicated subfolder, containing all the required sour
   - Defining a Spring controller to retrieve server-side data.
   - Adding custom buttons to the toolbar and context-sensitive areas.
   - Creating new tabs in the console, tailored to user groups.
+
+#### Business rule management extensions for Decision Center
+
+These samples demonstrate how to customize various business rule management functions in Decision Center.
 
 - **[Webhook Notification Setup](decisioncenter/webhooknotifier/README.md)**  
   Demonstrates how to configure webhooks to send notifications from ODM to external systems. This sample includes:
