@@ -4,6 +4,10 @@ This directory contains various samples that demonstrate how to customize and ex
 
 ## Available Samples
 
+### Authoring extensions for Decision Center
+
+These samples demonstrate how to customize Decision Center editing features.
+
 1. **[Custom Value Editor](./businessvalueeditor/README.md)**  
    Demonstrates how to integrate a custom value editor into the IntelliRule editor in the Decision Center Business Console.  
    Key features:
@@ -23,7 +27,11 @@ This directory contains various samples that demonstrate how to customize and ex
    - Add custom buttons to the toolbar and specific contexts.
    - Define new tabs and retrieve server-side data using a Spring controller.
 
-4. **[Webhook Notification Setup](./webhooknotifier/README.md)**  
+### Business rule management extensions for Decision Center
+
+These samples demonstrate how to customize various business rule management functions in Decision Center.
+
+1. **[Webhook Notification Setup](./webhooknotifier/README.md)**  
    Provides a way to send notifications from ODM Decision Center to external systems using webhooks.  
    Key features:
    - Configure the Webhook Notifier to send notifications to a Slack channel or a Node.js server.
