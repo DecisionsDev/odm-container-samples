@@ -29,25 +29,25 @@ Each sample is housed in a dedicated subfolder, containing all the required sour
 
 ### Decision Center Samples
 
-- **[Custom Value Editor](/decisioncenter/businessvalueeditor/README.md)**  
+- **[Custom Value Editor](decisioncenter/businessvalueeditor/README.md)**  
   Demonstrates how to integrate a custom value editor within the IntelliRule editor of the Business Console. Key features include:
   - Implementing a custom value editor.
   - Seamless integration with the Business Console.
 
-- **[BOM Dynamic Domain](/decisioncenter/dynamicdomain/README.md)**  
+- **[BOM Dynamic Domain](decisioncenter/dynamicdomain/README.md)**  
   Illustrates how to manage dynamic domain values stored in a database. In this sample, you will:
   - Build and deploy a customization to handle dynamic domains.
   - Deploy Decision Center with ODM using this extension.
   - Store and update dynamic domain values in a database.
   - Reflect dynamic domain changes in rule projects.
 
-- **[GUI Customization](/decisioncenter/guicustomization/README.md)**  
+- **[GUI Customization](decisioncenter/guicustomization/README.md)**  
   Shows how to customize the Business Console interface based on user groups. This sample includes:
   - Defining a Spring controller to retrieve server-side data.
   - Adding custom buttons to the toolbar and context-sensitive areas.
   - Creating new tabs in the console, tailored to user groups.
 
-- **[Webhook Notification Setup](/decisioncenter/webhooknotifier/README.md)**  
+- **[Webhook Notification Setup](decisioncenter/webhooknotifier/README.md)**  
   Demonstrates how to configure webhooks to send notifications from ODM to external systems. This sample includes:
   - Setting up the Webhook Notifier to send notifications to a Slack channel or a Node.js server.
   - Recording and managing notifications in external systems.
