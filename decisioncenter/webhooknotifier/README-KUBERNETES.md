@@ -22,8 +22,6 @@ Also, before following the steps below, make sure you have built the images as e
 
      where `$REGISTRY_HOST` should be set to the hostname of the Docker registry optionally followed by the relevant repository depending on your Docker registry.
 
-     For instance $REGISTRY_HOST has the following format for an Openshift registry: `default-route-openshift-image-registry.apps.<cluster>/<namespace>`.
-
 2. Start one pod for each image
 
      Set the current context to the namespace the Decision Center pods are running, and then run:
