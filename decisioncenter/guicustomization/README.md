@@ -48,12 +48,12 @@ To use the sample in Decision Center, you need to build a JAR.
 > ```
 > Uninstall the ODM for Developer instance to avoid a port usage conflict if you continue this tutorial on [Docker](README-DOCKER.md) :
 > ```
-> docker-compose -f compose-odm-dev.yml up down
+> docker-compose -f compose-odm-dev.yml down
 > ```
 
    2. Build the JAR
 
-      The instructions below enable to build the JAR using a Docker container featuring Maven and a JDK version 17. For ODM 8.12, you must use `maven:3.8.1-openjdk-11` instead and `maven:3.8-adoptopenjdk-8` for earlier releases.
+      The instructions below enable to build the JAR using a Docker container featuring Maven and a JDK version 17.
 
       Run the command below in the **decisioncenter/guicustomization/guicustomization-source** directory:
 
