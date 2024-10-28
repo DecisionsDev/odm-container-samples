@@ -6,7 +6,7 @@ This sample demonstrates how to use webhooks within the IBM Operational Decision
 - When a deployment ends, you are notified of its status: completed, failed, or aborted.
 - When a user creates or updates a rule or a decision table.
 
-Webhooks allow for real-time data sharing and integration, making it easier to trigger actions or workflows in other applications.
+Webhooks allows for real-time data sharing and integration, making it easier to trigger actions or workflows in other applications.
 
 In this sample, you will learn how to configure and use the Webhook Notifier to send notifications:
 - either to a Slack channel,
