@@ -27,11 +27,11 @@ To use the sample in Rule Designer, you need to build an Eclipse plugin.
 - In Eclipse, make sure that,
     - **Rule Designer** is installed (if not read these [instructions](https://github.com/DecisionsDev/ruledesigner))
     - **PDE** (Plugin Development Environment) is installed
-- Run **Import > General > Existing Projects into Workspace**
-- Select the folder `decisioncenter/dynamicdomain/src/ilog.rules.studio.samples.bomdomainpopulate` and click **Next**
+- Click **Import > General > Existing Projects into Workspace**
+- Select the folder `decisioncenter/dynamicdomain/src/ilog.rules.studio.samples.bomdomainpopulate` 
 - Tick the project `ilog.rules.studio.samples.bomdomainpopulate` and click **Finish**
 - Right-click the `build-bomdomainepopulate.xml` file and click **Run as > Ant Build**. A file named `bomdomainpopulate.jar` gets generated at the root of the project.
-- Run **Export > Plug-in Development > Deployable Plug-ins and fragments** to build the plugin. Click **Next**, choose the destination directory, and click **Finish**. A file named `ilog.rules.studio.samples.bomdomainpopulate_VERSION.jar` gets generated in the chosen directory (in the `plugins` sub-directory).
+- Click **Export > Plug-in Development > Deployable Plug-ins and fragments** to build the plugin. Click **Next**, choose the destination directory, and click **Finish**. A file named `ilog.rules.studio.samples.bomdomainpopulate_VERSION.jar` gets generated in the chosen directory (in the `plugins` sub-directory).
 - Copy the plugin into `<ECLIPSE_HOME>/dropins` to deploy it.
 - Restart Eclipse.
 
@@ -39,7 +39,7 @@ To use the sample in Rule Designer, you need to build an Eclipse plugin.
 
 ### 2) Instructions to use the sample in Rule Designer
 
-- Import the projects below located in the `projects/` directory:
+- Import the projects below located in the `decisioncenter/dynamicdomain/projects/` directory:
   - bomdomainpopulate-bd-helper
   - bomdomainpopulate-rules
   - bomdomainpopulate-xom
