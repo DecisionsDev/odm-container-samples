@@ -48,7 +48,7 @@ To use the sample in Decision Center, you need to build a JAR for [Docker](READM
 > ```
 > Uninstall the ODM for Developer instance to avoid a port usage conflict if you continue this tutorial on [Docker](README-DOCKER.md) :
 > ```
-> docker-compose -f compose-odm-dev.yml up down
+> docker-compose -f compose-odm-dev.yml down
 > ```
 
    2. Build the JAR
