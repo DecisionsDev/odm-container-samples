@@ -1,7 +1,7 @@
 # Introduction
 
 This README explains how to run the Custom Value Editor sample in Kubernetes.
-Before following the steps below, make sure you have built the images as explained in [README.md](README.md).
+Before following the steps below, make sure you have built the Decision Center extension as explained in [README.md](README.md).
 
 #  Configuring the sample in Kubernetes
 
