@@ -17,7 +17,7 @@ However you must use the **legacy way** if you deploy a version of ODM older tha
 
 Upload the guicustomization-1.0.jar file on the file server :
 ```
-curl -T guicustomization/guicustomization-source/target/guicustomization-1.0.jar $FILESERVER_URL
+curl -T target/guicustomization-1.0.jar $FILESERVER_URL
 ```
 
 ## 2. Deploying ODM
