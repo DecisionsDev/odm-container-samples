@@ -66,6 +66,8 @@ To activate the Custom Value Editor, after login in Decision Center as an admini
 
 ![Custom Settings](images/custom_settings_2.png)
 
+Load the [LoanValidationService.zip](./projects/LoanValidationService.zip) Decision Service.
+
 Follow [Running this sample](https://www.ibm.com/docs/en/odm/9.0.0?topic=customization-gui-sample-details#descriptiveTopic1297785707571__rssamples.uss_rs_smp_tsauthoring.1028561__title__1) details to understand how to use some custom widgets by drilling in the LoanValidationService Decision Service.
 
 ![Business Console Custom GUI](images/custom_gui.png)
