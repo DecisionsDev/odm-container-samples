@@ -231,8 +231,11 @@ public class DataBaseDomainHelper {
 		// BomdomainpopulatePlugin can only be used in Eclipse
 		// ignore the exception otherwise
 		try {
-			BomdomainpopulatePlugin.log(e);
-		} catch (Exception e1) {
+			Class<?> clazz = Class.forName("ilog.rules.studio.samples.bomdomainpopulate.BomdomainpopulatePlugin");
+			java.lang.reflect.Method method = clazz.getMethod("log", Throwable.class);
+			method.invoke(e);
+		}
+		catch (Exception e1) {		
 		}
 	}
 }
