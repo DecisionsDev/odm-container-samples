@@ -2,15 +2,13 @@
 
 ## Introduction
 
-This sample shows you how to customize the Business console.
-
-It is the ODM on k8s adaptation of the ODM on premises [GUI customization sample](https://www.ibm.com/docs/en/odm/9.0.0?topic=center-gui-customization).
+This sample shows you how to customize the Business console using [GUI customization sample](https://www.ibm.com/docs/en/odm/9.0.0?topic=center-gui-customization) in a container environment.
 
 ## Running this sample in Decision Center
 
 ### 1) Prerequisites
 
-Before you begin, ensure you have one of the following **Container Platform**: Docker 24.0.x or Kubernetes 1.27+.
+Before you begin, ensure you have at least Docker 24.0.x (and optionally Kubernetes 1.25+). 
 
 ### 2) Building the Decision Center extension JAR
 
@@ -19,42 +17,34 @@ To use the sample in Decision Center, you need to build a JAR.
    1. Retrieve ODM libraries:
 
       Navigate to the source directory of the GUI Customization sample:
-
       ```
       cd decisioncenter/guicustomization/guicustomization-source
       ```
       
-      ODM libraries are required to compile the JAR.
-      To get the ODM libraries, you need an access to a running Decision Center instance.      
-      Download the **decision-center-client-api.zip** file :
-
+      Install ODM for Developer :
       ```
-      wget https://DC_HOST:DC_PORT/decisioncenter/assets/decision-center-client-api.zip --no-check-certificate
+      docker-compose -f compose-odm-dev.yml up odm &
+      ```
+
+      Download the **decision-center-client-api.zip** file :
+      ```
+      wget http://localhost:9060/decisioncenter/assets/decision-center-client-api.zip
       ```
 
       Then, unzip decision-center-client-api.zip on the **lib** directory :
       ```
       unzip decision-center-client-api.zip -d "lib"
       ```
-
-> [!NOTE]
-> If you don't have a running Decision Center, install it using the ODM for Developer public docker image, by running :
-> ```
-> docker-compose -f compose-odm-dev.yml up odm
-> ```
-> Then download the **decision-center-client-api.zip** file :
-> ```
-> wget http://localhost:9060/decisioncenter/assets/decision-center-client-api.zip
-> ```
-> Uninstall the ODM for Developer instance to avoid a port usage conflict if you continue this tutorial on [Docker](README-DOCKER.md) :
-> ```
-> docker-compose -f compose-odm-dev.yml up down
-> ```
+      
+      Uninstall the ODM for Developer instance to avoid a port usage conflict if you continue this tutorial on [Docker](README-DOCKER.md) :
+      ```
+      docker-compose -f compose-odm-dev.yml up down
+      ```
 
    2. Build the JAR
 
-      The instructions below enable to build the JAR using a Docker container featuring Maven and a JDK version 17. For ODM 8.12, you must use `maven:3.8.1-openjdk-11` instead and `maven:3.8-adoptopenjdk-8` for earlier releases.
-
+      The instructions below enable to build the JAR using a Docker container featuring Maven and a JDK version 17.
+      
       Run the command below in the **decisioncenter/guicustomization/guicustomization-source** directory:
 
          ```bash
@@ -65,7 +55,7 @@ To use the sample in Decision Center, you need to build a JAR.
                mvn clean install
          ```
 
-      The JAR is generated in the **target** directory and is named **guicustomization-1.0.jar**.
+      The **guicustomization-1.0.jar** file is generated in the **target** directory.
 
 ### 3) Instructions to use the sample in Decision Center
 
