@@ -126,7 +126,7 @@ Below is an example scenario that illustrates the process:
      - Enter a name for the snapshot: `mysnapshot`
      - Click **Create**
 
-#### Viewing the notification file Output
+#### Viewing the notification file output
 
 After creating this snapshot, a notification will be triggered. 
 
@@ -181,7 +181,7 @@ The Slack webhook notifier forwards the notifications to Slack and the log files
 
 #### Viewing the Slack notification output
 
-If you have configured the Slack notification, a message with the following content should be displayed in the webhooknotifier-slack logs:
+If you have configured the Slack notification, a message with the following content should be displayed in the log of the webhooknotifier-slack pod:
 ```log
 slack-1    | {
 slack-1    |   "version": "1.0",
