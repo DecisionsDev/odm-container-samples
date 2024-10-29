@@ -2,9 +2,7 @@
 
 ## Introduction
 
-This sample shows you how to customize the Business console.
-
-It is the ODM on k8s adaptation of the ODM on premises [GUI customization sample](https://www.ibm.com/docs/en/odm/9.0.0?topic=center-gui-customization).
+This sample shows you how to customize the Business console following the [GUI customization sample](https://www.ibm.com/docs/en/odm/9.0.0?topic=center-gui-customization) in a container context.
 
 ## Running this sample in Decision Center
 
@@ -25,7 +23,7 @@ To use the sample in Decision Center, you need to build a JAR.
       
       Install the ODM for Developer docker image :
       ```
-      docker-compose -f compose-odm-dev.yml up odm
+      docker-compose -f ../compose-odm-dev.yml up odm &
       ```
       
       Download the **decision-center-client-api.zip** file :
@@ -40,7 +38,7 @@ To use the sample in Decision Center, you need to build a JAR.
 
       Uninstall the ODM for Developer instance to avoid a port usage conflict if you continue this tutorial on [Docker](README-DOCKER.md) :
       ```
-      docker-compose -f compose-odm-dev.yml down
+      docker-compose -f ../compose-odm-dev.yml down
       ```
 
    2. Build the JAR
