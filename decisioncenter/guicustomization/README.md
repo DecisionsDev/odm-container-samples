@@ -18,38 +18,30 @@ To use the sample in Decision Center, you need to build a JAR.
 
    1. Retrieve ODM libraries:
 
-      Navigate to the source directory of the GUI Customization sample:
-
+      Navigate to the source directory of the GUI Customization sample :
       ```
       cd decisioncenter/guicustomization/guicustomization-source
       ```
       
-      ODM libraries are required to compile the JAR.
-      To get the ODM libraries, you need an access to a running Decision Center instance.      
+      Install the ODM for Developer docker image :
+      ```
+      docker-compose -f compose-odm-dev.yml up odm
+      ```
+      
       Download the **decision-center-client-api.zip** file :
-
       ```
-      wget https://DC_HOST:DC_PORT/decisioncenter/assets/decision-center-client-api.zip --no-check-certificate
+      wget http://localhost:9060/decisioncenter/assets/decision-center-client-api.zip
       ```
 
-      Then, unzip decision-center-client-api.zip on the **lib** directory :
+      Unzip decision-center-client-api.zip on the **lib** directory :
       ```
       unzip decision-center-client-api.zip -d "lib"
       ```
 
-> [!NOTE]
-> If you don't have a running Decision Center, install it using the ODM for Developer public docker image, by running :
-> ```
-> docker-compose -f compose-odm-dev.yml up odm
-> ```
-> Then download the **decision-center-client-api.zip** file :
-> ```
-> wget http://localhost:9060/decisioncenter/assets/decision-center-client-api.zip
-> ```
-> Uninstall the ODM for Developer instance to avoid a port usage conflict if you continue this tutorial on [Docker](README-DOCKER.md) :
-> ```
-> docker-compose -f compose-odm-dev.yml down
-> ```
+      Uninstall the ODM for Developer instance to avoid a port usage conflict if you continue this tutorial on [Docker](README-DOCKER.md) :
+      ```
+      docker-compose -f compose-odm-dev.yml down
+      ```
 
    2. Build the JAR
 
