@@ -57,7 +57,7 @@ To use the sample in Decision Center, you need to build a JAR.
                mvn clean install
          ```
 
-      The JAR is generated in the **target** directory and is named **guicustomization-1.0.jar**.
+      The **guicustomization-1.0.jar** file is generated in the **target** directory.
 
 ### 3) Instructions to use the sample in Decision Center
 
