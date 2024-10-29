@@ -11,18 +11,18 @@ Before following the steps below, make sure you have built the images as explain
 
    Run ODM and Notifiers  docker images
    ```bash
-   docker-compose -f compose-odm-dev.yml up odm-with-gui-customization
+   docker-compose -f compose-odm-dev.yml up odm-with-gui-customization &
    ```
 
 ###  Using the Sample
 
-Access Decision Center using the URL **http://localhost:9060**
+**Log in** to the Business Console at [http://localhost:9060/decisioncenter](http://localhost:9060/decisioncenter) using the credentials:  
+   - **Username**: `Paul`  
+   - **Password**: `Paul`
 
-Click on the link **Decision Center Business Console**
+Load the [LoanValidationService.zip](./projects/LoanValidationService.zip) Decision Service.
 
-Log in with odmAdmin/odmAdmin
-
-To activate the Custom Value Editor, after login in Decision Center as an administrator :
+To activate the Custom Value Editor, after login in Decision Center :
 - Go in the menu **Administration>Settings>Custom Settings**
 - Register a new setting named **decisioncenter.web.core.extensions.entrypoints** keeping blank the **default value of the setting** field.
 
@@ -32,7 +32,51 @@ To activate the Custom Value Editor, after login in Decision Center as an admini
 
 ![Custom Settings](images/custom_settings_2.png)
 
-Follow [Running this sample](https://www.ibm.com/docs/en/odm/9.0.0?topic=customization-gui-sample-details#descriptiveTopic1297785707571__rssamples.uss_rs_smp_tsauthoring.1028561__title__1) details to understand how to use some custom widgets by drilling in the LoanValidationService Decision Service.
+#### To see the customization for an administrator:
+
+Log in to the Business console by using **Paul** as the username and password.
+
+Open the **Library** tab. Click the **Loan Validation Service** box anywhere but the name, and select the **main** branch.
+
+Click the new button **My Admin Button**. A dialog displays metrics on the decision service.
+
+Click the new tab **My Admin Tab**. The tab displays the same metrics on the decision service.
+
+Click the **Decision Artifacts** tab. Expand the **Loan Validation Scoring computation** package, and edit the rule **neverBankruptcy** (accept any default settings if prompted).
+
+Click the button **My Info**. A dialog displays information on the rule.
+
+Close the dialog and cancel the editing session. Click **main** in the breadcrumbs.
+
+Click the **Decision Artifacts** tab and make sure that the operations are displayed. To display them, click **Types** and select **Operations**.
+
+Expand the **Operations** folder under **Loan Validation Scoring** to edit the scoring operation.
+
+Click the button **My Operation Info**. A dialog displays information on the operation.
+
+Close the dialog, and cancel the editing session. Click **main** in the breadcrumbs.
+
+Click the tab **Deployments** and edit the **test deployment configuration**.
+
+Click the **Targets** tab and select the **Decision Service Execution server**. Save the test deployment configuration.
+
+Click the name of the test deployment configuration.
+
+Click the **Custom Deploy** button in the toolbar. A dialog shows the status of the deployment.
+
+Close the dialog and log out of the Business console.
+
+#### To see the customization for a non-administrative user:
+
+Log in to the Business console by using **Bea** as the username and password.
+
+Open the **Library** tab. Click the **Loan Validation Service** box anywhere but the name, and then select the main branch.
+
+Click the new button **My Button**. A dialog displays some metrics on the decision service. The dialog content is different from the content that is provided for the administrator.
+
+Close the dialog and then click the new tab **My Tab**. The tab displays the same metrics on the decision service. The tab content is different from the content that is provided for the administrator.
+
+Log out of the Business console.
 
 ![Business Console Custom GUI](images/custom_gui.png)
 
