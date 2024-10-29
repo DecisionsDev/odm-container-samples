@@ -17,10 +17,11 @@ services:
     memswap_limit: 4G
     user: "1001:0"
     environment:
-    - SAMPLE=true
     - LICENSE=accept
     ports:
     - 9060:9060
     - 9453:9453
     volumes:
-    - $PWD/target/guicustomization-1.0.jar:/config/download/guicustomization-1.0.jar 
+    - $PWD/target/guicustomization-1.0.jar:/config/download/guicustomization-1.0.jar
+    - $PWD/group-security-configurations.xml:/config/apps/decisioncenter.war/WEB-INF/classes/config/group-security-configurations.xml
+    - $PWD/webSecurity.xml:/config/webSecurity.xml 
