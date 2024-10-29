@@ -60,9 +60,11 @@ Below is an example scenario that illustrates the process:
      - Enter a name for the snapshot: `mysnapshot`
      - Click **Create**
 
-#### Viewing Notification Output
+#### Viewing the notification file Output
 
-After creating this snapshot, a notification will be triggered. To view the content of the generated log file, run the following command:
+After creating this snapshot, a notification will be triggered. 
+
+To view the content of the generated log file, run the following command:
 
 ```shell
 docker exec -ti <webhooknotifier-logfile-container-id> sh -c 'cat /app/results/default.txt'
@@ -104,6 +106,38 @@ The snapshot creation triggers a webhook notification with the following sample 
 }
 ```
 
+### Viewing the Slack notification output
+
+If you have configured the Slack notification, a message with the following content should be displayed in the Docker Compose window:
+```log
+slack-1    | {
+slack-1    |   "version": "1.0",
+slack-1    |   "id": "a1039496-4add-40d5-b36f-558f6db5438f",
+slack-1    |   "author": "odmAdmin",
+slack-1    |   "date": 1730208680316,
+slack-1    |   "type": "SnapshotCreated",
+slack-1    |   "content": [
+slack-1    |     {
+slack-1    |       "id": "c6d806d7-f569-44a4-add1-f2ab46f2bd9a",
+slack-1    |       "internalId": "brm.Snapshot:71:71",
+slack-1    |       "name": "mysnapshot",
+slack-1    |       "createdBy": "odmAdmin",
+slack-1    |       "createdOn": 1730208680000,
+slack-1    |       "lastchangedBy": "odmAdmin",
+slack-1    |       "lastChangedOn": 1730208680000,
+slack-1    |       "parentId": "1558f25b-daa6-4982-8b0b-48a388c7c202",
+slack-1    |       "documentation": "",
+slack-1    |       "buildMode": "DecisionEngine",
+slack-1    |       "initial": false,
+slack-1    |       "kind": "StandardSnapshot"
+slack-1    |     }
+slack-1    |   ],
+slack-1    |   "details": [
+slack-1    |     {
+slack-1    |       "targetURL": "http://172.18.0.4:9060/decisioncenter/t/library#overviewsnapshot?id=brm.Snapshot%3A71%3A71&datasource=jdbc%2FilogDataSource&baselineId=brm.Snapshot%3A71%3A71"
+slack-1    |     }
+slack-1    |   ],
+```
 
 ### Stopping the Sample
 

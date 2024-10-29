@@ -28,12 +28,12 @@ This NodeJS sample code will be packaged in two docker images.
         ```bash
         cd decisioncenter/webhooknotifier
         ```
-
    2. Edit the [endPoints.json](./slack/endPoints.json) file to set the URL of your Slack channel and the token to use for authentication. You can skip this step if you do not want to use Slack and only want to use the example based on notifications saved into files.
    3. Build the docker images
         ```bash
         docker-compose build
         ```
+> Note: The docker-compose build command will produce images based on your local machine’s architecture. If you plan to deploy this sample on a Kubernetes cluster, ensure the target environment uses the same architecture (e.g., x86_64 vs. arm64) to avoid compatibility issues. You may also need to specify a platform explicitly if building for a different architecture.
 
 ### Run the sample
 
