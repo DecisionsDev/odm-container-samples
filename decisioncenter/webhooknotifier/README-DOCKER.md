@@ -19,7 +19,7 @@ Before following the steps below, make sure you have built the images as explain
    1. For the File Notifier:
    ```shell
     curl -X 'PUT' \
-    'http://localhost:9060/decisioncenter-api/v1/webhook/notify?url=http%3A%2F%2Flogfile%3A3000%2Fprint' \
+    'http://localhost:9060/decisioncenter-api/v1/webhook/notify?url=http%3A%2F%2Flogifle%3A3000%2Fprint' \
     -H 'accept: */*' \
     -H 'Content-Type: application/json' \
     -d 'null' \

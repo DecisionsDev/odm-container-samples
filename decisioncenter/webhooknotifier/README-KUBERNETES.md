@@ -13,7 +13,7 @@ Also, before following the steps below, make sure you have built the images as e
      ```bash
      docker login $REGISTRY_HOST -u $REGISTRY_USERNAME -p "$REGISTRY_PASSWORD" --tls-verify=false
 
-     docker tag webhooknotifier-logfile $REGISTRY_HOST/webhooknotifier-logfile
+     docker tag webhooknotifier-logfile $REGISTRY_HOST/samples/webhooknotifier-logfile
      docker tag webhooknotifier-slack $REGISTRY_HOST/webhooknotifier-slack
 
      docker push $REGISTRY_HOST/webhooknotifier-logfile
@@ -22,17 +22,19 @@ Also, before following the steps below, make sure you have built the images as e
 
      where `$REGISTRY_HOST` should be set to the hostname of the Docker registry optionally followed by the relevant repository depending on your Docker registry.
 
+     For instance $REGISTRY_HOST has the following format for an Openshift registry: `default-route-openshift-image-registry.apps.<cluster>/<namespace>`.
+
 2. Start one pod for each image
 
      Set the current context to the namespace the Decision Center pods are running, and then run:
 
      ```bash
      kubectl run webhooknotifier-logfile \
-     --image=$REGISTRY_HOST/webhooknotifier-logfile:latest \
+     --image=$REGISTRY_HOST/samples/webhooknotifier-logfile:latest \
      --expose --port 3000
      
      kubectl run webhooknotifier-slack \
-     --image=$REGISTRY_HOST/webhooknotifier-slack:latest \
+     --image=$REGISTRY_HOST/samples/webhooknotifier-slack:latest \
      --expose --port 3000
      ```
 

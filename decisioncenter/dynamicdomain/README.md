@@ -50,7 +50,7 @@ To use the sample in Rule Designer, you need to build an Eclipse plugin.
 
 ### 1) Prerequisites
 
-Before you begin, ensure you have one of the following **Container Platform**: Docker 24.0.x or Kubernetes 1.27+.
+Ensure you have at least Docker 24.0.x (and optionally Kubernetes 1.27+).
 
 ### 2) Configuring how to connect to the database (kubernetes only)
 
@@ -69,65 +69,55 @@ To use the sample in Decision Center, you need to build a JAR.
 
    1. Retrieve ODM libraries:
 
-      ODM libraries are required to compile the JAR. You can find them either from a running instance of Decision Center or from Rule Designer.
+      ODM libraries are required to compile the JAR.
 
-       * **Option 1:** Download ODM libraries from Decision Center
+      - Navigate to the source directory of the BOM dynamic domain sample:
+        ```bash
+        cd decisioncenter/dynamicdomain/src/ilog.rules.studio.samples.bomdomainpopulate
+        ```
 
-          - Navigate to the source directory of the BOM dynamic domain sample:
+      - Deploy ODM for Developer public docker image to quickly download the ODM libraries and then stop it :
+        ```
+        docker-compose -f ../../compose.yaml up odm
+        ```
 
-            ```bash
-            cd decisioncenter/dynamicdomain/src/ilog.rules.studio.samples.bomdomainpopulate
-            ```
+      - Download the decision-center-client-api.zip file :
+        ```bash
+        wget http://localhost:9060/decisioncenter/assets/decision-center-client-api.zip
+        ```
 
-          - Download the following compressed file: `https://DC_HOST:DC_PORT/decisioncenter/assets/decision-center-client-api.zip`
+      - Then, run:
+        ```bash
+        unzip decision-center-client-api.zip -d "lib"
+        ```
 
-          - Then, run:
-            ```bash
-            unzip decision-center-client-api.zip -d "lib"
-            ```
-
-       * **Option 2:** use ODM libraries from Rule Designer (available in Eclipse plugins directory)
-
-          Set the `ECLIPSE_PLUGINS` environment variable:
-         ```bash
-         ECLIPSE_PLUGINS=<ECLIPSE PLUGINS DIRECTORY>
-         ```
+      - Undeploy ODM for developer (especially if you continue this tutorial on [Docker](README-DOCKER.md) to avoid a TCP/IP port usage conflict) :
+        ```
+        docker-compose -f ../../compose.yaml down
+        ```
 
    1. Build the JAR
 
       The instructions below enable to build the JAR using a Docker container featuring Maven and a JDK version 17. For ODM 8.12, you must use `maven:3.8.1-openjdk-11` instead and `maven:3.8-adoptopenjdk-8` for earlier releases.
 
       Run one of the command below in the `decisioncenter/dynamicdomain/src/ilog.rules.studio.samples.bomdomainpopulate` directory:
-          
-       * **Option 1:** when using ODM libraries from Decision Center
+      - to use the sample on **Kubernetes** :
+        ```bash
+        docker run --rm \
+              -v "$(pwd)":/usr/src/sample \
+              -w /usr/src/sample \
+              maven:3.8.5-openjdk-17 \
+              mvn clean install
+        ```
 
-         ```bash
-         docker run --rm \
-               -v "$(pwd)":/usr/src/sample \
-               -w /usr/src/sample \
-               maven:3.8.5-openjdk-17 \
-               mvn clean install
-         ```
-
-       * **Option 2** when using ODM libraries from Rule Designer
-
-         ```bash
-         docker run --rm \
-               -v "$(pwd)":/usr/src/sample \
-               -w /usr/src/sample \
-               -v "${ECLIPSE_PLUGINS}":/usr/src/eclipse/plugins \
-               -e ECLIPSE_PLUGINS=/usr/src/eclipse/plugins \
-               maven:3.8.5-openjdk-17 \
-               mvn clean install
-         ```
-
-> [!IMPORTANT]
-> add **`-Dtarget.docker`** after `mvn clean install` to use the sample in **Docker**, i.e:
-> ```bash
-> docker run --rm
->     ...
->     mvn clean install -Dtarget.docker
-> ```
+      - to use the sample on **Docker** :
+        ```bash
+        docker run --rm \
+              -v "$(pwd)":/usr/src/sample \
+              -w /usr/src/sample \
+              maven:3.8.5-openjdk-17 \
+              mvn clean install -Dtarget.docker
+        ```
 
 The JAR is generated in the `target` directory and is named `bomdomainpopulate-1.0.jar`.
 

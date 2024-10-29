@@ -23,12 +23,14 @@
                         </goals>
                         <configuration>
                             <target>
-                              <javac  srcdir="${project.build.sourceDirectory}" 
+                              <javac   sourcepath="" srcdir="${project.build.sourceDirectory}" 
                                        destdir="${project.build.outputDirectory}"
                                        includeantruntime="false"
                                        compiler="modern">
+                                    <include name="**/*.java"/>
+                                    <exclude name="**/BomdomainpopulatePlugin.java"/>                                   
+                                    <exclude name="**/actions/*"/>                                   
                                     <classpath>
-                                        <fileset dir="${env.ECLIPSE_PLUGINS}" includes="**/*.jar"/>
                                         <fileset dir="${project.basedir}/lib" includes="**/*.jar"/>    
                                     </classpath>
                                 </javac>

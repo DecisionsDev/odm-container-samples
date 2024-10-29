@@ -6,7 +6,7 @@ This sample demonstrates how to use webhooks within the IBM Operational Decision
 - When a deployment ends, you are notified of its status: completed, failed, or aborted.
 - When a user creates or updates a rule or a decision table.
 
-Webhooks allows for real-time data sharing and integration, making it easier to trigger actions or workflows in other applications.
+Webhooks allow for real-time data sharing and integration, making it easier to trigger actions or workflows in other applications.
 
 In this sample, you will learn how to configure and use the Webhook Notifier to send notifications:
 - either to a Slack channel,
@@ -28,7 +28,9 @@ This NodeJS sample code will be packaged in two docker images.
         ```bash
         cd decisioncenter/webhooknotifier
         ```
+        
    2. Edit the [endPoints.json](./slack/endPoints.json) file to set the URL of your Slack channel and the token to use for authentication. You can skip this step if you do not want to use Slack and only want to use the example based on notifications saved into files.
+
    3. Build the docker images
         ```bash
         docker-compose build

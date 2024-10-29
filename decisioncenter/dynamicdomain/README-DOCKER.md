@@ -13,27 +13,20 @@ Before following the steps below, make sure you have built the customization JAR
 
 1. In the BOM dynamic domain sample root directory (`odm-container-samples/decisioncenter/dynamicdomain`), run
     ```bash
-    docker run -d --name odmdev \
-        -v "$(pwd)/src/ilog.rules.studio.samples.bomdomainpopulate/target/bomdomainpopulate-1.0.jar":/config/apps/decisioncenter.war/WEB-INF/lib/bomdomainpopulate-1.0.jar \
-        -v "$(pwd)/sql_scripts":/script/sql \
-        -p 9060:9060 -p 9443:9443 \
-        -m 2048M --memory-reservation 2048M \
-        -e LICENSE=accept \
-        -e SAMPLE=true \
-        icr.io/cpopen/odm-k8s/odm:9.0
+    docker-compose up odm-dynamic-domain
     ```
 
 1. then, run
     ```
-    docker exec odmdev sh -c "cp /config/resources/h2*.jar /config/apps/decisioncenter.war/WEB-INF/lib/h2.jar"
-    docker restart odmdev
+    docker-compose exec odm-dynamic-domain sh -c "cp /config/resources/h2*.jar /config/apps/decisioncenter.war/WEB-INF/lib/h2.jar"
+    docker-compose restart odm-dynamic-domain
     ```
 
 ## 2. Initializing the dynamic domains database
 
 - Run
     ```bash
-    docker exec odmdev sh -c "java \
+    docker-compose exec odm-dynamic-domain sh -c "java \
         -cp /config/resources/h2*.jar \
         org.h2.tools.RunScript \
         -url jdbc:h2:/config/dbdata/bomdomain \
@@ -60,7 +53,7 @@ Before following the steps below, make sure you have built the customization JAR
 1. Display the rule `CheckCurrency > CurrencyRestriction`. No warning is displayed.
 1. Let's now make some changes in the dynamic domains in the database. Run:
     ```bash
-    docker exec odmdev sh -c "java \
+    docker-compose exec odm-dynamic-domain sh -c "java \
         -cp /config/resources/h2*.jar \
         org.h2.tools.RunScript \
         -url jdbc:h2:/config/dbdata/bomdomain \
