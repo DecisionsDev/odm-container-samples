@@ -106,6 +106,13 @@ The snapshot creation triggers a webhook notification with the following sample 
 }
 ```
 
+The Slack webhook notifier forwards the notifications to Slack and the log files notifier saves them in the `results` directory in the log files below:
+- `deployments.txt`: Deployment details.
+- `rules.txt`: Rule changes.
+- `releases.txt`: Release details.
+- `activities.txt`: Activity details.
+- `default.txt`: Others details.
+
 #### Viewing the Slack notification output
 
 If you have configured the Slack notification, a message with the following content should be displayed in the Docker Compose window:

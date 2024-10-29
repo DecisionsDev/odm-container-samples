@@ -13,7 +13,7 @@ Also, before following the steps below, make sure you have built the images as e
      ```bash
      docker login $REGISTRY_HOST -u $REGISTRY_USERNAME -p "$REGISTRY_PASSWORD" --tls-verify=false
 
-     docker tag webhooknotifier-logfile $REGISTRY_HOST/samples/webhooknotifier-logfile
+     docker tag webhooknotifier-logfile $REGISTRY_HOST/webhooknotifier-logfile
      docker tag webhooknotifier-slack $REGISTRY_HOST/webhooknotifier-slack
 
      docker push $REGISTRY_HOST/webhooknotifier-logfile
@@ -22,23 +22,20 @@ Also, before following the steps below, make sure you have built the images as e
 
      where `$REGISTRY_HOST` should be set to the hostname of the Docker registry optionally followed by the relevant repository depending on your Docker registry.
 
-     For instance $REGISTRY_HOST has the following format for an Openshift registry: `default-route-openshift-image-registry.apps.<cluster>/<namespace>`.
-
 2. Start one pod for each image
 
      Set the current context to the namespace the Decision Center pods are running, and then run:
 
      ```bash
      kubectl run webhooknotifier-logfile \
-     --image=$REGISTRY_HOST/samples/webhooknotifier-logfile:latest \
+     --image=$REGISTRY_HOST/webhooknotifier-logfile:latest \
      --expose --port 3000
      
      kubectl run webhooknotifier-slack \
-     --image=$REGISTRY_HOST/samples/webhooknotifier-slack:latest \
+     --image=$REGISTRY_HOST/webhooknotifier-slack:latest \
      --expose --port 3000
      ```
 
-     >NOTE 1: for an Openshift registry, `$REGISTRY_HOST` should be `image-registry.openshift-image-registry.svc:5000`
 
      <!-- markdown-link-check-disable -->
      >NOTE 2: These commands also create one service (of type ClusterIP) for each pod, allowing to send requests to the pods using the following URLs:
@@ -55,7 +52,7 @@ Also, before following the steps below, make sure you have built the images as e
      kubectl create secret docker-registry regcred --docker-server=<your-registry-server> --docker-username=<your-name> --docker-password=<your-pword> --docker-email=<your-email>
      ```
 
-     Then run `kubectl edit pod webhooknotifier-logile` and add the two lines below under `spec:` :
+     Then run `kubectl edit pod webhooknotifier-logfile` and add the two lines below under `spec:` :
      ```bash
      spec:
        imagePullSecrets:
@@ -105,39 +102,71 @@ Also, before following the steps below, make sure you have built the images as e
      {"id":"57896361-62f8-4a0e-a86b-3da46417f493","url":"http://webhooknotifier-slack.<NAMESPACE>.svc.cluster.local:3000/slack","authToken":"*****************************************************"}%
      ```
 
-###  Using the Sample
 
-Once webhooks are set up, various events in Decision Center trigger notifications. 
+### Using the sample
 
-For instance, deploying a rule app triggers a notification with a content like:
+Once webhooks are configured, specific events in Decision Center will trigger notifications. 
 
-```bash
+Below is an example scenario that illustrates the process:
+
+#### Scenario: Creating a Snapshot in the Business Console
+
+1. **Log in** to the Business Console at https://$DC_HOST/decisioncenter using the credentials:  
+   - **Username**: `odmAdmin`  
+   - **Password**: `odmAdmin`
+
+2. **Navigate to the Library** tab. Select the **Loan Validation Service** box (click anywhere except the name) and choose the **main branch**.
+
+3. **Take a Snapshot**:
+   - Click the **Take a Snapshot** button in the toolbar.
+   - In the dialog that appears:
+     - Enter a name for the snapshot: `mysnapshot`
+     - Click **Create**
+
+#### Viewing the notification file output
+
+After creating this snapshot, a notification will be triggered. 
+
+To view the content of the generated log file, run the following command:
+
+```shell
+kubectl exec -ti <webhooknotifier-logfile-container-id> sh -c 'cat /app/results/default.txt'
+```
+
+
+The snapshot creation triggers a webhook notification with the following sample payload:
+
+```json
 {
   "version": "1.0",
-  "id": "cc66c9e8-9905-486d-99e9-7ab89af3d976",
+  "id": "e749da20-1f2f-47bb-8a97-568eab4c7f3b",
   "author": "odmAdmin",
-  "date": 1725633110628,
+  "date": 1730196680692,
   "type": "SnapshotCreated",
   "content": [
     {
-      "id": "dcf08c59-877c-42d4-9360-2189345577c8",
-      "internalId": "dsm.DsDeploymentBsln:103:103",
-      "name": "test_deployment_2024-09-06_16-31-45-855",
+      "id": "6f41d82c-d20f-4a2a-8c1d-d6eb5a49f5dd",
+      "internalId": "brm.Snapshot:71:71",
+      "name": "mysnapshot",
       "createdBy": "odmAdmin",
-      "createdOn": 1725633110000,
+      "createdOn": 1730196679000,
       "lastchangedBy": "odmAdmin",
-      "lastChangedOn": 1725633110000,
+      "lastChangedOn": 1730196679000,
       "parentId": "1558f25b-daa6-4982-8b0b-48a388c7c202",
-      "documentation": null,
+      "documentation": "",
       "buildMode": "DecisionEngine",
-      "kind": "DeploymentSnapshot"
+      "initial": false,
+      "kind": "StandardSnapshot"
     }
   ],
   "details": [
     {
-      "targetURL": "http://172.22.0.4:9060/decisioncenter/t/library#overviewsnapshot?id=dsm.DsDeploymentBsln%3A103%3A103&datasource=jdbc%2FilogDataSource&baselineId=dsm.DsDeploymentBsln%3A103%3A103"
-  }
-],
+      "targetURL": "http://172.19.0.4:9060/decisioncenter/t/library#overviewsnapshot?id=brm.Snapshot%3A71%3A71&datasource=jdbc%2FilogDataSource&baselineId=brm.Snapshot%3A71%3A71"
+    }
+  ],
+  "sourceName": "Decision Center",
+  "sourceLink": "http://172.19.0.4:9060/decisioncenter?datasource=jdbc%2FilogDataSource"
+}
 ```
 
 The Slack webhook notifier forwards the notifications to Slack and the log files notifier saves them in the `results` directory in the log files below:
@@ -145,6 +174,44 @@ The Slack webhook notifier forwards the notifications to Slack and the log files
 - `rules.txt`: Rule changes.
 - `releases.txt`: Release details.
 - `activities.txt`: Activity details.
+- `default.txt`: Others details.
+
+#### Viewing the Slack notification output
+
+If you have configured the Slack notification, a message with the following content should be displayed in the log of the webhooknotifier-slack pod:
+```log
+slack-1    | {
+slack-1    |   "version": "1.0",
+slack-1    |   "id": "a1039496-4add-40d5-b36f-558f6db5438f",
+slack-1    |   "author": "odmAdmin",
+slack-1    |   "date": 1730208680316,
+slack-1    |   "type": "SnapshotCreated",
+slack-1    |   "content": [
+slack-1    |     {
+slack-1    |       "id": "c6d806d7-f569-44a4-add1-f2ab46f2bd9a",
+slack-1    |       "internalId": "brm.Snapshot:71:71",
+slack-1    |       "name": "mysnapshot",
+slack-1    |       "createdBy": "odmAdmin",
+slack-1    |       "createdOn": 1730208680000,
+slack-1    |       "lastchangedBy": "odmAdmin",
+slack-1    |       "lastChangedOn": 1730208680000,
+slack-1    |       "parentId": "1558f25b-daa6-4982-8b0b-48a388c7c202",
+slack-1    |       "documentation": "",
+slack-1    |       "buildMode": "DecisionEngine",
+slack-1    |       "initial": false,
+slack-1    |       "kind": "StandardSnapshot"
+slack-1    |     }
+slack-1    |   ],
+slack-1    |   "details": [
+slack-1    |     {
+slack-1    |       "targetURL": "http://172.18.0.4:9060/decisioncenter/t/library#overviewsnapshot?id=brm.Snapshot%3A71%3A71&datasource=jdbc%2FilogDataSource&baselineId=brm.Snapshot%3A71%3A71"
+slack-1    |     }
+slack-1    |   ],
+```
+
+and a message should appear your slack channel : 
+
+![Slack notification](images/slack-notif.png)
 
 ### Stopping the Sample
 
