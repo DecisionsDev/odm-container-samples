@@ -139,6 +139,10 @@ slack-1    |     }
 slack-1    |   ],
 ```
 
+and a message should appear your slack channel : 
+
+![Slack notification](images/slack-notif.png)
+
 ### Stopping the Sample
 
 ```bash
