@@ -106,7 +106,7 @@ The snapshot creation triggers a webhook notification with the following sample 
 }
 ```
 
-### Viewing the Slack notification output
+#### Viewing the Slack notification output
 
 If you have configured the Slack notification, a message with the following content should be displayed in the Docker Compose window:
 ```log
