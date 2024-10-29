@@ -9,14 +9,14 @@ Before following the steps below, make sure you have built the images as explain
 
 ### Running the sample 
 
-   Run ODM docker images
+   Run ODM and Notifiers  docker images
    ```bash
    docker-compose -f compose-odm-dev.yml up odm-with-custom-value-editor
    ```
 
 ###  Using the Sample
 
-Access Decision Center using the URL **http://localhost:9060** <!-- markdown-link-check-disable-line -->
+Access Decision Center using the URL **http://localhost:9060**
 
 Click on the link **Decision Center Business Console**
 

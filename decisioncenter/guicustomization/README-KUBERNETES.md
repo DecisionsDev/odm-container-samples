@@ -17,7 +17,7 @@ However you must use the **legacy way** if you deploy a version of ODM older tha
 
 Upload the guicustomization-1.0.jar file on the file server :
 ```
-curl -T target/guicustomization-1.0.jar $FILESERVER_URL
+curl -T guicustomization/guicustomization-source/target/guicustomization-1.0.jar $FILESERVER_URL
 ```
 
 ## 2. Deploying ODM
@@ -65,8 +65,6 @@ To activate the Custom Value Editor, after login in Decision Center as an admini
 - Set the value of **decisioncenter.web.core.extensions.entrypoints** to **extensions/AddTabEntryPoint,extensions/AddButtonEntryPoint,extensions/AddEditorButtonEntryPoint**
 
 ![Custom Settings](images/custom_settings_2.png)
-
-Load the [LoanValidationService.zip](./projects/LoanValidationService.zip) Decision Service.
 
 Follow [Running this sample](https://www.ibm.com/docs/en/odm/9.0.0?topic=customization-gui-sample-details#descriptiveTopic1297785707571__rssamples.uss_rs_smp_tsauthoring.1028561__title__1) details to understand how to use some custom widgets by drilling in the LoanValidationService Decision Service.
 
