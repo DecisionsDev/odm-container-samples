@@ -7,11 +7,9 @@ Before following the steps below, make sure you have built the images as explain
 
 ## 1. Uploading JARs on a file server
 
-The customization JARs can be made available to Decision Center in two ways:
-1. the **legacy way**: by copying the JARs to a PVC and referencing this PVC using the parameter `decisionCenter.customlibPvc`
-1. or the **new way** (since 9.0 only): by copying the JARs on a file server and referencing the files to download from this file server using the parameter `decisionCenter.downloadUrl`
+Any file server reachable by Decision Center is suitable.
 
-This document explains how to follow the **new way**. Any file server reachable by Decision Center is suitable. You can either use an existing one or follow the instructions [here](https://github.com/DecisionsDev/odm-docker-kubernetes/blob/vnext-release/contrib/file-server/README.md#setup-an-httpd-file-server) to deploy a httpd file server in a new pod.
+You can either use an existing one or follow the instructions [here](https://github.com/DecisionsDev/odm-docker-kubernetes/blob/vnext-release/contrib/file-server/README.md#setup-an-httpd-file-server) to deploy a httpd file server in a new pod.
 
 Upload the **guicustomization-1.0.jar** file on the file server :
 ```
