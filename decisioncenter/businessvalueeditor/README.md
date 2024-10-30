@@ -27,7 +27,7 @@ To use the sample in Decision Center, you need to build a JAR for [Docker](READM
       ODM libraries are required to compile the JAR.
       For that, deploy ODM for Developer public docker image:
       ```bash
-      docker-compose -f ../compose-odm-dev.yml up odm
+      docker-compose -f compose-odm-dev.yml up odm &
       ```
 
       and then download the ODM libraries:
@@ -42,7 +42,7 @@ To use the sample in Decision Center, you need to build a JAR for [Docker](READM
 
       Undeploy ODM for developer (especially if you continue this tutorial on [Docker](README-DOCKER.md) to avoid a TCP/IP port usage conflict) :
       ```bash
-      docker-compose -f ../compose-odm-dev.yml down
+      docker-compose -f compose-odm-dev.yml down
       ```
 
    2. Build the JAR

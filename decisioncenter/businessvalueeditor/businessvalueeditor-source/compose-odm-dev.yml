@@ -23,5 +23,5 @@ services:
     - 9060:9060
     - 9453:9453
     volumes:
-    - $PWD/businessvalueeditor-source/target/businessvalueeditor-1.0.jar:/config/download/businessvalueeditor-1.0.jar
-    - $PWD/businessvalueeditor-source/web.xml:/config/download/web.xml
+    - $PWD/target/businessvalueeditor-1.0.jar:/config/download/businessvalueeditor-1.0.jar
+    - $PWD/web.xml:/config/download/web.xml
