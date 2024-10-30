@@ -9,6 +9,11 @@ Before following the steps below, make sure you have built the images as explain
 
 ### Running the sample 
 
+   Navigate to the source directory of the GUI Customization sample:
+   ```
+   cd decisioncenter/guicustomization/guicustomization-source
+   ```
+      
    Run ODM and Notifiers  docker images
    ```bash
    docker-compose -f compose-odm-dev.yml up odm-with-gui-customization &
