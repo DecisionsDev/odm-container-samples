@@ -80,7 +80,9 @@ helm install businessvalueeditor-sample ibmcharts/ibm-odm-prod -f values.yaml
 
 #  Using the Sample
 
-Log in the Decision Center Business Console
+**Log in** to the Business Console at **http://<HOST:PORT>/decisioncenter** using the credentials:  
+   - **Username**: `odmAdmin`  
+   - **Password**: `odmAdmin`
 
 To activate the Custom Value Editor, after login in Decision Center as an administrator :
 - Go in the menu **Administration>Settings>Custom Settings**
