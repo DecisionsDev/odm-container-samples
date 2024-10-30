@@ -52,7 +52,7 @@ decisionCenter:
 Add all the other parameters suitable to your platform in `values.yaml`. Check this [link](https://github.com/DecisionsDev/odm-docker-kubernetes/tree/master/platform) for help.
 
 ```bash
-helm install guicustomization-sample ibmcharts/ibm-odm-prod -f values.yaml
+helm install businessvalueeditor-sample ibmcharts/ibm-odm-prod -f values.yaml
 ```
 
 #  Using the Sample

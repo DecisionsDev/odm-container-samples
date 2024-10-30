@@ -10,46 +10,40 @@ It is the ODM on k8s adaptation of the ODM on premises [Custom Value Editor samp
 
 ### 1) Prerequisites
 
-Before you begin, ensure you have one of the following **Container Platform**: Docker 24.0.x or Kubernetes 1.27+.
+Before you begin, ensure you have at least Docker 24.0.x (and optionally Kubernetes 1.27+).
 
 ### 2) Building the Decision Center extension JAR
 
 To use the sample in Decision Center, you need to build a JAR for [Docker](README-DOCKER.md) and a ZIP for [Kubernetes](README-KUBERNETES.md)
 
    1. Retrieve ODM libraries:
-
+      
       Navigate to the source directory of the Custom Value Editor sample:
 
-      ```
+      ```bash
       cd decisioncenter/businessvalueeditor/businessvalueeditor-source
       ```
       
       ODM libraries are required to compile the JAR.
-      To get the ODM libraries, you need an access to a running Decision Center instance.      
-      Download the **decision-center-client-api.zip** file :
-
-      ```
-      wget https://DC_HOST:DC_PORT/decisioncenter/assets/decision-center-client-api.zip --no-check-certificate
+      For that, deploy ODM for Developer public docker image:
+      ```bash
+      docker-compose -f compose-odm-dev.yml up odm &
       ```
 
-      Then, unzip decision-center-client-api.zip on the **lib** directory :
+      and then download the ODM libraries:
+      ```bash
+      wget http://localhost:9060/decisioncenter/assets/decision-center-client-api.zip
       ```
+
+      Unzip decision-center-client-api.zip in the **lib** directory :
+      ```bash
       unzip decision-center-client-api.zip -d "lib"
       ```
 
-> [!NOTE]
-> If you don't have a running Decision Center, install it using the ODM for Developer public docker image, by running :
-> ```
-> docker-compose -f compose-odm-dev.yml up odm
-> ```
-> Then download the **decision-center-client-api.zip** file :
-> ```
-> wget http://localhost:9060/decisioncenter/assets/decision-center-client-api.zip
-> ```
-> Uninstall the ODM for Developer instance to avoid a port usage conflict if you continue this tutorial on [Docker](README-DOCKER.md) :
-> ```
-> docker-compose -f compose-odm-dev.yml up down
-> ```
+      Undeploy ODM for developer (especially if you continue this tutorial on [Docker](README-DOCKER.md) to avoid a TCP/IP port usage conflict) :
+      ```bash
+      docker-compose -f compose-odm-dev.yml down
+      ```
 
    2. Build the JAR
 
@@ -60,7 +54,7 @@ To use the sample in Decision Center, you need to build a JAR for [Docker](READM
       Run the command below in the **decisioncenter/businessvalueeditor/businessvalueeditor-source** directory:
 
          ```bash
-         docker run --rm --name my-maven-container \
+         docker run --rm \
                -v "$(pwd)":/usr/src/sample \
                -w /usr/src/sample \
                maven:3.8.5-openjdk-17 \
