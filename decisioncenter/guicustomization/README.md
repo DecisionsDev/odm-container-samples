@@ -48,7 +48,7 @@ To use the sample in Decision Center, you need to build a JAR.
       Run the command below in the **decisioncenter/guicustomization/guicustomization-source** directory:
 
          ```bash
-         docker run --rm --name my-maven-container \
+         docker run --rm \
                -v "$(pwd)":/usr/src/sample \
                -w /usr/src/sample \
                maven:3.8.5-openjdk-17 \
