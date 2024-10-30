@@ -116,7 +116,7 @@ Click the new button **My Admin Button**. A dialog displays metrics on the decis
 
 Click the new tab **My Admin Tab**. The tab displays the same metrics on the decision service.
 
-Click the **Decision Artifacts** tab. Expand the **Loan Validation Scoring computation** package, and edit the rule **neverBankruptcy** (accept any default settings if prompted).
+Click the **Decision Artifacts** tab. Expand the **Loan Validation Scoring>computation** package, and edit the rule **neverBankruptcy** (accept any default settings if prompted).
 
 Click the button **My Info**. A dialog displays information on the rule.
 
@@ -140,6 +140,8 @@ Click the **Custom Deploy** button in the toolbar. A dialog shows the status of 
 
 Close the dialog and log out of the Business console.
 
+![Business Console Custom GUI Admin](images/custom_gui_admin.png)
+
 #### To see the customization for a non-administrative user:
 
 Log in to the Business console by using **Bea** as the username and password.
@@ -151,7 +153,5 @@ Click the new button **My Button**. A dialog displays some metrics on the decisi
 Close the dialog and then click the new tab **My Tab**. The tab displays the same metrics on the decision service. The tab content is different from the content that is provided for the administrator.
 
 Log out of the Business console.
-
-Follow [Running this sample](https://www.ibm.com/docs/en/odm/9.0.0?topic=customization-gui-sample-details#descriptiveTopic1297785707571__rssamples.uss_rs_smp_tsauthoring.1028561__title__1) details to understand how to use some custom widgets by drilling in the LoanValidationService Decision Service.
 
 ![Business Console Custom GUI](images/custom_gui.png)
