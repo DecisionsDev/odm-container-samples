@@ -16,11 +16,9 @@ Before following the steps below, make sure you have built the images as explain
 
 ###  Using the Sample
 
-Access Decision Center using the URL **http://localhost:9060**
-
-Click on the link **Decision Center Business Console**
-
-Log in with the credentials `odmAdmin` / `odmAdmin`
+**Log in** to the Business Console at [http://localhost:9060/decisioncenter](http://localhost:9060/decisioncenter) using the credentials:  
+   - **Username**: `odmAdmin`  
+   - **Password**: `odmAdmin`
 
 To activate the Custom Value Editor, after login in Decision Center as an administrator :
 - Go in the menu **Administration>Settings>Custom Settings**
