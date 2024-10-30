@@ -65,7 +65,7 @@ ibm-helm/ibm-odm-prod   24.0.0        9.0.0.0     IBM Operational Decision Manag
 Create a secret to manage custom authentication/authorization using the [webSecurity.xml](./guicustomization-source/webSecurity.xml) and [group-security-configurations.xml](./guicustomization-source/group-security-configurations.xml) files :
 
 ```
-create secret generic my-custom-auth-secret --from-file=webSecurity.xml --from-file=group-security-configurations.xml
+kubectl create secret generic my-custom-auth-secret --from-file=webSecurity.xml --from-file=group-security-configurations.xml
 ```
 #### f. Install an IBM Operational Decision Manager release
 
