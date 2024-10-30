@@ -71,6 +71,8 @@ Click the **Custom Deploy** button in the toolbar. A dialog shows the status of 
 
 Close the dialog and log out of the Business console.
 
+![Business Console Custom GUI Admin](images/custom_gui_admin.png)
+
 #### To see the customization for a non-administrative user:
 
 Log in to the Business console by using **Bea** as the username and password.
