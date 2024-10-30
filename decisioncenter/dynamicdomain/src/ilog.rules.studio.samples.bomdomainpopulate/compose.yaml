@@ -23,5 +23,5 @@ services:
     - 9060:9060
     - 9453:9453
     volumes:
-    - $PWD/src/ilog.rules.studio.samples.bomdomainpopulate/target/bomdomainpopulate-1.0.jar:/config/download/bomdomainpopulate-1.0.jar
-    - $PWD/sql_scripts:/script/sql
+    - $PWD/target/bomdomainpopulate-1.0.jar:/config/download/bomdomainpopulate-1.0.jar
+    - $PWD/../../sql_scripts:/script/sql

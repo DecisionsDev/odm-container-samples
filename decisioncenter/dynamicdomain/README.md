@@ -77,7 +77,7 @@ To use the sample in Decision Center, you need to build a JAR.
 
       - Deploy ODM for Developer public docker image (to quickly download the ODM libraries):
         ```
-        docker-compose -f ../../compose.yaml up odm
+        docker-compose up odm &
         ```
 
       - Download the decision-center-client-api.zip file :
@@ -92,7 +92,7 @@ To use the sample in Decision Center, you need to build a JAR.
 
       - Undeploy ODM for developer (especially if you continue this tutorial on [Docker](README-DOCKER.md) to avoid a TCP/IP port usage conflict) :
         ```
-        docker-compose -f ../../compose.yaml down
+        docker-compose down
         ```
 
    1. Build the JAR
