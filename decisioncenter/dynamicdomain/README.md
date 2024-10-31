@@ -62,63 +62,46 @@ Edit that file otherwise.
 
 > Note: The data of the dynamic domains are stored in a separate schema named `BOMDOMAINSAMPLE`
 
-### 3) Building the Decision Center extension JAR
+### 3) Retrieve ODM Libraries
 
-To use the sample in Decision Center, you need to build a JAR. 
+To use the sample in Decision Center, you need to build a JAR file that depends on IBM ODM libraries for compilation.
 
-   1. Retrieve ODM libraries:
+#### Steps:
 
-      ODM libraries are required to compile the JAR.
+1. **Navigate to the Sample Source Directory**
 
-      - Navigate to the source directory of the BOM dynamic domain sample:
-        ```bash
-        cd decisioncenter/dynamicdomain/src/ilog.rules.studio.samples.bomdomainpopulate
-        ```
+   Move to the source directory for the BOM dynamic domain sample:
+   ```bash
+   cd decisioncenter/dynamicdomain/src/ilog.rules.studio.samples.bomdomainpopulate
+   ```
 
-      - Deploy ODM for Developer public docker image (to quickly download the ODM libraries):
-        ```
-        docker-compose up odm &
-        ```
+2. **Deploy ODM for Developer Using Docker**
 
-      - Download the decision-center-client-api.zip file :
-        ```bash
-        wget http://localhost:9060/decisioncenter/assets/decision-center-client-api.zip
-        ```
+   Start the ODM for Developer Docker image to quickly access the necessary libraries:
+   ```bash
+   docker-compose up odm &
+   ```
 
-      - Then, run:
-        ```bash
-        unzip decision-center-client-api.zip -d "lib"
-        ```
+3. **Download the Decision Center Client API**
 
-      - Undeploy ODM for developer (especially if you continue this tutorial on [Docker](README-DOCKER.md) to avoid a TCP/IP port usage conflict) :
-        ```
-        docker-compose down
-        ```
+   Retrieve the required libraries by downloading `decision-center-client-api.zip` from the local ODM instance:
+   ```bash
+   wget http://localhost:9060/decisioncenter/assets/decision-center-client-api.zip
+   ```
 
-   1. Build the JAR
+4. **Extract Libraries**
 
-      The instructions below enable to build the JAR using a Docker container featuring Maven and a JDK version 17. For ODM 8.12, you must use `maven:3.8.1-openjdk-11` instead and `maven:3.8-adoptopenjdk-8` for earlier releases.
+   Unzip the downloaded archive into a directory called `lib` to make the libraries available for compilation:
+   ```bash
+   unzip decision-center-client-api.zip -d "lib"
+   ```
 
-      Run one of the command below in the `decisioncenter/dynamicdomain/src/ilog.rules.studio.samples.bomdomainpopulate` directory:
-      - to use the sample on **Kubernetes** :
-        ```bash
-        docker run --rm \
-              -v "$(pwd)":/usr/src/sample \
-              -w /usr/src/sample \
-              maven:3.8.5-openjdk-17 \
-              mvn clean install
-        ```
+5. **Stop the ODM for Developer Container**
+   Undeploy ODM for developer (especially if you continue this tutorial on [Docker](README-DOCKER.md) to avoid a TCP/IP port usage conflict) :
+   ```bash
+   docker-compose down
+   ```
 
-      - to use the sample on **Docker** :
-        ```bash
-        docker run --rm \
-              -v "$(pwd)":/usr/src/sample \
-              -w /usr/src/sample \
-              maven:3.8.5-openjdk-17 \
-              mvn clean install -Dtarget.docker
-        ```
-
-The JAR is generated in the `target` directory and is named `bomdomainpopulate-1.0.jar`.
 
 ### 4) Instructions to use the sample in Decision Center
 

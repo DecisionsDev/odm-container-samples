@@ -3,8 +3,22 @@
 This README explains how to run the BOM dynamic domain sample in Kubernetes.
 
 #  Configuring the sample in Kubernetes
+## 1. Build the sample code 
 
-## 1. Uploading JARs on a file server
+The instructions below enable to build the JAR using a Docker container featuring Maven and a JDK version 17. 
+
+Run  command below in the `decisioncenter/dynamicdomain/src/ilog.rules.studio.samples.bomdomainpopulate` directory:
+
+This will compile the source code 
+        ```bash
+        docker run --rm \
+              -v "$(pwd)":/usr/src/sample \
+              -w /usr/src/sample \
+              maven:3.8.5-openjdk-17 \
+              mvn clean install -Dtarget.docker
+        ``` 
+
+## 2. Uploading JARs on a file server
 
 The customization JARs can be made available to Decision Center in two ways:
 1. the **legacy way**: by copying the JARs to a PVC and referencing this PVC using the parameter `decisionCenter.customlibPvc`
@@ -29,7 +43,7 @@ curl -T target/bomdomainpopulate-1.0.jar $FILESERVER_URL
 curl -T jdbc-driver.jar $FILESERVER_URL
 ```
 
-## 2. Deploying ODM
+## 3. Deploying ODM
 
 Add the public IBM Helm charts repository:
 ```bash
@@ -73,13 +87,13 @@ Install an ODM release named `myodmsample` (if you choose a different release na
 helm install myodmsample ibmcharts/ibm-odm-prod -f values.yaml
 ```
 
-## 3. Configuring Decision Center
+## 4. Configuring Decision Center
 
 The class that implements the customization must be declared:
 - either using a custom setting
 - or using a JVM parameter 
 
-### 3.1 Using a custom setting
+### 4.1 Using a custom setting
 1. Log in into the Business Console as an admin
 1. Navigate to **Administration > Settings > Custom Settings**
 1. Click the *Add custom setting* **icon** and set:
@@ -89,14 +103,14 @@ The class that implements the customization must be declared:
     - leave `default value` empty
 1. Set the value to `ilog.rules.studio.samples.bomdomainpopulate.DataBaseDomainValueProvider`
 
-### 3.2 Using a JVM parameter
+### 4.2 Using a JVM parameter
 
 Follow instructions similar to [here](https://www.ibm.com/docs/en/odm/9.0.0?topic=kubernetes-persisting-decision-center-ruleset-cache) to add the JVM parameter below: (using in a Config Map referenced by the Helm parameter **decisionCenter.jvmOptionsRef**)
 ```
 -Dilog.rules.teamserver.derbyDataBaseDomainProvider=ilog.rules.studio.samples.bomdomainpopulate.DataBaseDomainValueProvider
 ```
 
-## 4. Initializing the database
+## 5. Initializing the database
 
 1. If the data of the dynamic domains are stored in the internal PostgreSQL database, you can find the name of that pod by running:
     ```bash
@@ -115,7 +129,7 @@ Follow instructions similar to [here](https://www.ibm.com/docs/en/odm/9.0.0?topi
     kubectl exec $DBSERVER -- psql -U odmusr -d odmdb -f /tmp/createAndPopulate.sql
     ```
 
-## 5. Using the Sample
+## 6. Using the Sample
 
 1. Log in into the Business Console.
 1. Navigate to the **Library** tab.
