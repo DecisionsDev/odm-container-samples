@@ -7,33 +7,61 @@ Doing so, you do not need to have ODM installed. Instead we are relying on the [
 
 Before following the steps below, make sure you have built the customization JAR as explained in [README.md](README.md).
 
-#  Configuring the sample for Docker
+# Configuring the Sample for Docker
 
-## 1. Start the ODM container
+## 1. Build the Sample Code
 
-- Run
-    ```bash
-    docker-compose up odm-dynamic-domain &
-    ```
+The following steps show how to compile the sample code into a JAR file using a Docker container with Maven and JDK 17.
 
-- Then, run
-    ```bash
-    docker-compose exec odm-dynamic-domain sh -c "cp /config/resources/h2*.jar /config/apps/decisioncenter.war/WEB-INF/lib/h2.jar"
-    docker-compose restart odm-dynamic-domain
-    ```
+1. Navigate to the project directory:
+   ```bash
+   cd decisioncenter/dynamicdomain/src/ilog.rules.studio.samples.bomdomainpopulate
+   ```
 
-## 2. Initializing the dynamic domains database
+2. Run the command below to build the JAR file:
+   ```bash
+   docker run --rm \
+        -v "$(pwd)":/usr/src/sample \
+        -w /usr/src/sample \
+        maven:3.8.5-openjdk-17 \
+        mvn clean install -Dtarget.docker
+   ```
+   > **Result**: The generated JAR file will be located in the `target` directory with the name `bomdomainpopulate-1.0.jar`.
 
-- Run
-    ```bash
-    docker-compose exec odm-dynamic-domain sh -c "java \
-        -cp /config/resources/h2*.jar \
-        org.h2.tools.RunScript \
-        -url jdbc:h2:/config/dbdata/bomdomain \
-        -user sa \
-        -script /script/sql/createAndPopulate.sql \
-        -showResults"
-    ```
+
+## 2. Start the ODM Container
+
+To set up the ODM container with dynamic domain support:
+
+1. Start the ODM container:
+   ```bash
+   docker-compose up odm-dynamic-domain &
+   ```
+   > **Explanation**: This command initializes the ODM environment required for the sample.
+
+2. Copy and configure the H2 database library for Decision Center:
+   ```bash
+   docker-compose exec odm-dynamic-domain sh -c "cp /config/resources/h2*.jar /config/apps/decisioncenter.war/WEB-INF/lib/h2.jar"
+   docker-compose restart odm-dynamic-domain
+   ```
+   > **Explanation**: The H2 database library is needed to support the dynamic domains sample. Restarting ensures all configurations take effect.
+
+
+## 3. Initialize the Dynamic Domains Database
+
+To set up and populate the dynamic domains database:
+
+1. Run the initialization script:
+   ```bash
+   docker-compose exec odm-dynamic-domain sh -c "java \
+       -cp /config/resources/h2*.jar \
+       org.h2.tools.RunScript \
+       -url jdbc:h2:/config/dbdata/bomdomain \
+       -user sa \
+       -script /script/sql/createAndPopulate.sql \
+       -showResults"
+   ```
+   > **Explanation**: This command initializes the H2 database schema for the sample and populates it with the necessary data, enabling ODM to recognize and use the dynamic domain setup.
 
 # Using the sample
 
@@ -49,6 +77,7 @@ Before following the steps below, make sure you have built the customization JAR
 1. Navigate to the **Library** tab.
 1. Import the rule project archive `projects/bomdomainpopulate-rules.zip`.
     > Note: this rule project `bomdomainpopulate-rules` is only aimed at editing rules to demonstrate loading domains from a database. It is missing a deployment configuration and cannot be executed.
+1. **Navigate to the Library** tab. Select the **bomdomainpopulate-rules** box (click anywhere except the name) and choose the **main branch**. 
 1. Display the rule `CheckOrder > OrderType`. Notice the error **Value (string) 'CompanyX' is incorrect**. Edit the rule and either remove **"CompanyX"** and press SPACE or double-click **"CompanyX"**. A list of suitable companies gets displayed in a drop-down. Close down the rule without saving.
 1. Display the rule `CheckCurrency > CurrencyRestriction`. No warning is displayed.
 1. Let's now make some changes in the dynamic domains in the database. Run:
