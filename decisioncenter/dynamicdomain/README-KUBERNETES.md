@@ -10,13 +10,13 @@ The instructions below enable to build the JAR using a Docker container featurin
 Run  command below in the `decisioncenter/dynamicdomain/src/ilog.rules.studio.samples.bomdomainpopulate` directory:
 
 This will compile the source code 
-        ```bash
-        docker run --rm \
-              -v "$(pwd)":/usr/src/sample \
-              -w /usr/src/sample \
-              maven:3.8.5-openjdk-17 \
-              mvn clean install -Dtarget.docker
-        ``` 
+```bash
+docker run --rm \
+      -v "$(pwd)":/usr/src/sample \
+      -w /usr/src/sample \
+      maven:3.8.5-openjdk-17 \
+      mvn clean install
+``` 
 
 ## 2. Uploading JARs on a file server
 
