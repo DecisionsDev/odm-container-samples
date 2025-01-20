@@ -16,15 +16,15 @@ In this sample, you will:
 
 ## Installation of ODM
 
-Click one of the links below whether you wish to install ODM on:
-   * [Kubernetes](README-KUBERNETES.md).
-   * [Docker](README-DOCKER.md). 
+Click one of the links below depending on how you prefer to deploy ODM:
+   * [Kubernetes](README-KUBERNETES.md)
+   * [Docker](README-DOCKER.md)
 
 ## Configuration
 
 ### 1. Set Environment Variables
 
-The following environment variables need to be set:
+Set the following environment variables:
 
 <!-- markdown-link-check-disable --> 
 
