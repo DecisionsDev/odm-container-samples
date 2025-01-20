@@ -64,12 +64,14 @@ export auth_credentials=(--user "odmAdmin:odmAdmin")
 
 # get the ID of the Decision Service in Decision Center
 export decision_service_name="Loan Validation Service"
-export get_decisionService_result=$(curl -sk -X GET ${auth_credentials[@]} -H "accept: application/json" "${DC_API_URL}/v1/decisionservices?q=name%3A${decision_service_name// /%20}")
+export decision_service_name_urlencoded="${decision_service_name// /%20}" # replace spaces by %20
+export get_decisionService_result=$(curl -sk -X GET ${auth_credentials[@]} -H "accept: application/json" "${DC_API_URL}/v1/decisionservices?q=name%3A${decision_service_name_urlencoded}")
 export decisionServiceId=$(echo ${get_decisionService_result} | jq -r '.elements[0].id')
 
 # get the ID of the deployment configuration in Decision Center
 export deployment_name="production deployment"
-export get_deployment_result=$(curl -sk -X GET ${auth_credentials[@]} -H "accept: application/json" "${DC_API_URL}/v1/decisionservices/${decisionServiceId}/deployments?q=name%3A${deployment_name// /%20}")
+export deployment_name_urlencoded="${deployment_name// /%20}" # replace spaces by %20
+export get_deployment_result=$(curl -sk -X GET ${auth_credentials[@]} -H "accept: application/json" "${DC_API_URL}/v1/decisionservices/${decisionServiceId}/deployments?q=name%3A${deployment_name_urlencoded}")
 export deploymentConfigurationId=$(echo ${get_deployment_result} | jq -r '.elements[0].id')
 
 # deploy the ruleapp from Decision Center
