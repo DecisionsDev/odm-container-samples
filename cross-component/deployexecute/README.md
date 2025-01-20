@@ -90,6 +90,6 @@ curl -sk -X POST ${auth_credentials[@]} -H "accept: application/json" -H "Conten
 >    - OPENID_TOKEN_URL
 >  - and replacing `export auth_credentials=(--user "odmAdmin:odmAdmin")` by the commands below:
 > ```bash
-> export access_token=$(curl -sk -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "client_id=${CLIENT_ID}&scope=openid&client_secret=${CLIENT_SECRET}&grant_type=client_credentials" ${OPENID_TOKEN_URL}) | jq -r '.access_token')
+> export access_token=$(curl -sk -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "client_id=${CLIENT_ID}&scope=openid&client_secret=${CLIENT_SECRET}&grant_type=client_credentials" ${OPENID_TOKEN_URL} | jq -r '.access_token')
 > export auth_credentials=(-H "Authorization: Bearer ${access_token}")
 > ```
