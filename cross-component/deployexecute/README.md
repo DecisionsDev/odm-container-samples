@@ -83,7 +83,7 @@ curl -sk -X POST ${auth_credentials[@]} -H "accept: application/json" -H "Conten
 > [!NOTE]
 > The commands above rely on the Basic Authentication (as ODM is deployed without an OpenID Connect Provider). 
 > 
-> In a different environment with OpenID Connect, you can authenticate using the `client_credentials` grant type by:
+> In an environment with OpenID Connect, you can authenticate using the `client_credentials` grant type by:
 >  - setting the environment variables
 >    - CLIENT_ID
 >    - CLIENT_SECRET
