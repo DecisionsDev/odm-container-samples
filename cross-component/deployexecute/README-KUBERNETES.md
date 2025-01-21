@@ -1,6 +1,6 @@
 # Introduction
 
-This page explains how to run the BOM dynamic domain sample in Kubernetes.
+This page explains how to deploy ODM in Kubernetes.
 
 ## Deploying ODM
 
@@ -27,13 +27,12 @@ Where:
 
 #### c. Add the public IBM Helm charts repository
 
-- Add the public IBM Helm charts repository:
 ```bash
 helm repo add ibmcharts https://raw.githubusercontent.com/IBM/charts/master/repo/ibm-helm
 helm repo update
 ````
 
-- Check that you can access the ODM charts:
+Check that you can access the ODM charts:
 ```bash
 helm search repo ibm-odm-prod
 ```
