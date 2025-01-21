@@ -83,15 +83,24 @@ curl -sk -X POST ${auth_credentials[@]} -H "accept: application/json" -H "Conten
 ```
 
 > [!NOTE]
-> The commands above rely on the Basic Authentication (as ODM is deployed without an OpenID Connect Provider). 
+> The commands above rely on the Basic Authentication. 
 > 
-> In an environment with OpenID Connect, you can authenticate using the `client_credentials` grant type by:
->  - setting the environment variables
->    - CLIENT_ID
->    - CLIENT_SECRET
->    - OPENID_TOKEN_URL
->  - and replacing `export auth_credentials=(--user "odmAdmin:odmAdmin")` by the commands below:
+> - In an environment with OpenID Connect, the authentication can be performed using an access token retrieved with the `client_credentials` grant type by:
+>    - setting the environment variables
+>       - CLIENT_ID
+>       - CLIENT_SECRET
+>       - OPENID_TOKEN_URL
+>    - and replacing `export auth_credentials=(--user "odmAdmin:odmAdmin")` by the commands below:
 > ```bash
 > export access_token=$(curl -sk -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "client_id=${CLIENT_ID}&scope=openid&client_secret=${CLIENT_SECRET}&grant_type=client_credentials" ${OPENID_TOKEN_URL} | jq -r '.access_token')
 > export auth_credentials=(-H "Authorization: Bearer ${access_token}")
+> ```
+> - In a CP4BA environment, the authentication can be performed using a [Zen API key](https://www.ibm.com/docs/en/cloud-paks/cp-biz-automation/24.0.1?topic=access-using-zen-api-key-authentication). To do so:
+>    - set the environment variables
+>      - USERNAME
+>      - ZEN_API_KEY
+>    - replace `export auth_credentials=(--user "odmAdmin:odmAdmin")` by the commands below:
+> ```bash
+> export base64encoded_username_and_APIkey=$(echo "${USERNAME}:${ZEN_API_KEY}" | openssl base64)
+> export auth_credentials=(-H "Authorization: ZenApiKey ${base64encoded_username_and_APIkey}")
 > ```
