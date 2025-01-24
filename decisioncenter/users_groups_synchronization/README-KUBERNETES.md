@@ -159,7 +159,9 @@ that is replacing the initial setting:
        <user name="rtsUser2" groups="LoanService2, rtsUsers"/>
 ```
 
-Synchronize this organization evolution with the Decision Center Business Console  by modifying the group-security-configurations.xml in the **users-groups-synchro-secret** secret:
+Synchronize this organization evolution with the Decision Center Business Console  by modifying the group-security-configurations.xml in the **users-groups-synchro-secret** secret
+You can directly edit it using the cloud platform editor. 
+Or, you can use the following command:
 
 ```bash
 NEW_FILE=$(base64 < "./new-group-security-configurations.xml" | tr -d '\n')
@@ -200,3 +202,9 @@ Check that access is correctly set for the **rtsUser2** user:
 - Check that **Groups** is well displaying **rtsUsers**
 
 ![rtsUser2 Access](images/rtsUser2_2.png)
+
+# Integration with the Entra ID rest-api
+
+We are proposing a more realistic synchronization use-case using the Entra ID rest-api.
+It can be an alternative to the LDAP and SCIM datasource proposed by the Decision Center Business Console.
+You can get details on how to manage this by reading the [Entra ID tutorial](https://github.com/DecisionsDev/odm-docker-kubernetes/blob/master/authentication/AzureAD/README_WITH_CLIENT_SECRET.md) 
