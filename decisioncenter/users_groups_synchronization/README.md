@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This sample demonstrates how to synchronize users and groups in the Decision Center Business Console administration tab with an external enterprise repository that can located in LDAP, an OpenId User registry, or any kind of backend or business logic.
+This sample demonstrates how to synchronize users and groups in the Decision Center Business Console administration tab with an external enterprise repository that can be an LDAP, an OpenId User registry, or any kind of backend or business logic.
 The users and groups that are imported in the Business Console allow to manage fine grained permission.
 Basically, when enabling the project security, a decision service will be only visible from users that belong to a specific group.
 So, this sample allows to show how to synchronize in Decision Center some enterprise organizational changes like:
