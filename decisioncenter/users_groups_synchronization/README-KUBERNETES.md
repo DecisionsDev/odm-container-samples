@@ -63,12 +63,14 @@ kubectl create secret generic users-groups-synchro-secret \
 
 Create a file named **values.yaml**. This file will be used by the **helm install** command to specify the configuration parameters. 
 
-Add the lines below in **values.yaml** to create Decision Center sidecar:
+Add the lines below in **values.yaml** to create the Decision Center sidecar and populate the sample projects:
 ```
 decisionCenter:
   sidecar:
     enabled: true
     confSecretRef: users-groups-synchro-secret
+internalDatabase:
+  populateSampleData: true
 ```
 
 Add all the other parameters suitable to your platform in `values.yaml`. Check this [link](https://github.com/DecisionsDev/odm-docker-kubernetes/tree/master/platform) for help.
