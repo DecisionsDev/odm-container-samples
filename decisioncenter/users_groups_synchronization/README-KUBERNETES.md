@@ -81,7 +81,7 @@ helm install synchro-sample ibmcharts/ibm-odm-prod -f values.yaml
 
 #  Using the Sample
 
-**Log in** to the Business Console at [http://localhost:9060/decisioncenter](http://localhost:9060/decisioncenter) using the credentials:  
+**Log in** to the Business Console at **http://<HOST:PORT>/decisioncenter** using the credentials:
    - **Username**: `odmAdmin`  
    - **Password**: `odmAdmin`
 
@@ -117,7 +117,7 @@ Check that access is correctly set for the **rtsUser1** user:
 - Click on **Log out** link
 - **Log in** to the Business Console using the credentials:
    - **Username**: `rtsUser1`
-   - **Password**: `rtsUser1`
+   - **Password**: `odmAdmin`
 - Click on the **LIBRARY** tab
 - Check that only the **Loan Validation Service** project is visible
 - Click on **rtsUser1** at the top right corner
@@ -131,7 +131,7 @@ Check that access is correctly set for the **rtsUser2** user:
 - Click on **Log out** link
 - **Log in** to the Business Console using the credentials:
    - **Username**: `rtsUser2`
-   - **Password**: `rtsUser2`
+   - **Password**: `odmAdmin`
 - Click on the **LIBRARY** tab
 - Check that only the **Miniloan Service** project is visible
 - Click on **rtsUser2** at the top right corner
@@ -157,10 +157,18 @@ that is replacing the initial setting:
        <user name="rtsUser2" groups="LoanService2, rtsUsers"/>
 ```
 
-- Synchronize this organization evolution with the Decision Center Business Console  by pushing the new file using the Decision Center rest-api:
+Synchronize this organization evolution with the Decision Center Business Console  by modifying the group-security-configurations.xml in the **users-groups-synchro-secret** secret:
 
 ```bash
-curl -X 'POST' 'http://localhost:9060/decisioncenter-api/v1/repository/users-roles-registry?eraseAllUsersAndGroups=true' -H 'accept: */*'   -H 'Content-Type: multipart/form-data'   -F 'file=@./new-group-security-configurations.xml;type=text/xml' -u odmAdmin:odmAdmin 
+NEW_FILE=$(base64 < "./new-group-security-configurations.xml" | tr -d '\n')
+kubectl patch secret users-groups-synchro-secret -p "{\"data\":{\"group-security-configurations.xml\":\"${NEW_FILE}\"}}"
+```
+
+Wait the updated group-security-configurations.xml is consumed by the sidecar script:
+
+```bash
+DC_POD=$(kubectl get pods -o name | grep odm-decisioncenter)
+kubectl logs $DC_POD -c sidecar -f
 ```
 
 Check that new access is correctly set for the **rtsUser1** user:
@@ -168,7 +176,7 @@ Check that new access is correctly set for the **rtsUser1** user:
 - Click on **Log out** link
 - **Log in** to the Business Console using the credentials:
    - **Username**: `rtsUser1`
-   - **Password**: `rtsUser1`
+   - **Password**: `odmAdmin`
 - Click on the **LIBRARY** tab
 - Check that only the **Miniloan Service** project is visible
 - Click on **rtsUser1** at the top right corner
@@ -182,7 +190,7 @@ Check that access is correctly set for the **rtsUser2** user:
 - Click on **Log out** link
 - **Log in** to the Business Console using the credentials:
    - **Username**: `rtsUser2`
-   - **Password**: `rtsUser2`
+   - **Password**: `odmAdmin`
 - Click on the **LIBRARY** tab
 - Check there is no accessible decision service 
 - Click on **rtsUser2** at the top right corner
