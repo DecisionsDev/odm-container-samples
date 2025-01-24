@@ -76,7 +76,7 @@ Add all the other parameters suitable to your platform in `values.yaml`. Check t
 If you are on OCP, you can use this [values.yaml](./users_groups_synchronization-source/values.yaml).
 
 ```bash
-helm install users-groups-synchronization-sample ibmcharts/ibm-odm-prod -f values.yaml
+helm install synchro-sample ibmcharts/ibm-odm-prod -f values.yaml
 ```
 
 #  Using the Sample
