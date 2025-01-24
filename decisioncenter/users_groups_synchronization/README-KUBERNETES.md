@@ -4,8 +4,6 @@ This README explains how to run the Customizable Users/Groups Synchronization sa
 
 #  Configuring the sample in Kubernetes
 
-## 1. Deploying ODM
-
 To get access to the ODM material, you must have an IBM entitlement key to pull the images from the IBM Cloud Container registry.
 
 This is what will be used in the next step of this tutorial.
