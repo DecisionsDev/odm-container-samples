@@ -11,4 +11,4 @@ services:
     - 9060:9060
     - 9453:9453
     volumes:
-    - $PWD/users-groups-initial.xml:/config/apps/decisioncenter.war/WEB-INF/classes/config/group-security-configurations.xml
+    - $PWD/group-security-configurations.xml:/config/apps/decisioncenter.war/WEB-INF/classes/config/group-security-configurations.xml

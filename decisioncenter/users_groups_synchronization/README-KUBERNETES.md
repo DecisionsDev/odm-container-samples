@@ -56,7 +56,7 @@ We create a secret that will be used inside the Decision Center sidecar containe
 ```shell
 kubectl create secret generic users-groups-synchro-secret \
         --from-file=sidecar-start.sh \
-        --from-file=generate-user-group-mgt.sh
+        --from-file=group-security-configurations.xml
 ```
 
 #### f. Install an IBM Operational Decision Manager release
