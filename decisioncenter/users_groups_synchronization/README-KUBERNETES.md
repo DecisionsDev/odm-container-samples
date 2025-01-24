@@ -1,7 +1,6 @@
 # Introduction
 
-This README explains how to run the Custom Value Editor sample in Kubernetes.
-Before following the steps below, make sure you have built the images as explained in [README.md](README.md).
+This README explains how to run the Customizable Users/Groups Synchronization sample in Kubernetes.
 
 #  Configuring the sample in Kubernetes
 
