@@ -13,7 +13,7 @@ This page explains how to deploy ODM in Kubernetes.
 #### b. Create a pull secret by running the kubectl create secret command
 
 ```bash
-oc create secret docker-registry my-odm-docker-registry --docker-server=cp.icr.io \
+kubectl create secret docker-registry my-odm-docker-registry --docker-server=cp.icr.io \
     --docker-username=cp --docker-password="<ENTITLEMENT_KEY>" --docker-email=<USER_EMAIL>
 ```
 

@@ -9,7 +9,7 @@ Doing so, you do not need to have ODM installed. Instead we are relying on the [
 
 Start the ODM container:
 ```bash
-docker-compose up odm &
+docker-compose up &
 ```
 
 # Running the sample
