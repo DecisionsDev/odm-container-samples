@@ -165,57 +165,57 @@ You should see traces similar to these:
     }
     ```
 1. after the ruleset execution:
-```
-{
-  "report": {
-    "borrower": {
-      "firstName": "string",
-      "lastName": "string",
-      "birth": "1988-09-29T01:49:45.000+0000",
-      "SSN": {
-        "areaNumber": "string",
-        "groupCode": "string",
-        "serialNumber": "string"
-      },
-      "yearlyIncome": 3,
-      "zipCode": "string",
-      "creditScore": 3,
-      "spouse": {
-        "birth": "1982-12-08T14:13:09.850+0000",
+    ```
+    {
+    "report": {
+        "borrower": {
+        "firstName": "string",
+        "lastName": "string",
+        "birth": "1988-09-29T01:49:45.000+0000",
         "SSN": {
-          "areaNumber": "",
-          "groupCode": "",
-          "serialNumber": ""
+            "areaNumber": "string",
+            "groupCode": "string",
+            "serialNumber": "string"
         },
-        "yearlyIncome": 0,
-        "creditScore": 0,
+        "yearlyIncome": 3,
+        "zipCode": "string",
+        "creditScore": 3,
+        "spouse": {
+            "birth": "1982-12-08T14:13:09.850+0000",
+            "SSN": {
+            "areaNumber": "",
+            "groupCode": "",
+            "serialNumber": ""
+            },
+            "yearlyIncome": 0,
+            "creditScore": 0,
+            "latestBankruptcy": {
+            "chapter": 0
+            }
+        },
         "latestBankruptcy": {
-          "chapter": 0
+            "date": "2014-09-18T23:18:33.000+0000",
+            "chapter": 3,
+            "reason": "string"
         }
-      },
-      "latestBankruptcy": {
-        "date": "2014-09-18T23:18:33.000+0000",
-        "chapter": 3,
-        "reason": "string"
-      }
+        },
+        "loan": {
+        "numberOfMonthlyPayments": 3,
+        "startDate": "2025-08-19T17:27:14.000+0000",
+        "amount": 3,
+        "loanToValue": 1.051732E+7
+        },
+        "validData": true,
+        "insuranceRequired": true,
+        "insuranceRate": 0.02,
+        "approved": true,
+        "messages": [],
+        "yearlyInterestRate": 0.0,
+        "monthlyRepayment": 0.0,
+        "insurance": "2%",
+        "message": "",
+        "yearlyRepayment": 0.0
     },
-    "loan": {
-      "numberOfMonthlyPayments": 3,
-      "startDate": "2025-08-19T17:27:14.000+0000",
-      "amount": 3,
-      "loanToValue": 1.051732E+7
-    },
-    "validData": true,
-    "insuranceRequired": true,
-    "insuranceRate": 0.02,
-    "approved": true,
-    "messages": [],
-    "yearlyInterestRate": 0.0,
-    "monthlyRepayment": 0.0,
-    "insurance": "2%",
-    "message": "",
-    "yearlyRepayment": 0.0
-  },
-  "__DecisionID__": "aa46362d-fa30-4331-b241-d1ff7e8ac4270"
-}
-```
+    "__DecisionID__": "aa46362d-fa30-4331-b241-d1ff7e8ac4270"
+    }
+    ```
