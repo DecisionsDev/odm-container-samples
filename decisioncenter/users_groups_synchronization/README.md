@@ -2,28 +2,40 @@
 
 ## Introduction
 
-This sample demonstrates how to synchronize users and groups in the Decision Center Business Console administration tab with an external enterprise repository that can be an LDAP, an OpenId User registry, or any kind of backend or business logic.
-The users and groups that are imported in the Business Console allow to manage fine grained permission.
-Basically, when enabling the project security, a decision service will be only visible from users that belong to a specific group.
-So, this sample allows to show how to synchronize in Decision Center some enterprise organizational changes like:
-* a user is leaving the company, so is removed from groups and cannot access anymore projects
-* a user is coming in the company and is affected to some groups to work on specific projects
-* a user is changing of organization/groups and should change of project access    
+This sample demonstrates how to synchronize users and groups in the Decision Center Business Console administration tab with an external enterprise repository. This repository can be an LDAP directory, an OpenID user registry, or any other backend or business logic system.
+
+The imported users and groups in the Business Console enable fine-grained permission management. When project security is enabled, a decision service is only visible to users belonging to specific groups. 
+
+This sample illustrates how to synchronize enterprise organizational changes within Decision Center, such as:
+   * A user leaving the company, resulting in their removal from groups and loss of access to projects.
+   * A new user joining the company and being assigned to groups to work on specific projects.
+   * A user changing organizational groups, requiring updates to their project access.
 
 ## Scenario
 
-In this sample, we will use 2 users rtsUser1 and rtsUser2 belonging respectively to 2 enteprise services LoanService1 and LoanService2.
-This organization is stored inside a user registry backend that can be an LDAP, Entra ID, or Amazon Cognito user pool, ...
-It is refelected inside an XML file named group-security-configurations.xml that can be consumed by Decision Center to manage the access permission on Decision Services.
-So, we will enforce project security to provide access to:
-* the **Loan Validation Service** project only to users belonging to the LoanService1 group, meaning **rtsUser1** 
-* the **Miniloan Service** project only to users belonging to the LoanService2 group, meaning **rtsUser2**
+In this sample, we will use two users, `rtsUser1` and `rtsUser2`, who belong to two enterprise services, `LoanService1` and `LoanService2`, respectively. 
+
+The organizational structure is maintained in a user registry backend such as LDAP, Entra ID, or an Amazon Cognito user pool, ...
+
+This structure is reflected in an XML file named `group-security-configurations.xml`, which Decision Center uses to manage access permissions for Decision Services. We will enforce project security as follows:
+
+- The **Loan Validation Service** project is accessible only to users belonging to the `LoanService1` group (i.e., `rtsUser1`).
+- The **Miniloan Service** project is accessible only to users belonging to the `LoanService2` group (i.e., `rtsUser2`).
+
 
 ![Scenario 1](images/scenario1.png)
 
-Then, some organizational changes happen like rtsUser1 moving from LoanService1 to LoanService2, and rtsUser2 removed from LoanService2.
-These changes will be reflected to a new-group-security-configurations.xml file that will be consumed by Decision Center.
-Then we will see that access to project has changed for users.
+Organizational changes occur as follows:
+
+- `rtsUser1` moves from `LoanService1` to `LoanService2`.
+- `rtsUser2` is removed from `LoanService2`.
+
+These updates are reflected in a new XML configuration file, `new-group-security-configurations.xml`, which is consumed by Decision Center. As a result, project access is updated accordingly:
+
+- `rtsUser1` now has access to the **Miniloan Service** project instead of the **Loan Validation Service** project.
+- `rtsUser2` loses access to all projects.
+
+This sample demonstrates how Decision Center dynamically adapts to organizational changes, ensuring accurate and up-to-date access control.
 
 ![Scenario 2](images/scenario2.png)
 
