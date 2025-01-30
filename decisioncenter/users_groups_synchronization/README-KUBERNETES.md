@@ -109,6 +109,11 @@ In this section, you will configure access control for decision services in Deci
 
 We will enable the security by restricting the access to the **Loan Validation Service** project only to users that belong to the **LoanService1** group (like rtsUser1) and restricting the access to the **Miniloan Service** project only to users that belong to the **LoanService2** group (like rtsUser2):
 
+| User      | Group        | Accessible Project         |
+|-----------|-------------|---------------------------|
+| rtsUser1  | LoanService1 | Loan Validation Service  |
+| rtsUser2  | LoanService2 | Miniloan Service        |
+
 #### Loan Validation Service
 
 1. Navigate to **Administration > Project Security**.
@@ -165,6 +170,11 @@ We will enable the security by restricting the access to the **Loan Validation S
 ## Updating User Group Assignments
 
 As part of organizational changes, **rtsUser1** has transitioned from the **LoanService1** service to the **LoanService2** service, while **rtsUser2** is no longer part of the **LoanService2** service.
+
+| User      | Group        | Accessible Project         |
+|-----------|-------------|---------------------------|
+| rtsUser1  | LoanService2 | Miniloan Service        |
+
 
 ### 1. Modify Group Assignments
 
