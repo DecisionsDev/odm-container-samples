@@ -178,7 +178,7 @@ As part of organizational changes, **rtsUser1** has transitioned from the **Loan
 
 ### 1. Modify Group Assignments
 
-Update `group-security-configurations.xml` to reflect organizational changes:
+In the new-group-security-configurations.xml file you can this organizational changes:
 
 #### Before:
 
