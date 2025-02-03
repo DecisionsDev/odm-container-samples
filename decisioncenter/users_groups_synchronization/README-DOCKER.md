@@ -163,7 +163,7 @@ Check that new access is correctly set for the **rtsUser1** user:
 2. Click on **Log out** link
 3. **Log in** to the Business Console using the credentials:
    - **Username**: `rtsUser1`
-   - **Password**: `odmAdmin`
+   - **Password**: `rtsUser1`
 4. Click on the **LIBRARY** tab
 5. Check that only the **Miniloan Service** project is visible
 6. Click on **rtsUser1** at the top right corner
@@ -179,7 +179,7 @@ Check that access is correctly set for the **rtsUser2** user:
 2. Click on **Log out** link
 3. **Log in** to the Business Console using the credentials:
    - **Username**: `rtsUser2`
-   - **Password**: `odmAdmin`
+   - **Password**: `rtsUser2`
 4. Click on the **LIBRARY** tab
 5. Check there is no accessible decision service 
 6. Click on **rtsUser2** at the top right corner
@@ -197,7 +197,7 @@ Check that new access is correctly set for the **rtsUser1** user:
 2. Click on **Log out** link
 3. **Log in** to the Business Console using the credentials:
    - **Username**: `rtsUser1`
-   - **Password**: `odmAdmin`
+   - **Password**: `rtsUser1`
 4. Click on the **LIBRARY** tab
 5. Check that only the **Miniloan Service** project is visible
 6. Click on **rtsUser1** at the top right corner
@@ -213,7 +213,7 @@ Check that access is correctly set for the **rtsUser2** user:
 2. Click on **Log out** link
 3. **Log in** to the Business Console using the credentials:
    - **Username**: `rtsUser2`
-   - **Password**: `odmAdmin`
+   - **Password**: `rtsUser2`
 4. Click on the **LIBRARY** tab
 5. Check there is no accessible decision service 
 6. Click on **rtsUser2** at the top right corner
