@@ -5,10 +5,10 @@
 This sample demonstrates how to automate the deployment and execution of a ruleset using the REST API.
 
 In this sample, you will:
-- deploy ODM either on Kubernetes or in Docker,
-- import a Decision Service in Decision Center (optionally),
-- deploy a ruleset from Decision Center to Decision Server,
-- execute this ruleset.
+- Deploy ODM either on Kubernetes or in Docker,
+- Import a Decision Service in Decision Center (optionally),
+- Deploy a ruleset from Decision Center to Decision Server,
+- Execute this ruleset.
 
 ## Prerequisites
 
