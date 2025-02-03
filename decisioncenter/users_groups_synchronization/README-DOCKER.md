@@ -18,6 +18,7 @@ Doing so, you do not need to have ODM installed. Instead we are relying on the [
    git clone https://github.com/DecisionsDev/odm-container-samples.git
    cd decisioncenter/users_groups_synchronization/users_groups_synchronization-source
    ```
+In the next st
 
 ## Running the sample 
 
@@ -94,7 +95,7 @@ We will enable the security by restricting the access to the **Loan Validation S
 2. Click on **Log out** link
 3. **Log in** to the Business Console using the credentials:
    - **Username**: `rtsUser1`
-   - **Password**: `odmAdmin`
+   - **Password**: `rtsUser1`
 4. Verify that only **Loan Validation Service** is visible under the **LIBRARY** tab.
 5. Click on **rtsUser1** at the top right corner
 6. Click on the **Profile** link
@@ -109,7 +110,7 @@ We will enable the security by restricting the access to the **Loan Validation S
 2. Click on **Log out** link
 3. **Log in** to the Business Console using the credentials:
    - **Username**: `rtsUser2`
-   - **Password**: `odmAdmin`
+   - **Password**: `rtsUser2`
 4. Verify that only **Miniloan Service** is visible under the **LIBRARY** tab.
 5. Click on **rtsUser2** at the top right corner
 6. Click on the **Profile** link
@@ -129,7 +130,7 @@ As part of organizational changes, **rtsUser1** has transitioned from the **Loan
 
 ### 1. Modify Group Assignments
 
-Update `group-security-configurations.xml` to reflect organizational changes:
+Update the [SampleDir]/`decisioncenter/users_groups_synchronization/users_groups_synchronization-source/group-security-configurations.xml` reflect organizational changes:
 
 #### Before:
 
