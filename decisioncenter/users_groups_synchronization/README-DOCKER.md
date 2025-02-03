@@ -3,13 +3,21 @@
 
 This readme explains how to run the Customizable Users/Groups Synchronization sample in Docker.
 
-Doing so, you do not need to have ODM installed. Instead we are relying on the 'ODM for developer' container image.
+Doing so, you do not need to have ODM installed. Instead we are relying on the [ODM for developer](https://hub.docker.com/r/ibmcom/odm/) container image.
 
 ## Prerequisites
 
 - Docker setup in your machine
   
 ---
+
+## Clone the sample repository
+
+   Run ODM docker images
+   ```bash
+   git clone https://github.com/DecisionsDev/odm-container-samples.git
+   cd odm-container-samples
+   ```
 
 ## Running the sample 
 
