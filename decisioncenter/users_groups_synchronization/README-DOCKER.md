@@ -16,15 +16,17 @@ Doing so, you do not need to have ODM installed. Instead we are relying on the [
    Run ODM docker images
    ```bash
    git clone https://github.com/DecisionsDev/odm-container-samples.git
-   cd odm-container-samples
+   cd decisioncenter/users_groups_synchronization/users_groups_synchronization-source
    ```
 
 ## Running the sample 
 
    Run ODM docker images
    ```bash
-   docker-compose -f compose-odm-dev.yml up odm &
+   docker-compose -f compose-odm-dev.yml up odm 
    ```
+
+   Wait until ODM is started. 
 
 ---
 ##  Using the Sample
