@@ -155,40 +155,6 @@ To synchronize the evolution of this organization with the Decision Center Busin
 curl -X 'POST' 'http://localhost:9060/decisioncenter-api/v1/repository/users-roles-registry?eraseAllUsersAndGroups=true' -H 'accept: */*'   -H 'Content-Type: multipart/form-data'   -F 'file=@./new-group-security-configurations.xml;type=text/xml' -u odmAdmin:odmAdmin
 ```
 
-### 4. Validate New Access Rules
-
-#### `rtsUser1`
-Check that new access is correctly set for the **rtsUser1** user:
-1. Click on **rtsUser2** at the top right corner
-2. Click on **Log out** link
-3. **Log in** to the Business Console using the credentials:
-   - **Username**: `rtsUser1`
-   - **Password**: `rtsUser1`
-4. Click on the **LIBRARY** tab
-5. Check that only the **Miniloan Service** project is visible
-6. Click on **rtsUser1** at the top right corner
-7. Click on the **Profile** link
-8. Check that **Groups** is well displaying **LoanService2, rtsUsers**
-
-![rtsUser1 Access](images/rtsUser1_2.png)
-
-#### `rtsUser2`
-
-Check that access is correctly set for the **rtsUser2** user:
-1. Click on **rtsUser1** at the top right corner
-2. Click on **Log out** link
-3. **Log in** to the Business Console using the credentials:
-   - **Username**: `rtsUser2`
-   - **Password**: `rtsUser2`
-4. Click on the **LIBRARY** tab
-5. Check there is no accessible decision service 
-6. Click on **rtsUser2** at the top right corner
-7. Click on the **Profile** link
-8. Check that **Groups** is well displaying **rtsUsers**
-
-![rtsUser2 Access](images/rtsUser2_2.png)
-
---- 
 ### 3. Validate New Access Rules
 
 #### `rtsUser1`
