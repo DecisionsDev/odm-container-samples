@@ -5,19 +5,20 @@
 This sample demonstrates how to automate the deployment and execution of a ruleset using the REST API.
 
 In this sample, you will:
-- Deploy ODM either on Kubernetes or in Docker,
-- Import a Decision Service in Decision Center (optionally),
-- Deploy a ruleset from Decision Center to Decision Server,
-- Execute this ruleset.
+- Deploy IBM ODM on either Kubernetes or Docker.
+- Optionally import a Decision Service into Decision Center.
+- Deploy a ruleset from Decision Center to Decision Server.
+- Execute the deployed ruleset.
 
 ## Prerequisites
 
-- Ensure you have at least Docker 24.0.x or Kubernetes 1.27+
-- Install [jq](https://jqlang.github.io/jq/download/)
+Ensure you have the following tools installed:
+- Docker 24.0.x or later, or Kubernetes 1.27+.
+- [jq for JSON processing](https://jqlang.github.io/jq/download/)
 
 ## Installation of ODM
 
-Click one of the links below depending on how you prefer to deploy ODM:
+Select your preferred deployment method and follow the corresponding guide:
    * [Kubernetes](README-KUBERNETES.md)
    * [Docker](README-DOCKER.md)
 
@@ -25,7 +26,7 @@ Click one of the links below depending on how you prefer to deploy ODM:
 
 ### 1. Set Environment Variables
 
-Set the following environment variables:
+Define the following environment variables:
 
 <!-- markdown-link-check-disable --> 
 
@@ -35,8 +36,7 @@ Set the following environment variables:
 | DSR_URL | Decision Server Runtime URL | see below | http://localhost:9060/decisioncenter/DecisionService |
 
 <!-- markdown-link-check-enable-->
-
-If ODM is deployed on Kubernetes, you can check the section **Access the ODM services** for your platform to find out how to get those URLs:
+If ODM is deployed on Kubernetes, you can check the **Access the ODM services** section for your platform to find out how to get those URLs:
 - [Amazon EKS](https://github.com/DecisionsDev/odm-docker-kubernetes/blob/master/platform/eks/README.md#6-access-the-odm-services)
 - [Azure](https://github.com/DecisionsDev/odm-docker-kubernetes/blob/master/platform/azure/README.md#access-odm-services)
 - [Google GKE](https://github.com/DecisionsDev/odm-docker-kubernetes/blob/master/platform/gcloud/README.md#6-access-odm-services)
@@ -44,8 +44,7 @@ If ODM is deployed on Kubernetes, you can check the section **Access the ODM ser
 - [Openshift](https://github.com/DecisionsDev/odm-docker-kubernetes/blob/master/platform/roks/README.md#4-access-the-odm-services)
 
 ### 2. Deploy the `Loan Validation Service` Decision Service
-
-If the `Loan Validation Service` Decision Service is not available in Decision Center yet, run:
+If the `Loan Validation Service` is not available in Decision Center, import it using the following commands:
 
 ```bash
 # configure the Authentication (using Basic Auth)
@@ -115,8 +114,8 @@ curl -sk -X POST ${AUTH_CREDENTIALS[@]} -H "accept: application/json" -H "Conten
 
 ## Expected result
 
-You should see traces similar to these:
-1. after the ruleapp deployment:
+1. After deploying the ruleset, you should see a confirmation message:
+
     ```
     {
     "id": "e51db153-bca2-49a8-8998-2b5e6c93f6cb",
@@ -164,7 +163,8 @@ You should see traces similar to these:
     "archive": null
     }
     ```
-1. after the ruleset execution:
+    
+2. After executing the ruleset, the response should include the rule execution results:
     ```
     {
     "report": {
