@@ -108,7 +108,7 @@ curl -sk -X POST ${AUTH_CREDENTIALS[@]} -H "accept: application/json" -H "Conten
 >      - ZEN_API_KEY
 >    - replace `export auth_credentials=(--user "odmAdmin:odmAdmin")` by the commands below:
 > ```bash
-> export BASE64ENCODED_USERNAME_AND_APIKEY=$(echo "${USERNAME}:${ZEN_API_KEY}" | base64)
+> export BASE64ENCODED_USERNAME_AND_APIKEY=$(echo -n "${USERNAME}:${ZEN_API_KEY}" | base64)
 > export AUTH_CREDENTIALS=(-H "Authorization: ZenApiKey ${BASE64ENCODED_USERNAME_AND_APIKEY}")
 > ```
 
