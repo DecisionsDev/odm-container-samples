@@ -33,7 +33,7 @@ Define the following environment variables:
 | Name  | Description | Value on Kubernetes | Value on Docker |
 | - | - | - | - |
 | DC_API_URL | Decision Center API URL | see below | http://localhost:9060/decisioncenter-api |
-| DSR_URL | Decision Server Runtime URL | see below | http://localhost:9060/decisioncenter/DecisionService |
+| DSR_URL | Decision Server Runtime URL | see below | http://localhost:9060/DecisionService |
 
 <!-- markdown-link-check-enable-->
 If ODM is deployed on Kubernetes, you can check the **Access the ODM services** section for your platform to find out how to get those URLs:
