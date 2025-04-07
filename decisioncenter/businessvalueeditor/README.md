@@ -47,9 +47,9 @@ To use the sample in Decision Center, you need to build a JAR for [Docker](READM
 
    2. Build the JAR
 
-      The instructions below enable to build the JAR using a Docker container featuring Maven and a JDK version 17.
+      The instructions below enable to build the JAR using a Docker container featuring Maven and a JDK version 21.
 
-      For ODM 8.12, you must use **maven:3.8.1-openjdk-11** instead and **maven:3.8-adoptopenjdk-8** for earlier releases.
+      For ODM 9.0, use **maven:3.8.5-openjdk-17**. As for ODM 8.12, use **maven:3.8.1-openjdk-11** instead and **maven:3.8-adoptopenjdk-8** for earlier releases.
 
       Run the command below in the **decisioncenter/businessvalueeditor/businessvalueeditor-source** directory:
 
@@ -57,7 +57,7 @@ To use the sample in Decision Center, you need to build a JAR for [Docker](READM
          docker run --rm \
                -v "$(pwd)":/usr/src/sample \
                -w /usr/src/sample \
-               maven:3.8.5-openjdk-17 \
+               maven:3.9.9-ibm-semeru-21-jammy \
                mvn clean install
          ```
 
