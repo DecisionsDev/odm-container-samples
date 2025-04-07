@@ -1,7 +1,7 @@
 /*
 * Licensed Materials - Property of IBM
 * 5725-B69 5655-Y17 5724-Y00 5724-Y17 5655-V84
-* Copyright IBM Corp. 2009, 2024. All Rights Reserved.
+* Copyright IBM Corp. 2009, 2025. All Rights Reserved.
 *
 * Note to U.S. Government Users Restricted Rights: 
 * Use, duplication or disclosure restricted by GSA ADP Schedule 
@@ -15,14 +15,13 @@ import ilog.rules.brl.value.descriptor.IlrValueDescriptor;
 import ilog.rules.brl.value.descriptor.IlrValueDescriptorFactory;
 import ilog.rules.vocabulary.model.IlrConcept;
 import ilog.rules.vocabulary.model.IlrVocabulary;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.Locale;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import com.ibm.bdsl.web.editor.IntelliTextEditorEnvironment;
 import com.ibm.json.java.JSONArray;
