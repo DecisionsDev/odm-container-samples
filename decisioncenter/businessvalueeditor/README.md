@@ -49,8 +49,6 @@ To use the sample in Decision Center, you need to build a JAR for [Docker](READM
 
       The instructions below enable to build the JAR using a Docker container featuring Maven and a JDK version 21.
 
-      For ODM 9.0, use **maven:3.8.5-openjdk-17**. As for ODM 8.12, use **maven:3.8.1-openjdk-11** instead and **maven:3.8-adoptopenjdk-8** for earlier releases.
-
       Run the command below in the **decisioncenter/businessvalueeditor/businessvalueeditor-source** directory:
 
          ```bash
@@ -64,6 +62,12 @@ To use the sample in Decision Center, you need to build a JAR for [Docker](READM
       The JAR that will be used on [Docker](README-DOCKER.md) is generated in the **target** directory and is named **businessvalueeditor-1.0.jar**.
 
       The ZIP that will be used on [Kubernetes](README-KUBERNETES.md) is generated in the **target** directory and is named **businessvalueeditor-1.0.zip**.
+
+      > *Note*: 
+      > 1. If you are testing against ODM 9.0 or earlier, you need to edit the `odm-container-samples/decisioncenter/businessvalueeditor/businessvalueeditor-source/src/main/java/SampleValueEditorServlet.java` file. 
+      >   - Remove the `jakarta.servlet` imports. 
+      >   - Uncomment the `javax.servlet` imports and save the file.
+      > 2. For ODM 9.0, use **maven:3.8.5-openjdk-17**. As for ODM 8.12, use **maven:3.8.1-openjdk-11** instead and **maven:3.8-adoptopenjdk-8** for earlier releases.
 
 ### 3) Instructions to use the sample in Decision Center
 
