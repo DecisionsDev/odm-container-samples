@@ -57,7 +57,7 @@ helm repo update
 ```bash
 $ helm search repo ibm-odm-prod
 NAME                    CHART VERSION APP VERSION DESCRIPTION
-ibm-helm/ibm-odm-prod   24.0.0        9.0.0.0     IBM Operational Decision Manager
+ibm-helm/ibm-odm-prod   24.0.1        9.0.0.1     IBM Operational Decision Manager
 ```
 #### e. Install an IBM Operational Decision Manager release
 
@@ -75,7 +75,7 @@ Add all the other parameters suitable to your platform in `values.yaml`. Check t
 If you are on OCP, you can use this [values.yaml](./businessvalueeditor-source/values.yaml) file by replacing `<FILESERVER_URL>` by the actual URL of the file server hosting the JARs.
 
 ```bash
-helm install businessvalueeditor-sample ibmcharts/ibm-odm-prod -f values.yaml
+helm install businessvalueeditor-sample ibm-helm/ibm-odm-prod -f values.yaml
 ```
 
 #  Using the Sample
