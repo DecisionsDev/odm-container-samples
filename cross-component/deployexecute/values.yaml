@@ -1,0 +1,16 @@
+customization:
+  runAsUser: '' # only needed in Openshift
+image:
+  pullSecrets:
+    - my-odm-docker-registry
+  repository: cp.icr.io/cp/cp4a/odm
+internalDatabase:
+  persistence:
+    enabled: false
+    useDynamicProvisioning: false
+  populateSampleData: true
+  runAsUser: '' # only needed in Openshift
+license: true
+service:
+  enableRoute: true # only needed in Openshift
+usersPassword: odmAdmin
