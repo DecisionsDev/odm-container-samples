@@ -1,4 +1,4 @@
-# BOM dynamic domain Sample
+# BOM dynamic domain sample
 
 ## Introduction
 
@@ -19,9 +19,9 @@ In this sample, you will :
 - store new values of the dynamic domains in a database,
 - update the rule project with the new values of the dynamic domains.
 
-## Running this sample in Rule Designer
+## 1. Running the sample in Rule Designer
 
-### 1) Building the Eclipse plugin
+### 1.1 Building the Eclipse plugin
 
 To use the sample in Rule Designer, you need to build an Eclipse plugin.
 - In Eclipse, make sure that,
@@ -31,27 +31,27 @@ To use the sample in Rule Designer, you need to build an Eclipse plugin.
 - Select the folder `decisioncenter/dynamicdomain/src/ilog.rules.studio.samples.bomdomainpopulate` 
 - Tick the project `ilog.rules.studio.samples.bomdomainpopulate` and click **Finish**
 - Right-click the `build-bomdomainepopulate.xml` file and click **Run as > Ant Build**. A file named `bomdomainpopulate.jar` gets generated at the root of the project.
-- Click **Export > Plug-in Development > Deployable Plug-ins and fragments** to build the plugin. Click **Next**, choose `<ECLIPSE_HOME>/dropins` as the destination directory (where `<ECLIPSE_HOME` should be replaced by the HOME directory of the running Eclipse), and click **Finish**.
+- Right-click on the project and click **Export > Plug-in Development > Deployable Plug-ins and fragments** to build the plugin. Click **Next**, enter `<ECLIPSE_HOME>/dropins` as the destination directory (where `<ECLIPSE_HOME>` should be replaced by the HOME directory of the running Eclipse), and click **Finish**.
 - Restart Eclipse.
 
   >Note: if you modify the plugin and deploy it again, start Eclipse with the `-clean` parameter to force a cache update.
 
-### 2) Instructions to use the sample in Rule Designer
+### 1.2 Instructions to use the sample in Rule Designer
 
 - Import the projects below located in the `decisioncenter/dynamicdomain/projects/` directory:
   - bomdomainpopulate-bd-helper
   - bomdomainpopulate-rules
   - bomdomainpopulate-xom
 
-- Follow the [instructions from the documentation](https://www.ibm.com/docs/en/odm/9.0.0?topic=domains-data-sources-bom-sample-details).
+- Follow the [instructions from the documentation](https://www.ibm.com/docs/en/odm/9.0.0?topic=domains-data-sources-bom-sample-details) to try out how the sample works in Rule Designer.
 
-## Running this sample in Decision Center
+## 2. Running the sample in Decision Center
 
-### 1) Prerequisites
+### 2.1 Prerequisites
 
 Ensure you have at least Docker 24.0.x (and optionally Kubernetes 1.27+).
 
-### 2) Configuring how to connect to the database (kubernetes only)
+### 2.2 Configuring how to connect to the database (kubernetes only)
 
 If you deploy ODM on Docker, there is nothing to configure.
 

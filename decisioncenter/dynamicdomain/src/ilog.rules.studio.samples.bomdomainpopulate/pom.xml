@@ -13,7 +13,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
-                <version>3.1.0</version>
                 <executions>
                     <execution>
                         <id>compile</id>
@@ -23,7 +22,7 @@
                         </goals>
                         <configuration>
                             <target>
-                              <javac   sourcepath="" srcdir="${project.build.sourceDirectory}" 
+                                <javac sourcepath="" srcdir="${project.build.sourceDirectory}" 
                                        destdir="${project.build.outputDirectory}"
                                        includeantruntime="false"
                                        compiler="modern">
@@ -57,6 +56,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.14.0</version>
                 <executions>
                     <execution>
                         <id>default-compile</id>
