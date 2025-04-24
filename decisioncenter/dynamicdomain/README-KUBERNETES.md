@@ -135,13 +135,13 @@ The class that implements the customization must be declared:
 1. Log in to the Business Console. Use the following credentials if you install with the [values.yaml](./src/ilog.rules.studio.samples.bomdomainpopulate/values.yaml) for OCP:  
    - **Username**: `odmAdmin`  
    - **Password**: `odmAdmin`
-2. Navigate to **Administration > Settings > Custom Settings**
-3. Click the *Add custom setting* **icon** and set:
+1. Navigate to **Administration > Settings > Custom Settings**
+1. Click the *Add custom setting* **icon** and set:
     - name = `teamserver.derbyDataBaseDomainProvider`
     - description = `derbyDataBaseDomainProvider`
     - type = `String`
     - leave `default value` empty. Save the setting.
-4. Set the value of this new custom setting to `ilog.rules.studio.samples.bomdomainpopulate.DataBaseDomainValueProvider`.
+1. Set the value of this new custom setting to `ilog.rules.studio.samples.bomdomainpopulate.DataBaseDomainValueProvider`.
 
 ### 4.2 Using a JVM parameter
 
@@ -162,12 +162,12 @@ helm upgrade myodmsample ibm-helm/ibm-odm-prod --reuse-values --set decisionCent
     echo $DBSERVER
     ```
 
-2. Navigate to the BOM dynamic domain sample directory:
+1. Navigate to the BOM dynamic domain sample directory:
     ```bash
     cd decisioncenter/dynamicdomain
     ```
 
-3. Copy the initialization SQL script into the pod and execute it:
+1. Copy the initialization SQL script into the pod and execute it:
     ```bash
     kubectl cp ./sql_scripts/createAndPopulate.sql $DBSERVER:/tmp
     kubectl exec $DBSERVER -- psql -U odmusr -d odmdb -f /tmp/createAndPopulate.sql
@@ -176,21 +176,21 @@ helm upgrade myodmsample ibm-helm/ibm-odm-prod --reuse-values --set decisionCent
 ## 6. Using the sample
 
 1. Log in to the Business Console.
-2. Navigate to the **Library** tab.
-3. Import the rule project archive `dynamicdomain/projects/bomdomainpopulate-rules.zip`.
+1. Navigate to the **Library** tab.
+1. Import the rule project archive `dynamicdomain/projects/bomdomainpopulate-rules.zip`.
     > Note: this rule project `bomdomainpopulate-rules` is only aimed at editing rules to demonstrate loading domains from a database. It is missing a deployment configuration and cannot be executed.
-4. Display the rule `CheckOrder > OrderType`. An error **Value (string) 'CompanyX' is incorrect** is displayed. Edit the rule and either remove **"CompanyX"** and press SPACE or double-click **"CompanyX"**. A list of suitable companies gets displayed in a drop-down. Close down the rule **without** saving.
-5. Display the rule `CheckCurrency > CurrencyRestriction`. No warning is displayed.
-6. Let's now make some changes in the dynamic domains in the database. Run:
+1. Display the rule `CheckOrder > OrderType`. An error **Value (string) 'CompanyX' is incorrect** is displayed. Edit the rule and either remove **"CompanyX"** and press SPACE or double-click **"CompanyX"**. A list of suitable companies gets displayed in a drop-down. Close down the rule **without** saving.
+1. Display the rule `CheckCurrency > CurrencyRestriction`. No warning is displayed.
+1. Let's now make some changes in the dynamic domains in the database. Run:
     ```bash
     kubectl cp ./sql_scripts/modifyTables.sql $DBSERVER:/tmp
     kubectl exec $DBSERVER -- psql -U odmusr -d odmdb -f /tmp/modifyTables.sql
     ```
 
-7. Display the rule `CheckOrder > OrderType` back again. Notice that there is no error anymore. The effects of the changes (the addition of `CompanyX` and `CompanyY`) done in the database are taken into account automatically because the values that the field `stock` can take are dynamically fetched from the database (and not stored in the BOM).
-8. Conversely if you display the rule `CheckCurrency > CurrencyRestriction`, there is still no warning. So let's now import the changes done in the database into the BOM. Click the **Model** tab, and then the **Dynamic Domains** sub-tab. Expand all the three domains. You should see this: (Notice that the **Australian Dollar** was removed)
+1. Display the rule `CheckOrder > OrderType` back again. Notice that there is no error anymore. The effects of the changes (the addition of `CompanyX` and `CompanyY`) done in the database are taken into account automatically because the values that the field `stock` can take are dynamically fetched from the database (and not stored in the BOM).
+1. Conversely if you display the rule `CheckCurrency > CurrencyRestriction`, there is still no warning. So let's now import the changes done in the database into the BOM. Click the **Model** tab, and then the **Dynamic Domains** sub-tab. Expand all the three domains. You should see this: (Notice that the **Australian Dollar** was removed)
 
     ![Dynamic Domains update](images/dynamicDomainsUpdate.png)
 
-9. Tick **Domain** to select all the domains, and click the **Apply changes** button. Confirm the change.
-10. Display the rule `CheckCurrency > CurrencyRestriction` back again. Now a warning `'Australian Dollar' is deprecated` is displayed as the result of the update of the Dynamic Domains in the BOM.
+1. Tick **Domain** to select all the domains, and click the **Apply changes** button. Confirm the change.
+1. Display the rule `CheckCurrency > CurrencyRestriction` back again. Now a warning `'Australian Dollar' is deprecated` is displayed as the result of the update of the Dynamic Domains in the BOM.
