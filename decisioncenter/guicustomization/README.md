@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This sample shows you how to customize the Business console using [GUI customization sample](https://www.ibm.com/docs/en/odm/9.0.0?topic=center-gui-customization) in a container environment.
+This sample shows you how to customize the Business Console using [GUI customization sample](https://www.ibm.com/docs/en/odm/9.0.0?topic=center-gui-customization) in a container environment.
 
 ## Running this sample in Decision Center
 
@@ -31,7 +31,7 @@ To use the sample in Decision Center, you need to build a JAR.
       wget http://localhost:9060/decisioncenter/assets/decision-center-client-api.zip
       ```
 
-      Then, unzip decision-center-client-api.zip on the **lib** directory :
+      Then, unzip decision-center-client-api.zip to the **lib** directory :
       ```
       unzip decision-center-client-api.zip -d "lib"
       ```
