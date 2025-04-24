@@ -11,7 +11,7 @@ Before following the steps below, make sure you have built the customization JAR
 
 ## 1. Build the Sample Code
 
-The following steps show how to compile the sample code into a JAR file using a Docker container with Maven and JDK 17.
+The following steps show how to compile the sample code into a JAR file using a Docker container with Maven and JDK 21.
 
 1. Navigate to the project directory:
    ```bash
@@ -72,7 +72,7 @@ To set up and populate the dynamic domains database:
     - name = `teamserver.derbyDataBaseDomainProvider`
     - description = `derbyDataBaseDomainProvider`
     - type = `String`
-    - leave `default value` empty
+    - leave `default value` empty. Save the setting.
 3. Set the value of this new custom setting to `ilog.rules.studio.samples.bomdomainpopulate.DataBaseDomainValueProvider`.
 4. Navigate to the **Library** tab.
 5. Import the rule project archive `dynamicdomain/projects/bomdomainpopulate-rules.zip`.
