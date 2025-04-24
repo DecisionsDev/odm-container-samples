@@ -16,8 +16,8 @@ Export-Package: ilog.rules.studio.samples.bomdomainpopulate,ilog.rules.s
  tudio.samples.bomdomainpopulate.actions,ilog.rules.studio.samples.bomdo
  mainpopulate.stock,org.apache.derby.iapi.services.info,org.apache.derby
  .info,org.apache.derby.jdbc
-Bundle-Version: 9.0.0.0
+Bundle-Version: 9.5.0.0
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-17
+Bundle-RequiredExecutionEnvironment: JavaSE-21
 Automatic-Module-Name: ilog.rules.studio.samples.bomdomainpopulate
 
