@@ -21,8 +21,8 @@
                             <goal>run</goal>
                         </goals>
                         <configuration>
-                            <tasks>
-                                <javac  srcdir="${project.build.sourceDirectory}" 
+                            <target>
+                                <javac srcdir="${project.build.sourceDirectory}" 
                                        destdir="${project.build.outputDirectory}"
                                        includeantruntime="false"
                                        compiler="modern">
@@ -30,7 +30,7 @@
                                         <fileset dir="${project.basedir}/lib" includes="**/*.jar"/>    
                                     </classpath>
                                 </javac>                 
-                            </tasks>
+                            </target>
                         </configuration>
                     </execution>
                 </executions>
@@ -39,6 +39,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.14.0</version>
                 <executions>
                     <execution>
                         <id>default-compile</id>
