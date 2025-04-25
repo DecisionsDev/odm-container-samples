@@ -8,7 +8,7 @@ This sample shows you how to customize the Business Console using [GUI customiza
 
 ### 1) Prerequisites
 
-Before you begin, ensure you have at least Docker 24.0.x (and optionally Kubernetes 1.25+). 
+Before you begin, ensure you have at least Docker 24.0.x (and optionally Kubernetes 1.28+). 
 
 ### 2) Building the Decision Center extension JAR
 
@@ -43,7 +43,7 @@ To use the sample in Decision Center, you need to build a JAR.
 
    2. Build the JAR
 
-      The instructions below enable to build the JAR using a Docker container featuring Maven and a JDK version 17.
+      The instructions below enable to build the JAR using a Docker container featuring Maven and a JDK version 21, compatible for ODM 9.5.
       
       Run the command below in the **decisioncenter/guicustomization/guicustomization-source** directory:
 
@@ -51,7 +51,7 @@ To use the sample in Decision Center, you need to build a JAR.
          docker run --rm \
                -v "$(pwd)":/usr/src/sample \
                -w /usr/src/sample \
-               maven:3.8.5-openjdk-17 \
+               maven:3.9.9-ibm-semeru-21-jammy \
                mvn clean install
          ```
 
