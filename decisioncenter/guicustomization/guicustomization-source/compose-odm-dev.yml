@@ -1,6 +1,6 @@
 services:
   odm:
-    image: icr.io/cpopen/odm-k8s/odm:9.0.0
+    image: icr.io/cpopen/odm-k8s/odm:9.5
     mem_limit: 4G
     memswap_limit: 4G
     user: "1001:0"
@@ -12,7 +12,7 @@ services:
     - 9453:9453
 
   odm-with-gui-customization:
-    image: icr.io/cpopen/odm-k8s/odm:9.0.0
+    image: icr.io/cpopen/odm-k8s/odm:9.5
     mem_limit: 4G
     memswap_limit: 4G
     user: "1001:0"
