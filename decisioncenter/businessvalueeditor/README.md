@@ -10,7 +10,7 @@ It is the ODM on k8s adaptation of the ODM on premises [Custom Value Editor samp
 
 ### 1) Prerequisites
 
-Before you begin, ensure you have at least Docker 24.0.x (and optionally Kubernetes 1.27+).
+Before you begin, ensure you have at least Docker 24.0.x (and optionally Kubernetes 1.28+).
 
 ### 2) Building the Decision Center extension JAR
 
