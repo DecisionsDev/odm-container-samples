@@ -154,4 +154,8 @@ Close the dialog and then click the new tab **My Tab**. The tab displays the sam
 
 Log out of the Business Console.
 
+### Stopping the sample
 
+```bash
+helm uninstall guicustomization-sample
+```
