@@ -98,7 +98,7 @@ helm install guicustomization-sample ibm-helm/ibm-odm-prod -f values.yaml
 
 Open the **Library** tab. Import the [LoanValidationService.zip](./projects/LoanValidationService.zip) Decision Service.
 
-To activate the Custom Value Editor, after login in Decision Center:
+To activate the GUI customization:
 - Go in the menu **Administration>Settings>Custom Settings**
 - Register a new setting named **decisioncenter.web.core.extensions.entrypoints** keeping blank the **default value of the setting** field.
 
