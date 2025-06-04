@@ -10,7 +10,7 @@ Off-the-shelf, ODM only enables to store the values of a dynamic domain in an Ex
 
 This sample demonstrates how to store the values of a dynamic domain in a database.
 
-This sample was adapted from the [Data sources for BOM domains](https://www.ibm.com/docs/en/odm/9.0.0?topic=extensions-data-sources-bom-domains) sample for (on-premise) Rule Designer.
+This sample was adapted from the [Data sources for BOM domains](https://www.ibm.com/docs/en/odm/9.5.0?topic=extensions-data-sources-bom-domains) sample for (on-premise) Rule Designer.
 This sample runs both in Rule Designer and in Decision Center.
 
 In this sample, you will :
@@ -43,7 +43,7 @@ To use the sample in Rule Designer, you need to build an Eclipse plugin.
   - bomdomainpopulate-rules
   - bomdomainpopulate-xom
 
-- Follow the [instructions from the documentation](https://www.ibm.com/docs/en/odm/9.0.0?topic=domains-data-sources-bom-sample-details) to try out how the sample works in Rule Designer.
+- Follow the [instructions from the documentation](https://www.ibm.com/docs/en/odm/9.5.0?topic=domains-data-sources-bom-sample-details) to try out how the sample works in Rule Designer.
 
 ## 2. Running the sample in Decision Center
 
@@ -55,7 +55,7 @@ Ensure you have at least Docker 24.0.x (and optionally Kubernetes 1.28+).
 
 If you deploy ODM on Docker, there is nothing to configure.
 
-If you deploy ODM on kubernetes, and for the sole purpose of testing the sample, it is best to use the [PostgreSQL internal database](https://www.ibm.com/docs/en/SSQP76_9.0.0/com.ibm.odm.kube/topics/con_internal_db.html) to store the dynamic domain data (along with Decision Center data).
+If you deploy ODM on kubernetes, and for the sole purpose of testing the sample, it is best to use the [PostgreSQL internal database](https://www.ibm.com/docs/en/SSQP76_9.5.0/com.ibm.odm.kube/topics/con_internal_db.html) to store the dynamic domain data (along with Decision Center data).
 
 In that case, and provided ODM is deployed in a Helm Release named `myodmsample`, you do not need to modify [database.properties](src/ilog.rules.studio.samples.bomdomainpopulate/src/main/resources/data/database.properties).
 Edit that file otherwise.

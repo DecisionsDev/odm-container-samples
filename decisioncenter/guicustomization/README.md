@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This sample shows you how to customize the Business Console using [GUI customization sample](https://www.ibm.com/docs/en/odm/9.0.0?topic=center-gui-customization) in a container environment.
+This sample shows you how to customize the Business Console using [GUI customization sample](https://www.ibm.com/docs/en/odm/9.5.0?topic=center-gui-customization) in a container environment.
 
 ## Running this sample in Decision Center
 

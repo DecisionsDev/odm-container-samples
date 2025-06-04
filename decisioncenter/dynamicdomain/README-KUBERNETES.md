@@ -145,7 +145,7 @@ The class that implements the customization must be declared:
 
 ### 4.2 Using a JVM parameter
 
-Follow instructions as described [here](https://www.ibm.com/docs/en/odm/9.0.0?topic=kubernetes-persisting-decision-center-ruleset-cache) to create a Config Map with the additional JVM parameter below: 
+Follow instructions as described [here](https://www.ibm.com/docs/en/odm/9.5.0?topic=kubernetes-persisting-decision-center-ruleset-cache) to create a Config Map with the additional JVM parameter below: 
 ```
 -Dilog.rules.teamserver.derbyDataBaseDomainProvider=ilog.rules.studio.samples.bomdomainpopulate.DataBaseDomainValueProvider
 ```
