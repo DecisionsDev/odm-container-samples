@@ -49,7 +49,7 @@ To use the sample in Rule Designer, you need to build an Eclipse plugin.
 
 ### 2.1 Prerequisites
 
-Ensure you have at least Docker 24.0.x (and optionally Kubernetes 1.28+).
+Ensure you have at least Docker 27.x (and optionally Kubernetes 1.28+).
 
 ### 2.2 Configuring how to connect to the database (kubernetes only)
 

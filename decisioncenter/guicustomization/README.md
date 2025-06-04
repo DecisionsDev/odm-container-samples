@@ -8,7 +8,7 @@ This sample shows you how to customize the Business Console using [GUI customiza
 
 ### 1) Prerequisites
 
-Before you begin, ensure you have at least Docker 24.0.x (and optionally Kubernetes 1.28+). 
+Before you begin, ensure you have at least Docker 27.x (and optionally Kubernetes 1.28+). 
 
 ### 2) Building the Decision Center extension JAR
 

@@ -55,7 +55,7 @@ This sample demonstrates how Decision Center dynamically adapts to organizationa
 
 ### 1) Prerequisites
 
-Before you begin, ensure you have at least Docker 24.0.x (and optionally Kubernetes 1.27+).
+Before you begin, ensure you have at least Docker 27.x (and optionally Kubernetes 1.28+).
 
 ### 2) Instructions to use the sample in Decision Center
 
