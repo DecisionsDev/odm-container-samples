@@ -13,7 +13,7 @@ In this sample, you will:
 ## Prerequisites
 
 Ensure you have the following tools installed:
-- Docker 24.0.x or later, or Kubernetes 1.27+.
+- Docker v27 or later, or Kubernetes 1.28+.
 - [jq for JSON processing](https://jqlang.github.io/jq/download/)
 
 ## Installation of ODM
