@@ -9,10 +9,10 @@ This repository is aimed at both technical and business users interested in lear
 - **[IBM Operational Decision Manager for Developers](https://hub.docker.com/r/ibmcom/odm/)**  
   Explore ODM in Docker environments for development and evaluation purposes.
 
-- **[IBM Operational Decision Manager for Developers on Certified Kubernetes](https://artifacthub.io/packages/helm/ibm-odm-charts/ibm-odm-dev/24.0.0)**  
+- **[IBM Operational Decision Manager for Developers on Certified Kubernetes](https://artifacthub.io/packages/helm/ibm-odm-charts/ibm-odm-dev/25.0.0)**  
   Run ODM on certified Kubernetes environments for development and evaluation.
 
-- **[IBM Operational Decision Manager for Production on Certified Kubernetes](https://www.ibm.com/docs/en/odm/9.0.0?topic=kubernetes-installing-odm-production)**  
+- **[IBM Operational Decision Manager for Production on Certified Kubernetes](https://www.ibm.com/docs/en/odm/9.5.0?topic=kubernetes-installing-odm-production)**  
   Deploy ODM on certified Kubernetes environments for production use.
 
 ## Learning Objectives

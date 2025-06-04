@@ -4,7 +4,7 @@
 
 This sample demonstrates how to plug a custom value editor into the Business console Intellirule editor.
 
-It is the ODM on k8s adaptation of the ODM on premises [Custom Value Editor sample](https://www.ibm.com/docs/en/odm/9.0.0?topic=center-custom-value-editor).
+It is the ODM on k8s adaptation of the ODM on premises [Custom Value Editor sample](https://www.ibm.com/docs/en/odm/9.5.0?topic=center-custom-value-editor).
 
 ## Running this sample in Decision Center
 
