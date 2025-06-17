@@ -21,8 +21,8 @@
                             <goal>run</goal>
                         </goals>
                         <configuration>
-                            <tasks>
-                                <javac  srcdir="${project.build.sourceDirectory}" 
+                            <target>
+                                <javac srcdir="${project.build.sourceDirectory}" 
                                        destdir="${project.build.outputDirectory}"
                                        includeantruntime="false"
                                        compiler="modern">
@@ -30,7 +30,7 @@
                                         <fileset dir="${project.basedir}/lib" includes="**/*.jar"/>    
                                     </classpath>
                                 </javac>
-                            </tasks>
+                            </target>
 			 </configuration>
                     </execution>
 		    <execution>
@@ -40,12 +40,12 @@
                             <goal>run</goal>
     			</goals>
 			<configuration>
-			    <tasks>
+			    <target>
 				<zip destfile="${project.basedir}/target/businessvalueeditor-1.0.zip">
                                 	<fileset dir="${project.basedir}/target" includes="businessvalueeditor-1.0.jar" />
                                 	<fileset dir="${project.basedir}" includes="web.xml" />
                                	</zip>
-        		    </tasks>
+        		    </target>
     			 </configuration>
 		     </execution>
                 </executions>
@@ -54,6 +54,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.14.0</version>
                 <executions>
                     <execution>
                         <id>default-compile</id>

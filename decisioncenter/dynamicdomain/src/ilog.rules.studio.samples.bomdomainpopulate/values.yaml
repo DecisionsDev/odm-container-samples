@@ -1,0 +1,20 @@
+customization:
+  runAsUser: '' # Specific to OCP
+image:
+  pullSecrets:
+    - my-odm-docker-registry
+  repository: cp.icr.io/cp/cp4a/odm
+decisionCenter:
+  downloadUrl:
+    - <FILESERVER_URL>/bomdomainpopulate-1.0.jar
+    - <FILESERVER_URL>/jdbc-driver.jar
+internalDatabase:
+  persistence:
+    enabled: false
+    useDynamicProvisioning: false
+  populateSampleData: true
+  runAsUser: '' # Specific to OCP
+service:
+  enableRoute: true # Specific to OCP
+license: true
+usersPassword: odmAdmin

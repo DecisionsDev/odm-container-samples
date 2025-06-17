@@ -12,8 +12,20 @@ Any file server reachable by Decision Center is suitable.
 You can either use an existing one or follow the instructions [here](https://github.com/DecisionsDev/odm-docker-kubernetes/blob/vnext-release/contrib/file-server/README.md#setup-an-httpd-file-server) to deploy a httpd file server in a new pod.
 
 Upload the **businessvalueeditor-1.0.zip** file on the file server :
-```
+```bash
 curl -T businessvalueeditor/businessvalueeditor-source/target/businessvalueeditor-1.0.zip $FILESERVER_URL
+```
+
+If all goes well, you should have an output with `201` status that the zip resource is created:
+```
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>201 Created</title>
+</head><body>
+<h1>Created</h1>
+<p>Resource /businessvalueeditor-1.0.zip has been created.</p>
+</body></html>
 ```
 
 ## 2. Deploying ODM
@@ -57,7 +69,8 @@ helm repo update
 ```bash
 $ helm search repo ibm-odm-prod
 NAME                    CHART VERSION APP VERSION DESCRIPTION
-ibm-helm/ibm-odm-prod   24.0.1        9.0.0.1     IBM Operational Decision Manager
+ibm-helm/ibm-odm-prod   25.0.0        9.5.0.0     IBM Operational Decision Manager
+
 ```
 #### e. Install an IBM Operational Decision Manager release
 
@@ -96,7 +109,7 @@ To activate the Custom Value Editor, after login in Decision Center as an admini
 
 Load the [ValueEditorService.zip](./projects/ValueEditorService.zip) Decision Service.
 
-Follow [Running this sample](https://www.ibm.com/docs/en/odm/9.0.0?topic=editor-custom-value-sample-details#businessconsolecustomvalueeditorsampledetails__rssamples.uss_rs_smp_tsauthoring.1025134__title__1) details to understand how to use the custom value editor.
+Follow [Running this sample](https://www.ibm.com/docs/en/odm/9.5.0?topic=editor-custom-value-sample-details#businessconsolecustomvalueeditorsampledetails__rssamples.uss_rs_smp_tsauthoring.1025134__title__1) details to understand how to use the custom value editor.
 
 Below is the Custom Value Editor display inside the Business Console :
 

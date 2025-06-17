@@ -67,7 +67,7 @@ Also, before following the steps below, make sure you have built the images as e
 
      ```shell
      curl -k -X 'PUT' \
-     'https://$DC_HOST/decisioncenter-api/v1/webhook/notify?url=http%3A%2F%2Fwebhooknotifier-logfile.$NAMESPACE.svc.cluster.local%3A3000%2Fprint' \
+     "https://$DC_HOST/decisioncenter-api/v1/webhook/notify?url=http%3A%2F%2Fwebhooknotifier-logfile.$NAMESPACE.svc.cluster.local%3A3000%2Fprint" \
      -H 'accept: */*' \
      -H 'Content-Type: application/json' \
      -d 'null' \
@@ -85,7 +85,7 @@ Also, before following the steps below, make sure you have built the images as e
      export SLACK_TOKEN=`kubectl exec -ti webhooknotifier-slack -- curl 'http://localhost:3000/token.generate' -H 'accept: */*' -H 'Content-Type: application/json'`
 
      curl -X 'PUT' -k \
-     'https://$DC_HOST/decisioncenter-api/v1/webhook/notify?url=http%3A%2F%2Fwebhooknotifier-slack.$NAMESPACE.svc.cluster.local%3A3000%2Fslack' \
+     "https://$DC_HOST/decisioncenter-api/v1/webhook/notify?url=http%3A%2F%2Fwebhooknotifier-slack.$NAMESPACE.svc.cluster.local%3A3000%2Fslack" \
      -H 'accept: */*' \
      -H 'Content-Type: application/json' \
      -d "$SLACK_TOKEN" \
@@ -130,7 +130,7 @@ After creating this snapshot, a notification will be triggered.
 To view the content of the generated log file, run the following command:
 
 ```shell
-kubectl exec -ti <webhooknotifier-logfile-container-id> sh -c 'cat /app/results/default.txt'
+kubectl exec -ti <webhooknotifier-logfile-container-id> -- sh -c 'cat /app/results/default.txt'
 ```
 
 
@@ -218,9 +218,10 @@ and a message should appear your slack channel :
 To remove the webhooks configured in Decision Center, first list them:
 
 ```bash
-curl -X 'GET' \
-  'https://$DC_HOST/decisioncenter-api/v1/webhooks/notify' \
-  -H 'accept: */*'
+curl -k -X 'GET' \
+  "https://$DC_HOST/decisioncenter-api/v1/webhooks/notify" \
+  -H 'accept: */*' \
+  -u odmAdmin:odmAdmin
 ```
 
 where `$DC_HOST` should be set to the hostname of Decision Center.
@@ -241,9 +242,10 @@ The expected output looks like:
 You can then remove a webhook from Decision Center, by running the command below:
 
 ```bash
-curl -X 'DELETE' \
-  'https://$DC_HOST/decisioncenter-api/v1/webhooks/$WEBHOOK_ID/notify' \
-  -H 'accept: */*'
+curl -k -X 'DELETE' \
+  "https://$DC_HOST/decisioncenter-api/v1/webhooks/$WEBHOOK_ID/notify" \
+  -H 'accept: */*' \
+  -u odmAdmin:odmAdmin
 ```
 
 where
