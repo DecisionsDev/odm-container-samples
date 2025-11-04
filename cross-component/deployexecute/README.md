@@ -106,7 +106,7 @@ curl -sk -X POST ${AUTH_CREDENTIALS[@]} -H "accept: application/json" -H "Conten
 > export ACCESS_TOKEN=$(curl -sk -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "client_id=${CLIENT_ID}&scope=openid&client_secret=${CLIENT_SECRET}&grant_type=client_credentials" ${OPENID_TOKEN_URL} | jq -r '.access_token')
 > export AUTH_CREDENTIALS=(-H "Authorization: Bearer ${ACCESS_TOKEN}")
 > ```
-> - In a CP4BA environment, the authentication can be performed using a [Zen API key](https://www.ibm.com/docs/en/cloud-paks/cp-biz-automation/25.0.0?topic=access-using-zen-api-key-authentication). To do so:
+> - In a CP4BA environment, the authentication can be performed using a [Zen API key](https://www.ibm.com/docs/en/cloud-paks/cp-biz-automation/25.1.0?topic=access-using-zen-api-key-authentication). To do so:
 >    - set the environment variables
 >      - USERNAME
 >      - ZEN_API_KEY

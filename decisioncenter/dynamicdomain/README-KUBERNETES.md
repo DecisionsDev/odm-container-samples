@@ -92,7 +92,7 @@ helm search repo ibm-odm-prod
 ```
 ```bash
 NAME                          CHART VERSION APP VERSION	DESCRIPTION
-ibm-helm/ibm-odm-prod         25.0.0        9.5.0.0  	IBM Operational Decision Manager  License By in...
+ibm-helm/ibm-odm-prod         25.1.0        9.5.0.1  	IBM Operational Decision Manager  License By in...
 ```
 
 Create a file named `values.yaml`. This file will be used by the `helm install` command to specify the configuration parameters. 
