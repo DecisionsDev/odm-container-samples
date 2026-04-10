@@ -11,6 +11,7 @@ services:
   slack:
     build:
       context: ./slack
+    container_name: webhooknotifier-slack
     environment:
       NODE_ENV: production
     ports:
@@ -18,6 +19,7 @@ services:
   logfile:
     build:
       context: ./files
+    container_name: webhooknotifier-logfile
     environment:
       NODE_ENV: production
     ports:
