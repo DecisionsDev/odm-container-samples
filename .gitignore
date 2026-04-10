@@ -4,3 +4,9 @@ decisioncenter/dynamicdomain/src/ilog.rules.studio.samples.bomdomainpopulate/bin
 decisioncenter/dynamicdomain/src/ilog.rules.studio.samples.bomdomainpopulate/target
 decisioncenter/dynamicdomain/src/ilog.rules.studio.samples.bomdomainpopulate/bomdomainpopulate.jar
 decisioncenter/dynamicdomain/src/ilog.rules.studio.samples.bomdomainpopulate/decision-center-client-api.zip
+decisioncenter/businessvalueeditor/businessvalueeditor-source/target
+decisioncenter/guicustomization/guicustomization-source/target
+decisioncenter/businessvalueeditor/businessvalueeditor-source/lib/executionserver/lib
+decisioncenter/businessvalueeditor/businessvalueeditor-source/lib
+decision-center-client-api.zip
+decisioncenter/guicustomization/guicustomization-source/lib

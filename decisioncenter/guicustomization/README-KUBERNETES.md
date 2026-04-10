@@ -59,7 +59,7 @@ helm search repo ibm-odm-prod
 ```
 ```bash
 NAME                    CHART VERSION APP VERSION DESCRIPTION
-ibm-helm/ibm-odm-prod   25.1.0        9.5.0.1     IBM Operational Decision Manager
+ibm-helm/ibm-odm-prod   26.0.0        9.6.0.0     IBM Operational Decision Manager
 ```
 
 #### e. Create a secret to manage custom authentication/authorization
@@ -118,7 +118,7 @@ Click the new tab **My Admin Tab**. The tab displays the same metrics on the dec
 
 Click the **Decision Artifacts** tab. Expand the **computation** package of the **Loan Validation Scoring** project. Edit the rule **neverBankruptcy** (accept any default settings if prompted).
 
-Click the button **My Info**. A dialog displays information on the rule.
+Click the **My Info** icon in the toolbar. A dialog displays information on the rule.
 
 Close the dialog and cancel the editing session to go back to the **Decision Artifacts** tab. 
 
@@ -126,7 +126,7 @@ Make sure that the **Operations** type are displayed. To display them, click **T
 
 Click the **Operations** element under **Loan Validation Scoring** project and edit the **scoring** operation.
 
-Click the button **My Operation Info**. A dialog displays information on the operation.
+Click the **My Operation Info** icon in the toolbar. A dialog displays information on the operation.
 
 Close the dialog, and cancel the editing session to go back to the **Decision Artifacts** tab. 
 
@@ -136,7 +136,7 @@ Click the **Targets** tab and make sure the **Decision Service Execution** serve
 
 Click the name of the **test deployment** configuration.
 
-Click the **Custom Deploy** button in the toolbar. This will start the deployment and a dialog shows its status: _Deploying..._ to _Report status: COMPLETED_
+Click the **Custom Deploy** icon in the toolbar. This will start the deployment and a dialog shows its status: _Deploying..._ to _Report status: COMPLETED_
 
 Close the dialog and log out of the Business Console.
 
