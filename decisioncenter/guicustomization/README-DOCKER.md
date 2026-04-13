@@ -16,7 +16,7 @@ Before following the steps below, make sure you have built the images as explain
       
    Run ODM docker images containing GUI customization:
    ```bash
-   docker-compose -f compose-odm-dev.yml up odm-with-gui-customization &
+   docker-compose -f compose-odm-dev.yml up -d odm-with-gui-customization
    ```
 
 ###  Using the sample
