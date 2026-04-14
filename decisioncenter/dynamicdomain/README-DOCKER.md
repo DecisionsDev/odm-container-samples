@@ -35,7 +35,7 @@ To set up the ODM container with dynamic domain support:
 
 1. Start the ODM container:
    ```bash
-   docker-compose up odm-dynamic-domain &
+   docker-compose up -d odm-dynamic-domain
    ```
    > **Explanation**: This command initializes the ODM environment required for the sample.
 
@@ -75,7 +75,7 @@ To set up and populate the dynamic domains database:
     - leave `default value` empty. Save the setting.
 1. Set the value of this new custom setting to `ilog.rules.studio.samples.bomdomainpopulate.DataBaseDomainValueProvider`.
 1. Navigate to the **Library** tab.
-1. Import the rule project archive `dynamicdomain/projects/bomdomainpopulate-rules.zip`.
+1. Import the rule project archive [dynamicdomain/projects/bomdomainpopulate-rules.zip](projects/bomdomainpopulate-rules.zip).
     > Note: this rule project `bomdomainpopulate-rules` is only aimed at editing rules to demonstrate loading domains from a database. It is missing a deployment configuration and cannot be executed.
 1. Once the archive is imported, the **bomdomainpopulate-rules** decision service will be displayed. Click the **main** branch to access to the decision artifacts. 
 1. Display the rule `CheckOrder > OrderType`. An error **Value (string) 'CompanyX' is incorrect** is displayed. Edit the rule and either remove **"CompanyX"** and press SPACE or double-click **"CompanyX"**. A list of suitable companies gets displayed in a drop-down. `CompanyX` is not one of these companies. Close down the rule **without** saving.
