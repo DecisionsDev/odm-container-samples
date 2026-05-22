@@ -11,7 +11,7 @@ Before following the steps below, make sure you have built the images as explain
 
 1.  Run ODM and Notifiers  docker images
     ```bash
-    docker-compose  -f docker-compose.yaml -f compose-odm-dev.yml up
+    docker-compose -f docker-compose.yaml -f compose-odm-dev.yml up -d
     ```
 
 2. Register the webhook in Decision Center using the REST API tool, providing the token and URL (`http://localhost:3000/slack` and `http://localhost:3000/print`).
@@ -67,7 +67,7 @@ After creating this snapshot, a notification will be triggered.
 To view the content of the generated log file, run the following command:
 
 ```shell
-docker exec -ti <webhooknotifier-logfile-container-id> sh -c 'cat /app/results/default.txt'
+docker exec -ti webhooknotifier-logfile sh -c 'cat /app/results/default.txt'
 ```
 
 

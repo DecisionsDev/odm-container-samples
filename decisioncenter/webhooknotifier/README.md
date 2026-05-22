@@ -39,7 +39,7 @@ This NodeJS sample code will be packaged in two docker images.
 > Note: The docker-compose build command will produce images based on your local machine’s architecture. If you plan to deploy this sample on a Kubernetes cluster, ensure the target environment uses the same architecture (e.g., amd64 vs. arm64) to avoid compatibility issues. You may also need to specify a platform explicitly if building for a different architecture.
 > For instance, you can make sure that the images are built for the `amd64` architecture by running:
 ```bash
-docker-compose build -f docker-compose-amd64.yaml
+docker-compose -f docker-compose-amd64.yaml build
 ```
 
 ### Run the sample

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This sample shows you how to customize the Business Console using [GUI customization sample](https://www.ibm.com/docs/en/odm/9.5.0?topic=center-gui-customization) in a container environment.
+This sample shows you how to customize the Business Console using [GUI customization sample](https://www.ibm.com/docs/en/odm/9.6.0?topic=center-gui-customization) in a container environment.
 
 ## Running this sample in Decision Center
 
@@ -43,7 +43,7 @@ To use the sample in Decision Center, you need to build a JAR.
 
    2. Build the JAR
 
-      The instructions below enable to build the JAR using a Docker container featuring Maven and a JDK version 21, compatible for ODM 9.5.
+      The instructions below enable to build the JAR using a Docker container featuring Maven and a JDK version 21, compatible for ODM 9.6.
       
       Run the command below in the **decisioncenter/guicustomization/guicustomization-source** directory:
 
