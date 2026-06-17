@@ -92,7 +92,7 @@ helm search repo ibm-odm-prod
 ```
 ```bash
 NAME                          CHART VERSION APP VERSION	DESCRIPTION
-ibm-helm/ibm-odm-prod         25.1.0        9.5.0.1  	IBM Operational Decision Manager  License By in...
+ibm-helm/ibm-odm-prod         26.0.0        9.6.0.0  	IBM Operational Decision Manager  License By in...
 ```
 
 Create a file named `values.yaml`. This file will be used by the `helm install` command to specify the configuration parameters. 
@@ -112,7 +112,7 @@ internalDatabase:
     enabled: false
     useDynamicProvisioning: false
   populateSampleData: true
-  runAsUser: ''
+  runAsUser: '' # Specific to OCP
 ```
 
 Add all the other parameters suitable to your platform in `values.yaml`. Check this [link](https://github.com/DecisionsDev/odm-docker-kubernetes/tree/master/platform) for help.
@@ -145,7 +145,7 @@ The class that implements the customization must be declared:
 
 ### 4.2 Using a JVM parameter
 
-Follow instructions as described [here](https://www.ibm.com/docs/en/odm/9.5.0?topic=kubernetes-persisting-decision-center-ruleset-cache) to create a Config Map with the additional JVM parameter below: 
+Follow instructions as described [here](https://www.ibm.com/docs/en/odm/9.6.0?topic=kubernetes-persisting-decision-center-ruleset-cache) to create a Config Map with the additional JVM parameter below: 
 ```
 -Dilog.rules.teamserver.derbyDataBaseDomainProvider=ilog.rules.studio.samples.bomdomainpopulate.DataBaseDomainValueProvider
 ```
